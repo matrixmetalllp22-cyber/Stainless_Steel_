@@ -1,0 +1,43 @@
+@import "tailwindcss";
+
+
+/* 🔒 Disable text selection globally */
+* {
+  user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
+/* 🔒 Prevent dragging images */
+img {
+  -webkit-user-drag: none;
+  /* user-drag: none; */
+  pointer-events: none;
+}
+
+/* 🔒 Disable iOS copy popup */
+body {
+  -webkit-touch-callout: none;
+}
+
+/* @layer components {
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  
+  .section-padding {
+    @apply py-16 md:py-24;
+  }
+
+  .heading-primary {
+    @apply text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900;
+  }
+
+  .heading-secondary {
+    @apply text-2xl md:text-3xl font-bold text-gray-900;
+  }
+
+  .text-content {
+    @apply text-gray-600 leading-relaxed;
+  }
+} */
