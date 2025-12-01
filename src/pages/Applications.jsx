@@ -93,7 +93,6 @@
 
 
 
-
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -107,40 +106,39 @@ const certificates = [
   { id: 7, image: "/Images/bridge-5624104_1920.jpg" },
   { id: 8, image: "/Images/button-4927935_1920.jpg" },
   { id: 9, image: "/Images/firenze-9292729_1280.jpg" },
-  { id: 10, image:"/Images/prague.jpg" },
+  { id: 10, image: "/Images/prague.jpg" },
 ];
 
 export default function PhotoGallery() {
   const [selectedCert, setSelectedCert] = useState(null);
 
   return (
-    <section className="bg-gradient-to-b from-[#fafafa] via-[#f4f4f5] to-[#ededed] text-gray-900 py-20 px-6">
+    <section className="bg-gradient-to-b from-[#fafafa] via-[#f4f4f5] to-[#ededed] text-gray-900 py-16 px-4 sm:px-6">
       
-      {/* Image Grid Only */}
-      <div className="max-w-6xl mx-auto">
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8">
+      {/* Image Grid */}
+      <div className="max-w-7xl mx-auto">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 sm:gap-8">
           {certificates.map((cert, idx) => (
             <motion.div
               key={cert.id}
-              initial={{ opacity: 0, y: 25 }}
+              initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: idx * 0.05 }}
-              whileHover={{ y: -4 }}
+              transition={{ duration: 0.35, delay: idx * 0.04 }}
+              whileHover={{ scale: 1.03 }}
               onClick={() => setSelectedCert(cert.image)}
               className="cursor-pointer"
             >
               <div
                 className="
-                  rounded-xl overflow-hidden border border-gray-200
-                  bg-white/80 backdrop-blur-sm
-                  shadow-sm hover:shadow-lg hover:border-gray-400
-                  transition-all duration-300
-                "
+                rounded-xl overflow-hidden border border-gray-200 
+                bg-white shadow-md hover:shadow-lg
+                transition-all duration-300
+              "
               >
                 <img
                   src={cert.image}
                   alt="Certificate"
-                  className="w-full h-100 object-contain p-3"
+                  className="w-full aspect-[4/5] object-cover"
                 />
               </div>
             </motion.div>
@@ -148,7 +146,7 @@ export default function PhotoGallery() {
         </div>
       </div>
 
-      {/* Image Zoom Modal */}
+      {/* Modal */}
       <AnimatePresence>
         {selectedCert && (
           <motion.div
@@ -156,14 +154,14 @@ export default function PhotoGallery() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setSelectedCert(null)}
-            className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-[999]"
+            className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4 z-[999]"
           >
             <motion.img
               initial={{ scale: 0.85, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.85, opacity: 0 }}
               src={selectedCert}
-              className="max-h-[90vh] max-w-[90vw] rounded-xl shadow-2xl border border-gray-300 bg-white"
+              className="max-h-[85vh] max-w-[90vw] rounded-xl shadow-2xl border border-gray-300 bg-white"
             />
           </motion.div>
         )}
