@@ -274,16 +274,16 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const certificates = [
-  { id: 1, image: "public/images/prague.jpg" },
-  { id: 2, image: "public/images/bridge-5624104_1920.jpg" },
-  { id: 3, image: "public/images/button-4927935_1920.jpg" },
-  { id: 4, image: "public/images/firenze-9292729_1280.jpg" },
-  { id: 5, image: "public/images/prague.jpg" },
-  { id: 6, image: "public/images/prague.jpg" },
-  { id: 7, image: "public/images/bridge-5624104_1920.jpg" },
-  { id: 8, image: "public/images/button-4927935_1920.jpg" },
-  { id: 9, image: "public/images/firenze-9292729_1280.jpg" },
-  { id: 10, image: "public/images/prague.jpg" },
+  { id: 1, image: "/Images/prague.jpg" },
+  { id: 2, image: "/Images/bridge-5624104_1920.jpg" },
+  { id: 3, image: "/Images/button-4927935_1920.jpg" },
+  { id: 4, image: "/Images/firenze-9292729_1280.jpg" },
+  { id: 5, image: "/Images/prague.jpg" },
+  { id: 6, image: "/Images/prague.jpg" },
+  { id: 7, image: "/Images/bridge-5624104_1920.jpg" },
+  { id: 8, image: "/Images/button-4927935_1920.jpg" },
+  { id: 9, image: "/Images/firenze-9292729_1280.jpg" },
+  { id: 10, image:"/Images/prague.jpg" },
 ];
 
 export default function QualitySection() {
