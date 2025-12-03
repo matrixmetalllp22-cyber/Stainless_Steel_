@@ -13,7 +13,7 @@ export default function ClientsSlider() {
           animate={{ x: ["0%", "-100%"] }}
           transition={{
             repeat: Infinity,
-            duration: 25,
+            duration: 40,
             ease: "linear",
           }}
         >
