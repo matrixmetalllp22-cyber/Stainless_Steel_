@@ -2,6 +2,7 @@
 import React, { useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
+import { ThemeProvider } from "./context/ThemeContext";
 
 // Pages
 import Home from "./pages/Home";
@@ -23,8 +24,9 @@ import Blanking from "./pages/services/Blanking";
 // Components
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import CommandPalette from "./components/CommandPalette";
 
-function App() {
+function AppContent() {
   useEffect(() => {
     // 🔒 Disable right-click (prevents "Inspect" & "Save As")
     const handleContextMenu = (e) => e.preventDefault();
@@ -61,7 +63,8 @@ function App() {
     <BrowserRouter>
       <div className="flex flex-col min-h-screen select-none">
         <Header />
-        <main className="flex-grow pt-16 bg-gradient-to-br from-slate-50 to-gray-300">
+        <CommandPalette />
+        <main className="flex-grow pt-16 bg-gradient-to-br from-slate-50 to-gray-300 dark:from-slate-900 dark:to-gray-800 transition-colors duration-300">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
@@ -71,7 +74,7 @@ function App() {
             <Route path="/news" element={<News />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/applications" element={<Applications />} />
-            <Route path="/case-studies" element={<CaseStudies  />} />
+            <Route path="/case-studies" element={<CaseStudies />} />
 
             {/* Service Routes */}
             <Route path="/services/slitting" element={<Slitting />} />
@@ -83,6 +86,14 @@ function App() {
         <Footer />
       </div>
     </BrowserRouter>
+  );
+}
+
+function App() {
+  return (
+    <ThemeProvider>
+      <AppContent />
+    </ThemeProvider>
   );
 }
 

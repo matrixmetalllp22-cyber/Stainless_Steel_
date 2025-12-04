@@ -13,9 +13,9 @@ const InputField = ({ label, name, type = "text", value, onChange }) => (
       value={value}
       onChange={onChange}
       required
-      className="peer w-full p-4 pt-6 rounded-xl bg-white shadow-md border border-gray-200 text-gray-700 outline-none focus:ring-2 focus:ring-yellow-400 transition"
+      className="peer w-full p-4 pt-6 rounded-xl bg-white shadow-md border border-gray-200 text-gray-700 outline-none focus:ring-2 focus:ring-orange-500 transition"
     />
-    <label className="absolute left-4 top-4 text-gray-400 text-sm transition-all peer-focus:top-1 peer-focus:text-sm peer-focus:text-yellow-500">
+    <label className="absolute left-4 top-4 text-gray-400 text-sm transition-all peer-focus:top-1 peer-focus:text-sm peer-focus:text-orange-600">
       {label}
     </label>
   </div>
@@ -30,9 +30,9 @@ const TextArea = ({ label, name, value, onChange }) => (
       onChange={onChange}
       rows={4}
       required
-      className="peer w-full p-4 pt-6 rounded-xl bg-white shadow-md border border-gray-200 text-gray-700 outline-none focus:ring-2 focus:ring-yellow-400 transition resize-none"
+      className="peer w-full p-4 pt-6 rounded-xl bg-white shadow-md border border-gray-200 text-gray-700 outline-none focus:ring-2 focus:ring-orange-500 transition resize-none"
     />
-    <label className="absolute left-4 top-4 text-gray-400 text-sm transition-all peer-focus:top-1 peer-focus:text-sm peer-focus:text-yellow-500">
+    <label className="absolute left-4 top-4 text-gray-400 text-sm transition-all peer-focus:top-1 peer-focus:text-sm peer-focus:text-orange-600">
       {label}
     </label>
   </div>
@@ -107,7 +107,7 @@ export default function ContactForm() {
         <motion.button
           type="submit"
           disabled={loading}
-          className="py-3 rounded-xl bg-yellow-400 text-white font-semibold text-lg hover:scale-105 transition disabled:opacity-50 shadow-md"
+          className="py-3 rounded-xl bg-orange-600 text-white font-semibold text-lg hover:bg-orange-700 active:scale-95 transition disabled:opacity-50 shadow-md"
           whileTap={{ scale: 0.95 }}
         >
           {loading ? "Sending..." : "Send Message"}
@@ -163,7 +163,7 @@ export default function ContactForm() {
             duration: 1.8,
             ease: "easeInOut",
           }}
-          className="text-yellow-600"
+          className="text-orange-600"
         >
           <MdLocationPin className="text-3xl" />
         </motion.div>
@@ -187,13 +187,13 @@ export default function ContactForm() {
       className="p-5 rounded-2xl bg-white/50 border border-gray-200 shadow-md backdrop-blur-md hover:shadow-lg cursor-pointer transition-all"
     >
       <div className="flex items-center gap-3">
-        <MdPhone className="text-yellow-600 text-3xl" />
+        <MdPhone className="text-orange-600 text-3xl" />
         <h3 className="text-xl font-semibold text-gray-700">Phone</h3>
       </div>
 
       <a
         href="tel:+91951440912"
-        className="block text-gray-700 text-lg font-medium mt-3 hover:text-yellow-600"
+        className="block text-gray-700 text-lg font-medium mt-3 hover:text-orange-600"
       >
         +91 95144 40912
       </a>

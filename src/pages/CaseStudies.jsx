@@ -39,40 +39,6 @@ const caseStudies = [
       "Business scaled operations efficiently without increasing manpower, resulting in improved service reliability.",
     tech: ["Next.js", "Express.js", "JWT Auth", "MySQL", "Framer Motion", "Redis Cache"],
   },
-  {
-    id: 1,
-    title: "Smart Manufacturing & IoT Automation System",
-    description:
-      "A fully automated manufacturing data platform built to replace traditional excel and paper-based production tracking.",
-    problem:
-      "Manufacturing supervisors recorded processes manually, causing delays, inaccurate reports, and lack of real-time insights.",
-    approach:
-      "Conducted requirement analysis, mapped workflow, integrated IoT modules with machine PLC signals, and built a real-time monitoring UI.",
-    solution:
-      "Designed and developed a MERN-based dashboard with live metrics, automated downtime alerts, and predictive maintenance insights.",
-    result:
-      "Production efficiency improved by 62%, error rate dropped by 80%, and reporting time reduced from 6 hours to under 15 seconds.",
-    impact:
-      "Enabled management to make faster decisions, reduced workforce dependency, and increased transparency across the production chain.",
-    tech: ["React", "Node.js", "MongoDB", "MQTT", "TailwindCSS", "IoT Sensors", "Chart.js"],
-  },
-  {
-    id: 2,
-    title: "Industrial Customer Support Portal & Analytics Engine",
-    description:
-      "A centralized web portal to manage customer orders, warranty claims, and service logs with real-time analytics dashboard.",
-    problem:
-      "Client struggled with scattered customer communication and no automated tracking for order lifecycle or service requests.",
-    approach:
-      "Interviewed end-users, analyzed workflows, designed data models, and created automated notification and tracking pipelines.",
-    solution:
-      "Built a secure role-based portal with automated emails, data visualization dashboards, and advanced filtering and audit trail logging.",
-    result:
-      "Manual workload reduced by 78%, response speed increased by 45%, and customer satisfaction rating increased from 3.2 to 4.6.",
-    impact:
-      "Business scaled operations efficiently without increasing manpower, resulting in improved service reliability.",
-    tech: ["Next.js", "Express.js", "JWT Auth", "MySQL", "Framer Motion", "Redis Cache"],
-  },
 ];
 
 // --- PDF Download Function ---
@@ -221,7 +187,7 @@ const Modal = ({ study, onClose }) => {
           <button
             onClick={onClose}
             className="px-6 py-3 border-2 border-orange-600 text-orange-600 rounded-lg hover:bg-orange-50 font-semibold transition-colors duration-200"
-          >
+          >       
             Close
           </button>
         </div>
