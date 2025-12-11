@@ -1,4 +1,23 @@
+import React from "react";
 import { motion } from "framer-motion";
+
+const clients = [
+  { name: "Tata Motors", logo: "/Logos/TVS-Motor-Company.png" },
+  { name: "Bosch", logo: "/Logos/Ola-Cabs-Logo.png" },
+  { name: "Bajaj", logo: "/Logos/Wave_mec.png" },
+  { name: "Maruti Suzuki", logo: "/Logos/Taal.png" },
+  { name: "Mahindra", logo: "/Logos/Boeing.png" },
+  { name: "Hyundai", logo: "/Logos/BEML.png" },
+  { name: "Hero MotoCorp", logo: "/Logos/DRDO.png" },
+  { name: "TVS", logo: "/Logos/mg.png" },
+  { name: "Ashok Leyland", logo: "/Logos/indian_railways.png" },
+  { name: "Volvo Eicher", logo: "/Logos/General_Electric.png" },
+  { name: "TVS", logo: "/Logos/Siemens.png" },
+  { name: "Ashok Leyland", logo: "/Logos/Hitachi.png" },
+  { name: "Volvo Eicher", logo: "/Logos/AEQUS.png" },
+  { name: "Ashok Leyland", logo: "/Logos/garuda.png" },
+  { name: "Volvo Eicher", logo: "/Logos/AEQUS.png" },
+];
 
 export default function ClientsSlider() {
   return (
