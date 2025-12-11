@@ -1,13 +1,29 @@
 
 
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
-import { useTheme } from "../context/ThemeContext";
 import { motion } from "framer-motion";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
-  const { isDark, toggleTheme } = useTheme();
+  const [isHidden, setIsHidden] = useState(false);
+  const lastY = useRef(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentY = window.scrollY || 0;
+      // hide when scrolling down and past 80px, show when scrolling up
+      if (currentY > lastY.current && currentY > 80) {
+        setIsHidden(true);
+      } else {
+        setIsHidden(false);
+      }
+      lastY.current = currentY;
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const navigation = [
     { name: "Home", href: "/" },
@@ -21,9 +37,9 @@ export default function Header() {
   ];
 
   return (
-    <header className="fixed w-full top-0 z-50 shadow-md">
+    <header className={`fixed w-full top-0 z-50 shadow-md transform transition-transform duration-300 ${isHidden ? '-translate-y-full' : 'translate-y-0'}`}>
       {/* --- Top Contact Bar --- */}
-      <div className="w-full bg-gradient-to-r from-slate-800 to-slate-700 text-gray-100 text-sm py-2 px-6 flex justify-between items-center">
+      <div className="w-full bg-gradient-to-r from-slate-800 to-slate-700 dark:from-white-900 dark:to-gray-950 text-gray-100 text-sm py-2 px-6 flex justify-between items-center transition-colors duration-300">
         <div className="flex items-center space-x-4">
           <span className="flex items-center space-x-2">
             <svg
@@ -68,12 +84,12 @@ export default function Header() {
       </div>
 
       {/* --- Main Navigation --- */}
-      <nav className="bg-white/80 backdrop-blur-md border-b border-slate-200">
+      <nav className="bg-white/80 dark:bg-slate-700/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-700 transition-colors duration-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-3 md:py-4">
             {/* Logo */}
             <Link to="/" className="flex items-center space-x-2">
-              <span className="text-2xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-orange-500 to-slate-600">
+              <span className="text-2xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-orange-500 to-slate-400">
                 Matrix Metals
               </span>
             </Link>
@@ -84,36 +100,19 @@ export default function Header() {
                 <Link
                   key={item.name}
                   to={item.href}
-                  className="text-slate-700 hover:text-orange-600 font-medium transition-all duration-200 hover:underline underline-offset-4"
+                  className="text-slate-700 dark:text-gray-100 hover:text-orange-600 dark:hover:text-orange-400 font-medium transition-all duration-200 hover:underline underline-offset-4"
                 >
                   {item.name}
                 </Link>
               ))}
               
-              {/* Theme Toggle */}
-              <motion.button
-                onClick={toggleTheme}
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
-                className="p-2 rounded-full bg-orange-100 hover:bg-orange-200 transition-colors"
-                title={isDark ? "Light Mode" : "Dark Mode"}
-              >
-                {isDark ? (
-                  <svg className="w-5 h-5 text-orange-600" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.707.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.464 5.05l-.707-.707a1 1 0 00-1.414 1.414l.707.707zm5.657-9.193a1 1 0 00-1.414 0l-.707.707A1 1 0 005.05 6.464l.707-.707a1 1 0 011.414 0zM5 6a1 1 0 100-2H4a1 1 0 000 2h1z" />
-                  </svg>
-                ) : (
-                  <svg className="w-5 h-5 text-orange-600" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
-                  </svg>
-                )}
-              </motion.button>
+              {/* Theme toggle removed (dark mode disabled) */}
             </div>
 
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="lg:hidden p-2 rounded-md text-slate-700 hover:text-orange-700"
+              className="lg:hidden p-2 rounded-md text-slate-700 dark:text-gray-100 hover:text-orange-700 dark:hover:text-orange-400 transition-colors"
             >
               {!isOpen ? (
                 <svg
@@ -150,13 +149,13 @@ export default function Header() {
 
         {/* Mobile Navigation */}
         {isOpen && (
-          <div className="lg:hidden bg-white shadow-md border-t border-slate-100">
+          <div className="lg:hidden bg-white dark:bg-slate-800 shadow-md border-t border-slate-100 dark:border-slate-700 transition-colors duration-300">
             <div className="px-4 pt-2 pb-4 space-y-1">
               {navigation.map((item) => (
                 <Link
                   key={item.name}
                   to={item.href}
-                  className="block px-4 py-2 text-slate-700 hover:bg-orange-50 hover:text-orange-700 rounded-md"
+                  className="block px-4 py-2 text-slate-700 dark:text-gray-100 hover:bg-orange-50 dark:hover:bg-orange-900/20 hover:text-orange-700 dark:hover:text-orange-400 rounded-md transition-colors"
                   onClick={() => setIsOpen(false)}
                 >
                   {item.name}

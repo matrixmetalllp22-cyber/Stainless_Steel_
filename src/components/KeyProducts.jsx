@@ -5,21 +5,45 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const KeyProducts = () => {
   const products = [
+
+
+    //  {
+    //   title: "Aluminium Coils & Sheets",
+    //   description:
+    //     "High-precision aluminium coils and sheets engineered for commercial pure, general engineering, packaging, marine, and industrial applications.",
+    //   cards: {
+    //     grades: [
+    //       "1050 / 1100 – Commercial Pure",
+    //       "3003 – General Engineering",
+    //       "5052 / 5083 – High Strength Marine & Industrial",
+    //       "3xxx & 5xxx Specialized Alloys (for packaging / heat transfer)",
+    //     ],
+    //     supply: ["Thickness: 0.15 mm to 6 mm", "Width: Up to 1600 mm"],
+    //   },
+    //   image: "/Images/Aluminium-Sheets-Coils-1024x580.png",
+    // },
+
+
+
+        {
+  title: "Aluminium Grades Available",
+  description: `We supply a comprehensive selection of aluminium grades tailored for diverse industrial applications. This includes 1050/1100 commercial pure alloys, 3003 general engineering alloys, 5052/5083 high-strength marine and industrial alloys, and the advanced 3xxx & 5xxx series specialized alloys used in packaging and heat-transfer solutions.`,
+
+
+  image: "/Images/Aluminium-Sheets-Coils-1024x580.png",
+},
+
     {
-      title: "HR (Hot Rolled) Black",
-      description: "Available in coils, sheets, and plates with industrial-grade quality.",
-      image: "/Images/prague.jpg",
+      title: "Supply Range Specifications",
+      description: "Our aluminium products are available in a broad supply range to meet precise manufacturing needs. Thickness options span from 0.15 mm to 6 mm, and widths are available up to 1600 mm, ensuring compatibility with a wide variety of production standards and project requirements.",
+      image: "/Images/aluminium-sheet-2024-250x250.webp",
     },
-    {
-      title: "CR (Cold Rolled) Steel",
-      description: "Used where high strength, precision thickness, and fine finishing matter.",
-      image: "/Images/button-4927935_1920.jpg",
-    },
-    {
-      title: "Galvanized Steel",
-      description: "Superior corrosion-resistant steel for automotive and construction sectors.",
-      image: "/Images/architecture-2182003_1920.jpg",
-    },
+    
+    // {
+    //   title: "Anodized Aluminium",
+    //   description: "Premium anodized and brushed aluminium for architectural, interior design, and premium applications. Multiple surface finishes available.",
+    //   image: "/Images/aluminium-alloy-sheet-plate-4.jpg",
+    // },
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -99,14 +123,14 @@ const KeyProducts = () => {
       <div className="flex justify-center gap-6 mt-16">
         <button
           onClick={handlePrev}
-          className="bg-gray-800 hover:bg-orange-600 text-white p-4 rounded-xl shadow-lg 
+          className="bg-gray-400 hover:bg-orange-500 text-white p-4 rounded-xl shadow-lg 
                      transition-all duration-300 hover:scale-110 active:scale-95"
         >
           <ArrowLeft className="w-6 h-6" />
         </button>
         <button
           onClick={handleNext}
-          className="bg-gray-800 hover:bg-orange-600 text-white p-4 rounded-xl shadow-lg 
+          className="bg-gray-400 hover:bg-orange-500 text-white p-4 rounded-xl shadow-lg 
                      transition-all duration-300 hover:scale-110 active:scale-95"
         >
           <ArrowRight className="w-6 h-6" />

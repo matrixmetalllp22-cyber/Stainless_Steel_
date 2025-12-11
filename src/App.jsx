@@ -2,7 +2,7 @@
 import React, { useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
-import { ThemeProvider } from "./context/ThemeContext";
+// ThemeContext removed — dark mode disabled
 
 // Pages
 import Home from "./pages/Home";
@@ -64,7 +64,7 @@ function AppContent() {
       <div className="flex flex-col min-h-screen select-none">
         <Header />
         <CommandPalette />
-        <main className="flex-grow pt-16 bg-gradient-to-br from-slate-50 to-gray-300 dark:from-slate-900 dark:to-gray-800 transition-colors duration-300">
+        <main className="flex-grow pt-16 bg-gradient-to-br from-slate-50 to-white-300 :from-slate-900 dark:to-white   transition-colors duration-300">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
@@ -90,11 +90,7 @@ function AppContent() {
 }
 
 function App() {
-  return (
-    <ThemeProvider>
-      <AppContent />
-    </ThemeProvider>
-  );
+  return <AppContent />;
 }
 
 export default App;

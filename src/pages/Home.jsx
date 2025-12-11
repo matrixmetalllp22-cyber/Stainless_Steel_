@@ -6,6 +6,8 @@ import KeyProducts from "../components/KeyProducts";
 import { motion } from "framer-motion";
 import Leadership from "../components/Leadership";
 import ClientsSection from "../components/clientsSection";
+import Testimonial from "../components/Testimonial";
+import NewsUpdate from "../components/newsUpdate";
 
 export default function Home() {
   const industries = [
@@ -30,26 +32,14 @@ export default function Home() {
 
       { /*       Latest News Section   */}
       
-      
-       <div className="bg-gray-100 p-8 rounded-2xl shadow-md max-w mx-auto mt-10 h-[300px] flex flex-col justify-center text-center">
-      <h2 className="text-2xl font-semibold mb-4 text-gray-800">
-        News Updates 
-      </h2>
-
-      <p className="text-gray-600 max-w-md mx-auto mb-6">
-        Stay informed with the latest news and updates from Matrix Metals. Discover our recent projects, industry insights, and company announcements.
-      </p>
-
-      {/* Button aligned right */}
-      <div className="flex justify-end mt-6">
-        <button className="bg-orange-300 hover:bg-orange-400 text-white font-medium px-6 py-3 rounded-lg shadow transition duration-300">
-          Read More
-        </button>
-      </div>
-    </div>
+      <section className="section-padding">
+        <div className="container-custom">
+          <NewsUpdate />
+        </div>
+      </section>
 
       {/* About Section */}
-     <section className="py-20 bg-gradient-to-br from-gray-100 via-gray-200 to-gray-100 relative overflow-hidden">
+     <section className="py-20 bg-gradient-to-br from-gray-100 via-gray-200 to-gray-100 dark:from-slate-900 dark:via-slate-400 dark:to-white-900 relative overflow-hidden transition-colors duration-300">
 
   {/* Subtle metallic noise overlay */}
   <div className="absolute inset-0 opacity-10 bg-[url('/textures/noise.png')] pointer-events-none"></div>
@@ -59,14 +49,22 @@ export default function Home() {
 
       {/* LEFT SIDE */}
       <div className="space-y-6">
-        <h2 cl   assName="p-10 text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight tracking-tight">
+        <h2 className="p-10 text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-gray-100 leading-tight tracking-tight">
           Engineering Tomorrow's <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-orange-700">Solutions</span>
         </h2>
 
-        <p className="p-10 text-gray-700 text-lg leading-relaxed max-w-lg">
-          Backed by decades of precision engineering, we deliver cutting-edge industrial solutions that enhance 
-          productivity, reliability, and sustainability across global markets.
-        </p>
+        {/* <p className="p-10 text-gray-900 dark:text-gray-300 text-lg leading-relaxed max-w-lg">
+          Matrix Metals is a visionary industrial strategist whose career is defined by his ability to architect complex, technology-centric ecosystems within the aluminium manufacturing domain. His leadership style blends analytical rigor, cross-border technical intelligence, and precision-driven execution—positioning Matrix Metals as a formidable, innovation-forward enterprise in the global metals landscape.
+Operating at the confluence of advanced manufacturing, automation engineering, materials science, and enterprise-scale operations, Jeeteen has cultivated a reputation for transforming conventional metal-processing workflows into digitally synchronized, high-throughput, quality-governed industrial infrastructures.
+        </p> */}
+
+          <p className="p-10 text-gray-900 dark:text-gray-300 text-lg leading-relaxed max-w-2xl mx-auto">
+  Matrix Metals, led by visionary industrial strategist Jeeteen, has redefined excellence in aluminium manufacturing through bold, technology-driven transformation.
+  
+  With a rare blend of analytical precision, global technical intelligence, and relentless execution, Jeeteen has positioned Matrix Metals as a pioneering force in the international metals industry building intelligent, future-ready ecosystems where advanced manufacturing, automation, materials science, and large-scale operations converge seamlessly.
+  
+  Under his leadership, traditional metal-processing plants evolve into digitally integrated, high-efficiency powerhouses delivering superior throughput, uncompromising quality, and sustainable innovation at scale.
+</p>
 
         {/* <div className="w-40 p-10 h-0 rounded-full bg-gradient-to-r from-blue-500 to-gray-700"></div> */}
       </div>
@@ -81,13 +79,13 @@ export default function Home() {
         ].map((item, index) => (
           <div
             key={index}
-            className="p-8 rounded-2xl bg-white/70 backdrop-blur-md border border-gray-300
-                       shadow-[0_8px_25px_rgba(0,0,0,0.08)]
-                       hover:shadow-[0_12px_35px_rgba(0,0,0,0.12)]
+            className="p-8 rounded-2xl bg-white/70 dark:bg-slate-800/70 backdrop-blur-md border border-gray-300 dark:border-slate-700
+                       shadow-[0_8px_25px_rgba(0,0,0,0.08)] dark:shadow-[0_8px_25px_rgba(0,0,0,0.3)]
+                       hover:shadow-[0_12px_35px_rgba(0,0,0,0.12)] dark:hover:shadow-[0_12px_35px_rgba(0,0,0,0.4)]
                        transition-all duration-500 hover:-translate-y-1"
           >
-            <h3 className="text-4xl font-extrabold text-orange-600">{item.number}</h3>
-            <p className="mt-2 text-gray-700 font-medium text-sm tracking-wide uppercase">
+            <h3 className="text-4xl font-extrabold text-orange-600 dark:text-orange-400">{item.number}</h3>
+            <p className="mt-2 text-gray-700 dark:text-gray-300 font-medium text-sm tracking-wide uppercase">
               {item.label}
             </p>
           </div>
@@ -102,12 +100,6 @@ export default function Home() {
       {/* Industries Section */}
 
 
-      <section className="section-padding py-10">
-  <div>
-      {/* Other sections */}
-      <IndustriesSection />
-    </div>
-</section>
 
 <section>
    <div>
@@ -120,6 +112,13 @@ export default function Home() {
    <div>
       <Leadership />
     </div>
+</section>
+
+
+<section>
+  <div>
+        <Testimonial />
+  </div>
 </section>
 
 {/* <section>

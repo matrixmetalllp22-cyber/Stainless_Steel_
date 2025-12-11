@@ -29,9 +29,9 @@ export default function SidebarNavigation() {
   return (
     <>
       {/* -------------------- 1. DESKTOP SIDEBAR (md:block) -------------------- */}
-      <div className="hidden md:flex flex-col w-64 fixed h-full bg-gray-900 shadow-xl z-50">
+      <div className="hidden md:flex flex-col w-64 fixed h-full bg-white-900 shadow-xl z-50">
         {/* Logo Section */}
-        <div className="p-6 border-b border-gray-700">
+        <div className="p-6 border-b border-white-700">
           <Link to="/" className="text-2xl font-extrabold text-[#F57C00]">
             Matrix <span className="text-orange-400">Metals</span>
           </Link>
