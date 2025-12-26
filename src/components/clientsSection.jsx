@@ -39,7 +39,7 @@ export default function ClientsSlider() {
           {[...clients, ...clients, ...clients].map((client, i) => (
             <div
               key={i}
-              className="flex-shrink-0 p-3 sm:p-4 rounded-xl bg-white border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300"
+              className="shrink-0 p-3 sm:p-4 rounded-xl bg-white border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300"
             >
               <img
                 src={client.logo}
@@ -52,8 +52,8 @@ export default function ClientsSlider() {
       </div>
 
       {/* Left & Right Fade Gradient */}
-      <div className="absolute left-0 top-0 w-16 sm:w-24 h-full bg-gradient-to-r from-white to-transparent pointer-events-none" />
-      <div className="absolute right-0 top-0 w-16 sm:w-24 h-full bg-gradient-to-l from-white to-transparent pointer-events-none" />
+      <div className="absolute left-0 top-0 w-16 sm:w-24 h-full bg-linear-to-r from-white to-transparent pointer-events-none" />
+      <div className="absolute right-0 top-0 w-16 sm:w-24 h-full bg-linear-to-l from-white to-transparent pointer-events-none" />
     </div>
   );
 }
