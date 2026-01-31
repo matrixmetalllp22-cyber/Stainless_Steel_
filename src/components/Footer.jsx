@@ -263,7 +263,7 @@ export default function Footer() {
                 <span className="text-xl font-bold">M</span>
               </div>
               <div>
-                <h2 className="text-2xl font-bold tracking-tight">MINOX</h2>
+                <h2 className="text-2xl font-bold tracking-tight">MATRIX</h2>
                 <p className="text-sm text-gray-400">Metal Private Limited</p>
               </div>
             </div>
@@ -293,7 +293,7 @@ export default function Footer() {
                   <FaMapMarkerAlt className="text-orange-600 flex-shrink-0" />
                 </div>
                 <div>
-                  <p className="font-medium">Minox Metal Private Limited</p>
+                  <p className="font-medium">Matrix Metal Private Limited</p>
                   <p className="text-gray-300 text-sm">
                     7, P.C Lane, S.P Road Cross<br />
                     Bengaluru 560 002, INDIA
@@ -364,7 +364,7 @@ export default function Footer() {
             {/* Copyright */}
             <div className="text-center md:text-left">
               <p className="text-gray-400 text-sm">
-                © {new Date().getFullYear()} Minox Metal Private Limited. All rights reserved.
+                © {new Date().getFullYear()} Matrix Metal Private Limited. All rights reserved.
               </p>
               <p className="text-gray-500 text-xs mt-1">
                 Registered in India | VAT No: XXX XXXXXX
