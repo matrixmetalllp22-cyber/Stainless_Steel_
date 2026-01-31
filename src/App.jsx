@@ -10,7 +10,7 @@ import About from "./pages/About";
 import Products from "./pages/Products";
 import Industries from "./pages/Industries";
 import Careers from "./pages/Careers";
-import News from "./pages/News";
+// import News from "./pages/News";
 import Contact from "./pages/Contact";
 import Applications from "./pages/Applications";
 import CaseStudies from "./pages/CaseStudies";
@@ -64,14 +64,14 @@ function AppContent() {
       <div className="flex flex-col min-h-screen select-none">
         <Header />
         <CommandPalette />
-        <main className="flex-grow pt-16 bg-gradient-to-br from-slate-50 to-white-300 :from-slate-900 dark:to-white   transition-colors duration-300">
+        <main className="grow pt-0 bg-linear-to-br from-slate-50 to-white-300 :from-slate-900 dark:to-white   transition-colors duration-300">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/products" element={<Products />} />
             <Route path="/industries" element={<Industries />} />
             <Route path="/careers" element={<Careers />} />
-            <Route path="/news" element={<News />} />
+            {/* <Route path="/news" element={<News />} /> */}
             <Route path="/contact" element={<Contact />} />
             <Route path="/applications" element={<Applications />} />
             <Route path="/case-studies" element={<CaseStudies />} />

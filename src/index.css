@@ -41,3 +41,7 @@ body {
     @apply text-gray-600 leading-relaxed;
   }
 } */
+ body {
+  margin: 0;
+  padding: 0;
+}

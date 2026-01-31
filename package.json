@@ -11,8 +11,10 @@
     "preview": "vite preview --port $PORT --host"
   },
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
     "axios": "^1.13.2",
     "canvas-confetti": "^1.9.4",
+    "emailjs-com": "^3.2.0",
     "framer-motion": "^12.23.25",
     "html2canvas": "^1.4.1",
     "jspdf": "^3.0.4",
