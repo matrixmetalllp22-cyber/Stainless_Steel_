@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Overview from '../components/Overview';
 import ManagementTeam from '../components/ManagementTeam';
+import ProductAdvantages from '../components/MakeInIndia';
 
 export default function About() {
   return ( <div>
@@ -11,11 +12,18 @@ export default function About() {
       <Overview />
     </div>
     </section>
+
     <section>
-      <div>
+       <div>
         <ManagementTeam />
       </div>
     </section>
+    <section>
+      <div>
+        <ProductAdvantages />
+      </div> 
+    </section>
+    
   </div>
   )
 }

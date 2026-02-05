@@ -74,7 +74,7 @@ function AppContent() {
             {/* <Route path="/news" element={<News />} /> */}
             <Route path="/contact" element={<Contact />} />
             <Route path="/applications" element={<Applications />} />
-            <Route path="/case-studies" element={<CaseStudies />} />
+            <Route path="/case-studsies" element={<CaseStudies />} />
 
             {/* Service Routes */}
             <Route path="/services/slitting" element={<Slitting />} />
