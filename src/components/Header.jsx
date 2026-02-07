@@ -11,17 +11,18 @@ export default function Header() {
     { name: "HOME", path: "/" },
     { name: "ABOUT US", path: "/about" },
     { name: "PRODUCTS", path: "/products", dropdown: "products" },
-    { name: "MACHINERY", path: "/machinery", dropdown: "machinery" },
+    { name: "MACHINERY", path: "/machinery/cut-to-length", dropdown: "machinery" },
     { name: "APPLICATIONS", path: "/applications" },
     { name: "RESOURCES", path: "/resources" },
     { name: "CONTACT US", path: "/contact" },
   ];
 
   const machineryItems = [
-    "Cut to Length & Leveling",
-    "Narrow Width Slitting",
-    "Wider Width Slitting",
-    "Coil to Coil Grinding",
+    "Cut to Length",
+    "Slitting",
+    "Blanking",
+    "Packing",
+    // "Coil to Coil Grinding",
     // "Plate / Sheet Grinding",
     // "Super Mirror Polishing",
     // "Bead Blast",
@@ -122,38 +123,34 @@ export default function Header() {
 
                 {/* PRODUCTS DROPDOWN (ANIMATED) */}
                 {item.dropdown === "products" && (
-                  <div
-                    className={`absolute left-0 top-full w-[95vw] max-w-[960px] bg-gray-600 text-white shadow-lg z-50 flex transition-all duration-300 origin-top
-                      ${
-                        openMenu === "products"
-                          ? "opacity-100 scale-y-100"
-                          : "opacity-0 scale-y-0 pointer-events-none"
-                      }`}
-                  >
-                    <div className="w-64 border-r border-gray-500">
-                      {productItems.map((p, idx) => (
-                        <Link
-                          key={idx}
-                          to={`/products/${p.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`}
-                          className="block px-5 py-3 text-sm hover:bg-gray-700 border-b border-gray-500"
-                        >
-                          {p}
-                        </Link>
-                      ))}
-                    </div>
+  <div
+    className={`absolute left-0 top-full w-64 bg-gray-600 text-white shadow-lg z-50 
+      transition-all duration-300 origin-top transform
+      ${
+        openMenu === "products"
+          ? "opacity-100 scale-y-100"
+          : "opacity-0 scale-y-0 pointer-events-none"
+      }`}
+  >
+    {productItems?.map((p, idx) => {
+      const slug = p
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, "-")
+        .replace(/(^-|-$)/g, "");
 
-                    {/* <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 p-4">
-                      {[1, 2, 3, 4, 5, 6].map((i) => (
-                        <img
-                          key={i}
-                          src={`/product-${i}.jpg`}
-                          alt=""
-                          className="w-full h-28 object-cover"
-                        />
-                      ))}
-                    </div> */}
-                  </div>
-                )}
+      return (
+        <Link
+          key={idx}
+          to={`/products/${slug}`}
+          className="block px-5 py-3 text-sm hover:bg-gray-700 border-b border-gray-500 last:border-b-0"
+        >
+          {p}
+        </Link>
+      );
+    })}
+  </div>
+)}
+
 
                 {/* MACHINERY DROPDOWN (ANIMATED) */}
                 {item.dropdown === "machinery" && (

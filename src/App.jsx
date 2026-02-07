@@ -1,6 +1,6 @@
 
 import React, { useEffect } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import "./App.css";
 // ThemeContext removed — dark mode disabled
 
@@ -21,10 +21,24 @@ import CutToLength from "./pages/services/CutToLength";
 import Packing from "./pages/services/Packing";
 import Blanking from "./pages/services/Blanking";
 
+// Product pages
+import StainlessSteelSheets from "./components/2bba-mill-finish";
+
 // Components
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import CommandPalette from "./components/CommandPalette";
+
+// Scroll to top on route change
+function ScrollToTop() {
+  const location = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
+
+  return null;
+}
 
 function AppContent() {
   useEffect(() => {
@@ -61,6 +75,7 @@ function AppContent() {
 
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <div className="flex flex-col min-h-screen select-none">
         <Header />
         <CommandPalette />
@@ -69,6 +84,8 @@ function AppContent() {
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/products" element={<Products />} />
+            <Route path="/products/2b-ba-mill-finish" element={<StainlessSteelSheets />} />
+            
             <Route path="/industries" element={<Industries />} />
             <Route path="/careers" element={<Careers />} />
             {/* <Route path="/news" element={<News />} /> */}
@@ -81,6 +98,16 @@ function AppContent() {
             <Route path="/services/cut-to-length" element={<CutToLength />} />
             <Route path="/services/packing" element={<Packing />} />
             <Route path="/services/blanking" element={<Blanking />} />
+
+            {/* Machinery Routes */}
+            <Route path="/machinery/cut-to-length-leveling" element={<CutToLength />} />
+            <Route path="/machinery/narrow-width-slitting" element={<Slitting />} />
+            <Route path="/machinery/wider-width-slitting" element={<Slitting />} />
+            <Route path="/machinery/coil-to-coil-grinding" element={<Slitting />} />
+            <Route path="/machinery/cut-to-length" element={<CutToLength />} />
+            <Route path="/machinery/slitting" element={<Slitting />} />
+            <Route path="/machinery/blanking" element={<Blanking />} />
+            <Route path="/machinery/packing" element={<Packing />} />
           </Routes>
         </main>
         <Footer />

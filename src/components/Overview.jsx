@@ -684,7 +684,7 @@ export default function AboutUs() {
             Our Story
           </span>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 tracking-tight">
-            About <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Minox</span>
+             <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Matrix Metals</span>
           </h1>
           <motion.div
             initial={{ width: 0 }}
@@ -786,7 +786,7 @@ export default function AboutUs() {
             </motion.div>
 
             {/* CTA Button */}
-            <motion.div
+            {/* <motion.div
               variants={fadeInLeft}
               transition={{ delay: 0.6 }}
               className="pt-6"
@@ -799,7 +799,7 @@ export default function AboutUs() {
                 Explore Our Process
                 <span className="ml-2">→</span>
               </motion.button>
-            </motion.div>
+            </motion.div> */}
           </motion.div>
 
           {/* Right Image Section */}
@@ -916,7 +916,7 @@ export default function AboutUs() {
             <p className="text-lg text-gray-600 mb-8">
               Combining six decades of craftsmanship with cutting-edge technology to deliver exceptional stainless steel solutions worldwide.
             </p>
-            <div className="flex flex-wrap gap-4 justify-center">
+            {/* <div className="flex flex-wrap gap-4 justify-center">
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -931,7 +931,7 @@ export default function AboutUs() {
               >
                 Contact Our Team
               </motion.button>
-            </div>
+            </div> */}
           </div>
         </motion.div>
       </div>
