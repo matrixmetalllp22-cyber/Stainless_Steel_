@@ -34,14 +34,14 @@ export default function Header() {
     "2B/BA Mill Finish",
     "#4 Brushed",
     "Hairline",
-    // "#8 Super Mirror",
-    // "Bead Blast",
-    // "Vibration",
-    // "S.S. Strips",
-    // "Etched",
-    // "Embossed",
-    // "Mosaic Tiles",
-    // "Pipes & Tubes",
+    "#8 Super Mirror",
+    "Bead Blast",
+    "Vibration",
+    "S.S. Strips",
+    "Etched",
+    "Embossed",
+    "Mosaic Tiles",
+    "Pipes & Tubes",
   ];
 
   return (

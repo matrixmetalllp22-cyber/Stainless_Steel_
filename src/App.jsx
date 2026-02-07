@@ -23,6 +23,14 @@ import Blanking from "./pages/services/Blanking";
 
 // Product pages
 import StainlessSteelSheets from "./components/2bba-mill-finish";
+import BrushedFinish from "./components/BrushedFinish";
+import Hairline from "./components/Hairline";
+import SuperMirror from "./components/SuperMirror";
+import BeadBlast from "./components/BeadBlast";
+import Vibration from "./components/Vibration";
+import SSStrips from "./components/SSStrips";
+import Etched from "./components/Etched";
+import Embossed from "./components/Embossed";
 
 // Components
 import Header from "./components/Header";
@@ -85,6 +93,14 @@ function AppContent() {
             <Route path="/about" element={<About />} />
             <Route path="/products" element={<Products />} />
             <Route path="/products/2b-ba-mill-finish" element={<StainlessSteelSheets />} />
+            <Route path="/products/4-brushed" element={<BrushedFinish />} />
+            <Route path="/products/hairline" element={<Hairline />} />
+            <Route path="/products/8-super-mirror" element={<SuperMirror />} />
+            <Route path="/products/bead-blast" element={<BeadBlast />} />
+            <Route path="/products/vibration" element={<Vibration />} />
+            <Route path="/products/ss-strips" element={<SSStrips />} />
+            <Route path="/products/etched" element={<Etched />} />
+            <Route path="/products/embossed" element={<Embossed />} />
             
             <Route path="/industries" element={<Industries />} />
             <Route path="/careers" element={<Careers />} />
