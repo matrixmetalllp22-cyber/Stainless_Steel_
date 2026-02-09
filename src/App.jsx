@@ -9,11 +9,12 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import Products from "./pages/Products";
 import Industries from "./pages/Industries";
-import Careers from "./pages/Careers";
+import Resoure from "./pages/resources";
 // import News from "./pages/News";
 import Contact from "./pages/Contact";
 import Applications from "./pages/Applications";
 import CaseStudies from "./pages/CaseStudies";
+import Careers from "./pages/Careers";
 
 // Service Pages
 import Slitting from "./pages/services/Slitting";
@@ -91,6 +92,7 @@ function AppContent() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
+            <Route path="/resources" element={<Resoure />} />
             <Route path="/products" element={<Products />} />
             <Route path="/products/2b-ba-mill-finish" element={<StainlessSteelSheets />} />
             <Route path="/products/4-brushed" element={<BrushedFinish />} />
