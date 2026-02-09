@@ -81,20 +81,6 @@ export default function CommandPalette() {
 
   return (
     <>
-      {/* Floating trigger button */}
-      <button
-        onClick={() => setIsOpen(true)}
-        className="fixed bottom-6 right-6 p-3 rounded-full bg-orange-600 text-white shadow-lg hover:bg-orange-700 transition-all duration-200 z-40 group"
-        title="Press Ctrl+K to open command palette"
-      >
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-        </svg>
-        <span className="absolute -top-10 right-0 bg-gray-900 text-white px-2 py-1 rounded text-xs opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
-          Ctrl+K
-        </span>
-      </button>
-
       {/* Command Palette Modal */}
       <AnimatePresence>
         {isOpen && (
