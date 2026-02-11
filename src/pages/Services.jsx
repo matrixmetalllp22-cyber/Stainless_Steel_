@@ -61,7 +61,7 @@ export default function Services() {
               className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
             >
               <div className="flex items-start">
-                <div className="flex-shrink-0">{service.icon}</div>
+                <div className="shrink-0">{service.icon}</div>
                 <div className="ml-4">
                   <h3 className="text-xl font-semibold text-gray-900 mb-2">
                     {service.title}
