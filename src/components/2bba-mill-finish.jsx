@@ -627,14 +627,7 @@ const StainlessSteelSheets = () => {
                       Datasheet MX: 2B/BA Mill Finish. We supply stainless steel sheets as per our catalogue. 
                       Any minor colour difference and brightness variation may occur due to material characteristics.
                     </p>
-                    <motion.button
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
-                      className="w-full py-3.5 bg-linear-to-r from-slate-700 to-slate-600 text-white rounded-xl hover:from-slate-800 hover:to-slate-700 transition-all duration-300 shadow-md hover:shadow-lg flex items-center justify-center gap-3"
-                    >
-                      <Download className="h-5 w-5" />
-                      Download Technical Datasheet
-                    </motion.button>
+                   
                   </div>
                 </div>
               </div>

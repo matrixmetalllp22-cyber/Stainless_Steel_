@@ -29,7 +29,8 @@ import Hairline from "./components/Hairline";
 import SuperMirror from "./components/SuperMirror";
 import BeadBlast from "./components/BeadBlast";
 import Vibration from "./components/Vibration";
-import SSStrips from "./components/SSStrips";
+// import S.S.Strips from "./components/S.S.Strips";
+import SSStrips from "./components/S.S.Strips";
 import Etched from "./components/Etched";
 import Embossed from "./components/Embossed";
 
@@ -100,7 +101,9 @@ function AppContent() {
             <Route path="/products/8-super-mirror" element={<SuperMirror />} />
             <Route path="/products/bead-blast" element={<BeadBlast />} />
             <Route path="/products/vibration" element={<Vibration />} />
-            <Route path="/products/ss-strips" element={<SSStrips />} />
+           
+            <Route path="/products/s-s-strips" element={<SSStrips />} />
+            {/* <Route path="/products/S.S.Strips" element={<S.S.Strips />} /> */}
             <Route path="/products/etched" element={<Etched />} />
             <Route path="/products/embossed" element={<Embossed />} />
             
