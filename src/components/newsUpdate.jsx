@@ -1,231 +1,205 @@
-// import React, {
-//   useState,
-//   useEffect,
-//   useCallback,
-//   useMemo,
-// } from "react";
-// import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
-// import { motion, AnimatePresence } from "framer-motion";
+// import React, { useState, useEffect } from "react";
+// import { FiArrowRight, FiX } from "react-icons/fi";
 
-// /* ---------------- ORIGINAL DATA (UNCHANGED) ---------------- */
+// export default function WelcomePage() {
+//   const [isModalOpen, setIsModalOpen] = useState(false);
+//   const [selectedService, setSelectedService] = useState(null);
 
-// const newsData = [
-//   {
-//     title: "Global Aluminium Prices Strengthen Amid Rising Aerospace Demand",
-//     text:
-//       "Growing consumption from the aerospace and EV sectors has pushed aluminium prices upward this quarter. Analysts expect continued stability due to strong downstream demand and limited supply disruptions.",
-//     images: [
-//       "/Images/Auto & EV Manufacturers Shift Toward Lightweight Aluminium Sheets.jpeg",
-//       "/Images/Aluminium Alloy 3xxx & 5xxx Series Gain Popularity in Food Packaging.jpeg",
-//     ],
-//   },
-//   {
-//     title: "India’s Aluminium Consumption Expected to Cross 9 Million Tons by 2030",
-//     text:
-//       "India is projected to become one of the fastest-growing aluminium markets driven by infrastructure, renewables, and mobility projects.",
-//     images: [
-//       "/Images/India’s Aluminium Consumption Expected to Cross 9 Million Tons by 2030.jpeg",
-//       "/Images/New BIS Standards Released for Aluminium Flat Products.jpeg",
-//     ],
-//   },
-//   {
-//     title: "EV Manufacturers Shift Toward Lightweight Aluminium Sheets",
-//     text:
-//       "Major automakers are increasing procurement of lightweight alloys to meet fuel efficiency and emission regulations.",
-//     images: [
-//       "/Images/Import Policies Tighten on Low-Value Aluminium Items.jpeg",
-//       "/Images/Aluminium Recycling Capacity Expands Across South India.jpeg",
-//       "/Images/Automobile Aluminium.jpeg",
-//     ],
-//   },
-//   {
-//     title: "Aluminium Recycling Capacity Expands Across South India",
-//     text:
-//       "Southern clusters are investing heavily in scrap recycling and remelting units. Sustainability-focused industries prefer recycled aluminium due to its lower carbon footprint and cost efficiency.",
-//     images: [
-//       "/Images/Solar Sector Drives Demand for High-Reflective Aluminium Sheets.jpeg",
-//       "/Images/Surge in Demand for Anodized Aluminium in Architecture & Interiors.jpeg",
-//       "/Images/Lightweight Aluminium.jpeg",
-//       "/Images/Automobile Aluminium.jpeg",
-//     ],
-//   },
-// ];
+//   const services = [
+//     {
+//       category: "Industrial Stainless Steel",
+//       description: "At Minox we provide stainless steel plates/coils/sheets/strips etc. in various grades, sizes and finishes to cater industrial applications like breweries and distilleries, automobile, dairy and pharma, enclosures, high end kitchen, metro coaches, electrical and electronic components etc.",
+//       buttonText: "READ MORE >>",
+//       image: "https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?w=400&h=300&fit=crop",
+//     },
+//     {
+//       category: "Architecture Building Construction & Elevator Applications",
+//       description: "One stop shop for solutions in stainless steel sheets in various finishes like No.8 super mirror, bead blast, vibrations, PVD coated and customised etched designs in various colours that create innovative ideas and excellent aesthetics for architectural, signages and elevator applications.",
+//       buttonText: "READ MORE >>",
+//       image: "https://images.unsplash.com/photo-1518005020951-eccb494ad742?w=400&h=300&fit=crop",
+//     },
+//     {
+//       category: "Industrial Stainless Steel",
+//       description: "At Minox we provide stainless steel plates/coils/sheets/strips etc. in various grades, sizes and finishes to cater industrial applications like breweries and distilleries, automobile, dairy and pharma, enclosures, high end kitchen, metro coaches, electrical and electronic components etc.",
+//       buttonText: "READ MORE >>",
+//       image: "https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?w=400&h=300&fit=crop",
+//     },
+//     {
+//       category: "Architecture Building Construction & Elevator Applications",
+//       description: "One stop shop for solutions in stainless steel sheets in various finishes like No.8 super mirror, bead blast, vibrations, PVD coated and customised etched designs in various colours that create innovative ideas and excellent aesthetics for architectural, signages and elevator applications.",
+//       buttonText: "READ MORE >>",
+//       image: "https://images.unsplash.com/photo-1518005020951-eccb494ad742?w=400&h=300&fit=crop",
+//     },
+//     {
+//       category: "Pipes, Tubes and Long Products",
+//       description: "Minox offers stainless steel pipes, tubes (seamless and welded), rods and suitable fittings in various grades and excellent finish which are extensively used in applications like architectural building construction, interiors, pharmaceutical, food and dairy etc.",
+//       buttonText: "READ MORE >>",
+//       image: "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=400&h=300&fit=crop",
+//     },
+//   ];
 
-// /* ---------------- HELPERS ---------------- */
+//   // Dummy related data for each service (could be fetched from an API in real app)
+//   const getRelatedItems = (serviceCategory) => {
+//     // In a real scenario, this would be based on the selected service
+//     const baseItems = [
+//       { name: "304 Stainless Sheet", image: "https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?w=200&h=150&fit=crop" },
+//       { name: "316L Coil", image: "https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?w=200&h=150&fit=crop" },
+//       { name: "Mirror Finish Plate", image: "https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?w=200&h=150&fit=crop" },
+//       { name: "PVD Coated Sheet", image: "https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?w=200&h=150&fit=crop" },
+//     ];
+//     if (serviceCategory.includes("Industrial")) {
+//       return baseItems;
+//     } else if (serviceCategory.includes("Architecture")) {
+//       return [
+//         { name: "No.8 Mirror Sheet", image: "https://images.unsplash.com/photo-1518005020951-eccb494ad742?w=200&h=150&fit=crop" },
+//         { name: "Bead Blast Finish", image: "https://images.unsplash.com/photo-1518005020951-eccb494ad742?w=200&h=150&fit=crop" },
+//         { name: "Etched Designs", image: "https://images.unsplash.com/photo-1518005020951-eccb494ad742?w=200&h=150&fit=crop" },
+//         { name: "Elevator Cladding", image: "https://images.unsplash.com/photo-1518005020951-eccb494ad742?w=200&h=150&fit=crop" },
+//       ];
+//     } else {
+//       return [
+//         { name: "Seamless Pipe", image: "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=200&h=150&fit=crop" },
+//         { name: "Welded Tube", image: "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=200&h=150&fit=crop" },
+//         { name: "Stainless Rod", image: "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=200&h=150&fit=crop" },
+//         { name: "Pipe Fittings", image: "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=200&h=150&fit=crop" },
+//       ];
+//     }
+//   };
 
-// const chunkArray = (arr, size) => {
-//   const res = [];
-//   for (let i = 0; i < arr.length; i += size) {
-//     res.push(arr.slice(i, i + size));
-//   }
-//   return res;
-// };
+//   const openModal = (service) => {
+//     setSelectedService(service);
+//     setIsModalOpen(true);
+//     document.body.style.overflow = "hidden"; // prevent background scroll
+//   };
 
-// /* ---------------- MOTION CONFIG ---------------- */
+//   const closeModal = () => {
+//     setIsModalOpen(false);
+//     setSelectedService(null);
+//     document.body.style.overflow = "auto";
+//   };
 
-// const slideVariants = {
-//   initial: { opacity: 0, x: 80 },
-//   animate: { opacity: 1, x: 0 },
-//   exit: { opacity: 0, x: -80 },
-// };
-
-// const slideTransition = {
-//   duration: 0.45,
-//   ease: "easeOut",
-// };
-
-// /* ---------------- COMPONENT ---------------- */
-
-// export default function NewsUpdate() {
-//   const [current, setCurrent] = useState(0);
-//   const [phase, setPhase] = useState("text");
-//   const [hovering, setHovering] = useState(false);
-
-//   const textSlides = useMemo(() => chunkArray(newsData, 2), []);
-//   const totalText = textSlides.length;
-//   const totalImages = newsData.length;
-
-//   /* ---------- AUTOPLAY ---------- */
+//   // Close modal on Escape key
 //   useEffect(() => {
-//     if (hovering) return;
-
-//     const timer = setInterval(() => {
-//       setCurrent((prev) => {
-//         if (phase === "text") {
-//           if (prev === totalText - 1) {
-//             setPhase("image");
-//             return 0;
-//           }
-//           return prev + 1;
-//         } else {
-//           if (prev === totalImages - 1) {
-//             setPhase("text");
-//             return 0;
-//           }
-//           return prev + 1;
-//         }
-//       });
-//     }, 5000);
-
-//     return () => clearInterval(timer);
-//   }, [phase, hovering, totalText, totalImages]);
-
-//   /* ---------- CONTROLS ---------- */
-//   const nextSlide = useCallback(() => {
-//     setCurrent((c) =>
-//       phase === "text"
-//         ? c === totalText - 1
-//           ? (setPhase("image"), 0)
-//           : c + 1
-//         : c === totalImages - 1
-//         ? (setPhase("text"), 0)
-//         : c + 1
-//     );
-//   }, [phase, totalText, totalImages]);
-
-//   const prevSlide = useCallback(() => {
-//     setCurrent((c) =>
-//       phase === "text"
-//         ? c === 0
-//           ? (setPhase("image"), totalImages - 1)
-//           : c - 1
-//         : c === 0
-//         ? (setPhase("text"), totalText - 1)
-//         : c - 1
-//     );
-//   }, [phase, totalText, totalImages]);
-
-//   /* ---------------- RENDER ---------------- */
+//     const handleEsc = (e) => {
+//       if (e.key === "Escape") closeModal();
+//     };
+//     window.addEventListener("keydown", handleEsc);
+//     return () => window.removeEventListener("keydown", handleEsc);
+//   }, []);
 
 //   return (
-//     <div
-//       className="relative w-full overflow-visible"
-//       onMouseEnter={() => setHovering(true)}
-//       onMouseLeave={() => setHovering(false)}
-//     >
-//       {/* Arrows */}
-//       <div className="absolute inset-y-0 left-0 right-0 z-30 pointer-events-none">
-//         <button
-//           onClick={prevSlide}
-//           className="pointer-events-auto absolute left-3 md:left-8 top-1/2 -translate-y-1/2
-//           bg-white/70 rounded-full p-2 md:p-3 shadow-lg hover:bg-orange-500 hover:text-white"
-//         >
-//           <FiChevronLeft size={22} />
-//         </button>
-
-//         <button
-//           onClick={nextSlide}
-//           className="pointer-events-auto absolute right-3 md:right-8 top-1/2 -translate-y-1/2
-//           bg-white/70 rounded-full p-2 md:p-3 shadow-lg hover:bg-orange-500 hover:text-white"
-//         >
-//           <FiChevronRight size={22} />
-//         </button>
+//     <div className="min-h-screen bg-white">
+//       {/* Header Section with fade-in animation */}
+//       <div className="text-center py-8 px-4 animate-fade-in">
+//         <h1 className="text-5xl font-bold text-gray-800">
+//           WELCOME!
+//         </h1>
 //       </div>
 
-//       <AnimatePresence mode="wait">
-//         {phase === "text" ? (
-//           <motion.div
-//             key={`text-${current}`}
-//             variants={slideVariants}
-//             initial="initial"
-//             animate="animate"
-//             exit="exit"
-//             transition={slideTransition}
-//             className="min-h-[360px] md:h-[520px]
-//               flex flex-col md:flex-row justify-center items-center
-//               px-6 md:px-20 gap-8 bg-linear-to-br
-//               from-black/80 via-black/60 to-black/40 text-white"
-//           >
-//             {textSlides[current].map((item, i) => (
-//               <div key={i} className="md:w-1/2 space-y-4">
-//                 <h2 className="text-xl md:text-3xl font-bold">{item.title}</h2>
-//                 <p className="text-sm md:text-lg text-gray-300">{item.text}</p>
+//       {/* Services Grid */}
+//       <div className="px-4 md:px-8 lg:px-16 py-4">
+//         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+//           {services.map((service, index) => (
+//             <div
+//               key={index}
+//               className="group bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 animate-fade-up"
+//               style={{ animationDelay: `${index * 150}ms` }}
+//             >
+//               <img
+//                 src={service.image}
+//                 alt={service.category}
+//                 className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-105"
+//               />
+//               <div className="p-6">
+//                 <h2 className="text-xl font-semibold text-gray-800 mb-4 text-center">
+//                   {service.category}
+//                 </h2>
+//                 <p className="text-gray-600 text-sm mb-6">
+//                   {service.description}
+//                 </p>
+//                 {/* Redesigned "Read More" button triggers modal */}
+//                 <button
+//                   onClick={() => openModal(service)}
+//                   className="flex items-center text-sm font-medium text-white bg-gradient-to-r from-blue-600 to-indigo-600 px-4 py-2 rounded-full shadow-md hover:shadow-lg transition-all duration-300 group/btn"
+//                 >
+//                   <span>{service.buttonText}</span>
+//                   <FiArrowRight className="ml-2 transition-transform duration-300 group-hover/btn:translate-x-1" size={16} />
+//                 </button>
 //               </div>
-//             ))}
-//           </motion.div>
-//         ) : (
-//           <motion.div
-//             key={`img-${current}`}
-//             variants={slideVariants}
-//             initial="initial"
-//             animate="animate"
-//             exit="exit"
-//             transition={slideTransition}
-//             className="min-h-[360px] md:h-[520px]
-//               flex gap-3 px-4 py-4 bg-linear-to-br
-//               from-black/80 via-black/60 to-black/40"
-//           >
-//             {newsData[current].images.slice(0, 2).map((img, i) => (
-//               <div
-//                 key={i}
-//                 className="flex-1 rounded-xl overflow-hidden bg-black/20"
-//               >
-//                 <img
-//                   src={img}
-//                   alt={`news-${i}`}
-//                   loading="lazy"
-//                   className="w-full h-full object-contain md:object-cover"
-//                 />
-//               </div>
-//             ))}
-//           </motion.div>
-//         )}
-//       </AnimatePresence>
-
-//       {/* Pagination */}
-//       <div className="flex justify-center gap-2 py-4 bg-white/30 backdrop-blur">
-//         {Array.from({
-//           length: phase === "text" ? totalText : totalImages,
-//         }).map((_, i) => (
-//           <button
-//             key={i}
-//             onClick={() => setCurrent(i)}
-//             className={`w-3 h-3 rounded-full transition ${
-//               i === current ? "bg-orange-500 scale-125" : "bg-gray-400"
-//             }`}
-//           />
-//         ))}
+//             </div>
+//           ))}
+//         </div>
 //       </div>
+
+//       {/* Modal Popup */}
+//       {isModalOpen && selectedService && (
+//         <div
+//           className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black bg-opacity-50 backdrop-blur-sm animate-fade-in"
+//           onClick={closeModal} // close on overlay click
+//         >
+//           <div
+//             className="relative bg-white rounded-xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto animate-scale-in"
+//             onClick={(e) => e.stopPropagation()} // prevent closing when clicking inside
+//           >
+//             {/* Close button */}
+//             <button
+//               onClick={closeModal}
+//               className="absolute top-4 right-4 p-2 rounded-full bg-gray-200 hover:bg-gray-300 transition-colors z-10"
+//             >
+//               <FiX size={20} />
+//             </button>
+
+//             {/* Modal content */}
+//             <div className="p-6 md:p-8">
+//               <h2 className="text-2xl font-bold text-gray-800 mb-4">{selectedService.category}</h2>
+//               <p className="text-gray-600 mb-8">{selectedService.description}</p>
+
+//               <h3 className="text-xl font-semibold text-gray-800 mb-4">Related Products</h3>
+//               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+//                 {getRelatedItems(selectedService.category).map((item, idx) => (
+//                   <div
+//                     key={idx}
+//                     className="bg-gray-50 rounded-lg p-3 shadow hover:shadow-md transition-all duration-300 transform hover:-translate-y-1"
+//                   >
+//                     <img
+//                       src={item.image}
+//                       alt={item.name}
+//                       className="w-full h-32 object-cover rounded-md mb-2"
+//                     />
+//                     <p className="text-center text-sm font-medium text-gray-700">{item.name}</p>
+//                   </div>
+//                 ))}
+//               </div>
+//             </div>
+//           </div>
+//         </div>
+//       )}
+
+//       {/* Custom animations */}
+//       <style jsx>{`
+//         @keyframes fadeIn {
+//           from { opacity: 0; }
+//           to { opacity: 1; }
+//         }
+//         @keyframes fadeUp {
+//           from { opacity: 0; transform: translateY(20px); }
+//           to { opacity: 1; transform: translateY(0); }
+//         }
+//         @keyframes scaleIn {
+//           from { opacity: 0; transform: scale(0.95); }
+//           to { opacity: 1; transform: scale(1); }
+//         }
+//         .animate-fade-in {
+//           animation: fadeIn 0.3s ease-out forwards;
+//         }
+//         .animate-fade-up {
+//           opacity: 0;
+//           animation: fadeUp 0.6s ease-out forwards;
+//         }
+//         .animate-scale-in {
+//           animation: scaleIn 0.3s ease-out forwards;
+//         }
+//       `}</style>
 //     </div>
 //   );
 // }
@@ -238,66 +212,281 @@
 
 
 
-import React from "react";
-import { FiArrowRight } from "react-icons/fi";
+import React, { useState, useEffect, useRef } from "react";
+import { FiArrowRight, FiX, FiChevronLeft, FiChevronRight } from "react-icons/fi";
 
 export default function WelcomePage() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedService, setSelectedService] = useState(null);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const carouselRef = useRef(null);
+
+  // Expanded services array for the slider
   const services = [
     {
       category: "Industrial Stainless Steel",
       description: "At Minox we provide stainless steel plates/coils/sheets/strips etc. in various grades, sizes and finishes to cater industrial applications like breweries and distilleries, automobile, dairy and pharma, enclosures, high end kitchen, metro coaches, electrical and electronic components etc.",
       buttonText: "READ MORE >>",
-      image: "https://example.com/industrial-stainless-steel-coils.jpg", // Replace with actual image URL
+      image: "https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?w=400&h=300&fit=crop",
     },
     {
       category: "Architecture Building Construction & Elevator Applications",
       description: "One stop shop for solutions in stainless steel sheets in various finishes like No.8 super mirror, bead blast, vibrations, PVD coated and customised etched designs in various colours that create innovative ideas and excellent aesthetics for architectural, signages and elevator applications.",
       buttonText: "READ MORE >>",
-      image: "https://example.com/architecture-elevator.jpg", // Replace with actual image URL
+      image: "https://images.unsplash.com/photo-1518005020951-eccb494ad742?w=400&h=300&fit=crop",
     },
     {
       category: "Pipes, Tubes and Long Products",
       description: "Minox offers stainless steel pipes, tubes (seamless and welded), rods and suitable fittings in various grades and excellent finish which are extensively used in applications like architectural building construction, interiors, pharmaceutical, food and dairy etc.",
       buttonText: "READ MORE >>",
-      image: "https://example.com/stainless-steel-pipes.jpg", // Replace with actual image URL
+      image: "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=400&h=300&fit=crop",
+    },
+    {
+      category: "Specialty Alloys",
+      description: "We supply high-performance nickel alloys and duplex stainless steel for demanding environments including chemical processing, oil & gas, and marine applications.",
+      buttonText: "READ MORE >>",
+      image: "https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?w=400&h=300&fit=crop",
+    },
+    {
+      category: "Precision Strip & Foil",
+      description: "Ultra-thin stainless steel strips and foils for electronics, medical devices, and precision engineering, available in various tempers and surface finishes.",
+      buttonText: "READ MORE >>",
+      image: "https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?w=400&h=300&fit=crop",
+    },
+    {
+      category: "Custom Fabrications",
+      description: "Bespoke stainless steel components and assemblies tailored to client specifications, with expert welding and finishing capabilities.",
+      buttonText: "READ MORE >>",
+      image: "https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?w=400&h=300&fit=crop",
     },
   ];
 
+  // Dummy related data for each service (could be fetched from an API in real app)
+  const getRelatedItems = (serviceCategory) => {
+    // In a real scenario, this would be based on the selected service
+    const baseItems = [
+      { name: "304 Stainless Sheet", image: "https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?w=200&h=150&fit=crop" },
+      { name: "316L Coil", image: "https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?w=200&h=150&fit=crop" },
+      { name: "Mirror Finish Plate", image: "https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?w=200&h=150&fit=crop" },
+      { name: "PVD Coated Sheet", image: "https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?w=200&h=150&fit=crop" },
+    ];
+    if (serviceCategory.includes("Industrial")) {
+      return baseItems;
+    } else if (serviceCategory.includes("Architecture")) {
+      return [
+        { name: "No.8 Mirror Sheet", image: "https://images.unsplash.com/photo-1518005020951-eccb494ad742?w=200&h=150&fit=crop" },
+        { name: "Bead Blast Finish", image: "https://images.unsplash.com/photo-1518005020951-eccb494ad742?w=200&h=150&fit=crop" },
+        { name: "Etched Designs", image: "https://images.unsplash.com/photo-1518005020951-eccb494ad742?w=200&h=150&fit=crop" },
+        { name: "Elevator Cladding", image: "https://images.unsplash.com/photo-1518005020951-eccb494ad742?w=200&h=150&fit=crop" },
+      ];
+    } else if (serviceCategory.includes("Pipes")) {
+      return [
+        { name: "Seamless Pipe", image: "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=200&h=150&fit=crop" },
+        { name: "Welded Tube", image: "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=200&h=150&fit=crop" },
+        { name: "Stainless Rod", image: "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=200&h=150&fit=crop" },
+        { name: "Pipe Fittings", image: "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=200&h=150&fit=crop" },
+      ];
+    } else {
+      return baseItems;
+    }
+  };
+
+  const openModal = (service) => {
+    setSelectedService(service);
+    setIsModalOpen(true);
+    document.body.style.overflow = "hidden"; // prevent background scroll
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setSelectedService(null);
+    document.body.style.overflow = "auto";
+  };
+
+  // Close modal on Escape key
+  useEffect(() => {
+    const handleEsc = (e) => {
+      if (e.key === "Escape") closeModal();
+    };
+    window.addEventListener("keydown", handleEsc);
+    return () => window.removeEventListener("keydown", handleEsc);
+  }, []);
+
+  // Carousel navigation
+  const totalSlides = services.length;
+  const slidesToShow = 3; // number of cards visible at once on desktop
+  const maxIndex = Math.max(0, totalSlides - slidesToShow);
+
+  const goToPrevious = () => {
+    setCurrentIndex(prev => Math.max(0, prev - 1));
+  };
+
+  const goToNext = () => {
+    setCurrentIndex(prev => Math.min(maxIndex, prev + 1));
+  };
+
+  const goToSlide = (index) => {
+    setCurrentIndex(Math.min(maxIndex, Math.max(0, index)));
+  };
+
   return (
     <div className="min-h-screen bg-white">
-      {/* Header Section */}
-      <div className="text-center py-8 px-4">
+      {/* Header Section with fade-in animation */}
+      <div className="text-center py-8 px-4 animate-fade-in">
         <h1 className="text-5xl font-bold text-gray-800">
           WELCOME!
         </h1>
       </div>
 
-      {/* Services Grid */}
+      {/* Services Carousel */}
       <div className="px-4 md:px-8 lg:px-16 py-4">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
-          {services.map((service, index) => (
-            <div key={index} className="bg-white rounded-lg shadow-md overflow-hidden">
-              <img 
-                src={service.image} 
-                alt={service.category}
-                className="w-full h-48 object-cover"
-              />
-              <div className="p-6">
-                <h2 className="text-xl font-semibold text-gray-800 mb-4 text-center">
-                  {service.category}
-                </h2>
-                <p className="text-gray-600 text-sm mb-6">
-                  {service.description}
-                </p>
-                <button className="flex items-center text-blue-600 font-medium text-sm hover:text-blue-800 transition-colors">
-                  {service.buttonText}
-                  <FiArrowRight className="ml-2" size={16} />
-                </button>
-              </div>
+        <div className="relative max-w-7xl mx-auto">
+          {/* Carousel wrapper */}
+          <div className="overflow-hidden">
+            <div
+              ref={carouselRef}
+              className="flex transition-transform duration-300 ease-in-out"
+              style={{ transform: `translateX(-${currentIndex * (100 / slidesToShow)}%)` }}
+            >
+              {services.map((service, index) => (
+                <div
+                  key={index}
+                  className="flex-shrink-0 w-full sm:w-1/2 lg:w-1/3 p-2 animate-fade-up"
+                  style={{ animationDelay: `${index * 100}ms` }}
+                >
+                  <div className="group bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 h-full flex flex-col">
+                    <img
+                      src={service.image}
+                      alt={service.category}
+                      className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <div className="p-6 flex-grow flex flex-col">
+                      <h2 className="text-xl font-semibold text-gray-800 mb-4 text-center">
+                        {service.category}
+                      </h2>
+                      <p className="text-gray-600 text-sm mb-6 flex-grow">
+                        {service.description}
+                      </p>
+                      {/* Redesigned "Read More" button triggers modal */}
+                      <button
+                        onClick={() => openModal(service)}
+                        className="self-start flex items-center text-sm font-medium text-white bg-gradient-to-r from-blue-600 to-indigo-600 px-4 py-2 rounded-full shadow-md hover:shadow-lg transition-all duration-300 group/btn"
+                      >
+                        <span>{service.buttonText}</span>
+                        <FiArrowRight className="ml-2 transition-transform duration-300 group-hover/btn:translate-x-1" size={16} />
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
-          ))}
+          </div>
+
+          {/* Navigation Arrows */}
+          {currentIndex > 0 && (
+            <button
+              onClick={goToPrevious}
+              className="absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-4 bg-white rounded-full p-2 shadow-lg hover:bg-gray-100 transition-colors z-10"
+              aria-label="Previous"
+            >
+              <FiChevronLeft size={24} />
+            </button>
+          )}
+          {currentIndex < maxIndex && (
+            <button
+              onClick={goToNext}
+              className="absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-4 bg-white rounded-full p-2 shadow-lg hover:bg-gray-100 transition-colors z-10"
+              aria-label="Next"
+            >
+              <FiChevronRight size={24} />
+            </button>
+          )}
+
+          {/* Pagination Dots */}
+          <div className="flex justify-center mt-6 space-x-2">
+            {Array.from({ length: maxIndex + 1 }).map((_, idx) => (
+              <button
+                key={idx}
+                onClick={() => goToSlide(idx)}
+                className={`h-2 w-2 rounded-full transition-all ${
+                  idx === currentIndex ? "bg-blue-600 w-4" : "bg-gray-300"
+                }`}
+                aria-label={`Go to slide ${idx + 1}`}
+              />
+            ))}
+          </div>
         </div>
       </div>
+
+      {/* Modal Popup */}
+      {isModalOpen && selectedService && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black bg-opacity-50 backdrop-blur-sm animate-fade-in"
+          onClick={closeModal} // close on overlay click
+        >
+          <div
+            className="relative bg-white rounded-xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto animate-scale-in"
+            onClick={(e) => e.stopPropagation()} // prevent closing when clicking inside
+          >
+            {/* Close button */}
+            <button
+              onClick={closeModal}
+              className="absolute top-4 right-4 p-2 rounded-full bg-gray-200 hover:bg-gray-300 transition-colors z-10"
+            >
+              <FiX size={20} />
+            </button>
+
+            {/* Modal content */}
+            <div className="p-6 md:p-8">
+              <h2 className="text-2xl font-bold text-gray-800 mb-4">{selectedService.category}</h2>
+              <p className="text-gray-600 mb-8">{selectedService.description}</p>
+
+              <h3 className="text-xl font-semibold text-gray-800 mb-4">Related Products</h3>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                {getRelatedItems(selectedService.category).map((item, idx) => (
+                  <div
+                    key={idx}
+                    className="bg-gray-50 rounded-lg p-3 shadow hover:shadow-md transition-all duration-300 transform hover:-translate-y-1"
+                  >
+                    <img
+                      src={item.image}
+                      alt={item.name}
+                      className="w-full h-32 object-cover rounded-md mb-2"
+                    />
+                    <p className="text-center text-sm font-medium text-gray-700">{item.name}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Custom animations */}
+      <style jsx>{`
+        @keyframes fadeIn {
+          from { opacity: 0; }
+          to { opacity: 1; }
+        }
+        @keyframes fadeUp {
+          from { opacity: 0; transform: translateY(20px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes scaleIn {
+          from { opacity: 0; transform: scale(0.95); }
+          to { opacity: 1; transform: scale(1); }
+        }
+        .animate-fade-in {
+          animation: fadeIn 0.3s ease-out forwards;
+        }
+        .animate-fade-up {
+          opacity: 0;
+          animation: fadeUp 0.6s ease-out forwards;
+        }
+        .animate-scale-in {
+          animation: scaleIn 0.3s ease-out forwards;
+        }
+      `}</style>
     </div>
   );
 }

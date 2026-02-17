@@ -920,7 +920,7 @@ export default function Hairline() {
                             Hairline finish sheets are supplied with complete technical documentation,
                             including surface finish specifications and PVD coating details.
                           </p>
-                          <motion.button
+                          {/* <motion.button
                             whileHover={{ scale: 1.02 }}
                             whileTap={{ scale: 0.98 }}
                             className="w-full py-3.5 bg-linear-to-r from-emerald-600 to-teal-500 text-white rounded-xl hover:from-emerald-700 hover:to-teal-600 transition-all duration-300 shadow-md hover:shadow-lg flex items-center justify-center gap-3"
@@ -929,7 +929,7 @@ export default function Hairline() {
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                             </svg>
                             Download Technical Datasheet
-                          </motion.button>
+                          </motion.button> */}
                         </div>
                       </div>
                     </motion.div>
