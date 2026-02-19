@@ -685,7 +685,7 @@ export default function ManagementTeam() {
 
                 {/* Content */}
                 <div className="pt-20 pb-8 px-8">
-                  <div className="mb-8">
+                  {/* <div className="mb-8">
                     <h2 className="text-3xl font-bold text-gray-900 mb-2">
                       {selectedMember.name}
                     </h2>
@@ -697,7 +697,7 @@ export default function ManagementTeam() {
                         {selectedMember.type === "leadership" ? "Leadership Board" : "Core Team"}
                       </div>
                     </div>
-                  </div>
+                  </div> */}
 
                   {/* Quote for leadership */}
                   {selectedMember.quote && (
@@ -751,7 +751,7 @@ export default function ManagementTeam() {
                   </div>
 
                   {/* Action Buttons */}
-                  <div className="flex gap-4 pt-6 border-t border-gray-200">
+                  {/* <div className="flex gap-4 pt-6 border-t border-gray-200">
                     <button
                       onClick={() => setSelectedMember(null)}
                       className="flex-1 px-6 py-3 bg-gray-100 hover:bg-gray-200 text-gray-800 font-semibold rounded-xl transition-colors"
@@ -761,7 +761,7 @@ export default function ManagementTeam() {
                     <button className="flex-1 px-6 py-3 bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 text-white font-semibold rounded-xl transition-all shadow-lg hover:shadow-xl">
                       Connect
                     </button>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </motion.div>
