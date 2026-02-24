@@ -41,64 +41,94 @@ export default function Home() {
 
       {/* About Section */}
 
+<section className="py-20 bg-slate-900 text-gray-100 relative overflow-hidden group">
+  {/* CSS Animation Styles */}
+  <style dangerouslySetInnerHTML={{ __html: `
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .animate-marquee {
+      display: flex;
+      width: max-content;
+      animation: marquee 30s linear infinite;
+    }
+    .group:hover .animate-marquee {
+      animation-play-state: paused;
+    }
+  `}} />
 
- <section className="py-20 bg-teal-500 text-gray-800 relative overflow-hidden transition-colors duration-300">
-  {/* Subtle overlay if needed */}
-  <div className="absolute inset-0 opacity-10 bg-[url('/textures/noise.png')] pointer-events-none"></div>
+  {/* Subtle Background Glows */}
+  <div className="absolute top-0 left-1/4 w-64 h-64 bg-teal-500/10 rounded-full blur-[100px] pointer-events-none"></div>
 
-  <div className="container mx-auto px-4">
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
-      {[
-        {
-          icon: 'clipboard.png', // Replace with actual icon path or component
-          title: 'QUALITY CONTROL',
-          desc: 'Our qualified specialists, who help us to create statistics of a group leader, provide us a full range of testing the quality.'
-        },
-        {
-          icon: 'po.png',
-          title: 'YOUR ORDERS',
-          desc: 'We\'ll do our best to process your order as fast as possible to get the material in your hands on time.'
-        },
-        {
-          icon: 'shield.png',
-          title: 'LIFETIME WARRANTY',
-          desc: 'We stand behind the legendary quality and craftsmanship of all our products.'
-        },
-        {
-          icon: 'globe.png',
-          title: 'DELIVERY',
-          desc: 'We have a logistics and infrastructure capability for global coverage of product delivery be it pan India or Exports.'
-        },
-        {
-          icon: 'clock.png',
-          title: 'FASTEST LEAD TIME',
-          desc: 'We offer same or next day lead time delivery which is the fastest lead time all over the industry.'
-        },
-        {
-          icon: 'box.png',
-          title: 'STURDY PACKAGING',
-          desc: 'We use heavy duty wooden crates to package sheets for \'over the road\' shipments.'
-        }
-      ].map((item, index) => (
-        <div key={index} className="flex flex-col items-center text-center space-y-2">
-          <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-md">
-            <img src={item.icon} alt={item.title} className="w-8 h-8" /> {/* Or use icon component */}
-          </div>
-          <h3 className="text-sm font-bold uppercase">
-            {item.title}
-          </h3>
-          <p className="text-xs leading-relaxed max-w-xs">
-            {item.desc}
-          </p>
-        </div>
+  <div className="relative flex overflow-hidden">
+    {/* We duplicate the array [...items, ...items] to create the infinite loop effect */}
+    <div className="animate-marquee px-4">
+      {[...Array(2)].map((_, i) => (
+        <React.Fragment key={i}>
+          {[
+            {
+              icon: 'clipboard.png',
+              title: 'QUALITY CONTROL',
+              desc: 'Our qualified specialists provide a full range of testing to ensure the highest quality.'
+            },
+            {
+              icon: 'po.png',
+              title: 'YOUR ORDERS',
+              desc: "We'll do our best to process your order as fast as possible to get the material on time."
+            },
+            {
+              icon: 'shield.png',
+              title: 'LIFETIME WARRANTY',
+              desc: 'We stand behind the legendary quality and craftsmanship of all our products.'
+            },
+            {
+              icon: 'globe.png',
+              title: 'DELIVERY',
+              desc: 'Logistics and infrastructure capability for global coverage of product delivery.'
+            },
+            {
+              icon: 'clock.png',
+              title: 'FASTEST LEAD TIME',
+              desc: 'We offer same or next day lead time delivery—the fastest in the industry.'
+            },
+            {
+              icon: 'Images/Improving Metal Reliability for High-Performance Manufacturing.jpg',
+              title: 'STURDY PACKAGING',
+              desc: 'We use heavy duty wooden crates to package sheets for over the road shipments.'
+            }
+          ].map((item, index) => (
+            <div 
+              key={index} 
+              className="flex flex-col items-center text-center w-[280px] mx-6 p-8 rounded-2xl bg-white/5 border border-white/10 hover:border-teal-500/50 hover:bg-white/[0.08] transition-all duration-500 group/card shadow-2xl"
+            >
+              {/* Animated Icon Container */}
+              <div className="w-16 h-16 mb-6 bg-slate-800 rounded-2xl flex items-center justify-center border border-slate-700 shadow-inner group-hover/card:scale-110 group-hover/card:rotate-3 transition-all duration-500 relative">
+                 <div className="absolute inset-0 bg-teal-500/20 rounded-2xl blur-md opacity-0 group-hover/card:opacity-100 transition-opacity"></div>
+                 <img src={item.icon} alt={item.title} className="w-8 h-8 relative z-10 brightness-0 invert opacity-80 group-hover/card:opacity-100" />
+              </div>
+
+              <h3 className="text-xs font-black uppercase tracking-[0.2em] text-white mb-3">
+                {item.title}
+              </h3>
+              
+              {/* Animated Accent Line */}
+              <div className="w-6 h-[2px] bg-teal-500 mb-4 group-hover/card:w-12 transition-all duration-500"></div>
+
+              <p className="text-[11px] leading-relaxed text-gray-400 whitespace-normal">
+                {item.desc}
+              </p>
+            </div>
+          ))}
+        </React.Fragment>
       ))}
     </div>
+
+    {/* Gradient Fades for the edges to make it look high-end */}
+    <div className="absolute inset-y-0 left-0 w-32 bg-linear-to-r from-slate-900 to-transparent z-10 pointer-events-none"></div>
+    <div className="absolute inset-y-0 right-0 w-32 bg-linear-to-l from-slate-900 to-transparent z-10 pointer-events-none"></div>
   </div>
 </section>
-      
-      {/* Industries Section */}
-
-
 
 <section>
    <div>

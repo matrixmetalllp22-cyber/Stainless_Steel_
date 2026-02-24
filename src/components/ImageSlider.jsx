@@ -1,73 +1,94 @@
+
+
+
+
+
+// // import React, { useState, useEffect } from "react";
+
+// // const ImageSlider = () => {
+// //   const images = [
+// //     "/Images/factory-1.jpg",
+// //     "/Images/factory-2.jpg",
+// //     "/Images/factory-3.jpg",
+// //   ];
+
+// //   const captions = [
+// //     "We offer the best Quality of Stainless Steel and excellent service",
+// //     "World-class Stainless Steel Processing Solutions",
+// //     "Trusted Partner for Premium Stainless Steel Products",
+// //   ];
+
+// //   const [currentIndex, setCurrentIndex] = useState(0);
+
+// //   useEffect(() => {
+// //     const interval = setInterval(() => {
+// //       setCurrentIndex((prev) =>
+// //         prev === images.length - 1 ? 0 : prev + 1
+// //       );
+// //     }, 4000);
+
+// //     return () => clearInterval(interval);
+// //   }, [images.length]);
+
+// //   return (
+// //     <div className="relative w-full h-[420px] sm:h-[480px] md:h-[520px] overflow-hidden bg-black m-0 p-0">
+// //       {/* SLIDES */}
+// //       <div
+// //         className="flex transition-transform duration-1000 ease-in-out h-full"
+// //         style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+// //       >
+// //         {images.map((src, index) => (
+// //           <img
+// //             key={index}
+// //             src={src}
+// //             alt={`Slide ${index}`}
+// //             className="w-full h-full object-cover flex-shrink-0"
+// //           />
+// //         ))}
+// //       </div>
+
+// //       {/* DARK OVERLAY */}
+// //       <div className="absolute inset-0 bg-black/30"></div>
+
+// //       {/* TEXT OVERLAY */}
+// //       <div className="absolute inset-0 flex items-center">
+// //         <div className="max-w-4xl px-4 sm:px-8 md:px-10">
+// //           <h1 className="text-white text-2xl sm:text-3xl md:text-5xl font-semibold leading-tight">
+// //             {captions[currentIndex]}
+// //           </h1>
+// //         </div>
+// //       </div>
+
+// //       {/* INDICATORS */}
+// //       <div className="absolute bottom-4 sm:bottom-6 left-4 sm:left-10 flex space-x-2 sm:space-x-3">
+// //         {images.map((_, index) => (
+// //           <button
+// //             key={index}
+// //             onClick={() => setCurrentIndex(index)}
+// //             className={`w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full transition-all ${
+// //               currentIndex === index
+// //                 ? "bg-white"
+// //                 : "bg-white/50"
+// //             }`}
+// //           />
+// //         ))}
+// //       </div>
+// //     </div>
+// //   );
+// // };
+
+// // export default ImageSlider;
+
+
+
+
+
 // import React, { useState, useEffect } from "react";
 
 // const ImageSlider = () => {
 //   const images = [
-//     "/Images/architecture-2182003_1920.jpg",
-//     "/Images/prague.jpg",
-//     "/Images/firenze-9292729_1280.jpg",
-//   ];
-
-//   const [currentIndex, setCurrentIndex] = useState(0);
-
-//   useEffect(() => {
-//     const interval = setInterval(() => {
-//       setCurrentIndex((prevIndex) =>
-//         prevIndex === images.length - 1 ? 0 : prevIndex + 1
-//       );
-//     }, 3000);
-//     return () => clearInterval(interval);
-//   }, [images.length]);
-
-//   return (
-//     <div className="relative w-full h-screen overflow-hidden">
-//       {/* Images Container */}
-//       <div
-//         className="flex transition-transform duration-1000 ease-in-out"
-//         style={{ transform: `translateX(-${currentIndex * 100}%)` }}
-//       >
-//         {images.map((src, index) => (
-//           <img
-//             key={index}
-//             src={src}
-//             alt={`Slide ${index}`}
-//             className="w-full h-screen object-cover flex-shrink-0"
-//           />
-//         ))}
-//       </div>
-
-//       {/* Dark overlay for premium look */}
-//       <div className="absolute inset-0 bg-black/20 backdrop-blur-[1px]"></div>
-
-//       {/* Indicators */}
-//       <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex space-x-3">
-//         {images.map((_, index) => (
-//           <button
-//             key={index}
-//             onClick={() => setCurrentIndex(index)}
-//             className={`w-3 h-3 rounded-full transition-all duration-300 ${
-//               currentIndex === index
-//                 ? "bg-white scale-125 shadow-lg"
-//                 : "bg-gray-400 opacity-60"
-//             }`}
-//           />
-//         ))}
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default ImageSlider;
-
-
-
-
-
-// import React, { useState, useEffect } from "react";
-
-// const ImageSlider = () => {
-//   const images = [
-//     "/Images/factory-1.jpg",
-//     "/Images/factory-2.jpg",
+//     "/Images/download (1).jpg",
+//     "/Images/Improving Metal Reliability for High-Performance Manufacturing.jpg",
 //     "/Images/factory-3.jpg",
 //   ];
 
@@ -78,12 +99,17 @@
 //   ];
 
 //   const [currentIndex, setCurrentIndex] = useState(0);
+//   const [fade, setFade] = useState(true);
 
 //   useEffect(() => {
 //     const interval = setInterval(() => {
-//       setCurrentIndex((prev) =>
-//         prev === images.length - 1 ? 0 : prev + 1
-//       );
+//       setFade(false);
+//       setTimeout(() => {
+//         setCurrentIndex((prev) =>
+//           prev === images.length - 1 ? 0 : prev + 1
+//         );
+//         setFade(true);
+//       }, 500);
 //     }, 4000);
 
 //     return () => clearInterval(interval);
@@ -91,20 +117,14 @@
 
 //   return (
 //     <div className="relative w-full h-[420px] sm:h-[480px] md:h-[520px] overflow-hidden bg-black m-0 p-0">
-//       {/* SLIDES */}
-//       <div
-//         className="flex transition-transform duration-1000 ease-in-out h-full"
-//         style={{ transform: `translateX(-${currentIndex * 100}%)` }}
-//       >
-//         {images.map((src, index) => (
-//           <img
-//             key={index}
-//             src={src}
-//             alt={`Slide ${index}`}
-//             className="w-full h-full object-cover flex-shrink-0"
-//           />
-//         ))}
-//       </div>
+//       {/* IMAGE */}
+//       <img
+//         src={images[currentIndex]}
+//         alt="Slide"
+//         className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ${
+//           fade ? "opacity-100" : "opacity-0"
+//         }`}
+//       />
 
 //       {/* DARK OVERLAY */}
 //       <div className="absolute inset-0 bg-black/30"></div>
@@ -112,7 +132,11 @@
 //       {/* TEXT OVERLAY */}
 //       <div className="absolute inset-0 flex items-center">
 //         <div className="max-w-4xl px-4 sm:px-8 md:px-10">
-//           <h1 className="text-white text-2xl sm:text-3xl md:text-5xl font-semibold leading-tight">
+//           <h1
+//             className={`text-white text-2xl sm:text-3xl md:text-5xl font-semibold leading-tight transition-opacity duration-700 ${
+//               fade ? "opacity-100" : "opacity-0"
+//             }`}
+//           >
 //             {captions[currentIndex]}
 //           </h1>
 //         </div>
@@ -123,11 +147,15 @@
 //         {images.map((_, index) => (
 //           <button
 //             key={index}
-//             onClick={() => setCurrentIndex(index)}
+//             onClick={() => {
+//               setFade(false);
+//               setTimeout(() => {
+//                 setCurrentIndex(index);
+//                 setFade(true);
+//               }, 300);
+//             }}
 //             className={`w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full transition-all ${
-//               currentIndex === index
-//                 ? "bg-white"
-//                 : "bg-white/50"
+//               currentIndex === index ? "bg-white" : "bg-white/50"
 //             }`}
 //           />
 //         ))}
@@ -141,14 +169,13 @@
 
 
 
-
 import React, { useState, useEffect } from "react";
 
 const ImageSlider = () => {
   const images = [
-    "/Images/factory-1.jpg",
-    "/Images/factory-2.jpg",
-    "/Images/factory-3.jpg",
+    "/Images/download (1).jpg",
+    "/Images/Improving Metal Reliability for High-Performance Manufacturing.jpg",
+    "/Images/73c40f0cb04c9f85583b89122da1641c.jpg",
   ];
 
   const captions = [
@@ -158,42 +185,58 @@ const ImageSlider = () => {
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [fade, setFade] = useState(true);
+  const [nextIndex, setNextIndex] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(false);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setFade(false);
-      setTimeout(() => {
-        setCurrentIndex((prev) =>
-          prev === images.length - 1 ? 0 : prev + 1
-        );
-        setFade(true);
-      }, 500);
-    }, 4000);
+      const next = (currentIndex + 1) % images.length;
+      handleTransition(next);
+    }, 5000);
 
     return () => clearInterval(interval);
-  }, [images.length]);
+  }, [currentIndex, images.length]);
+
+  const handleTransition = (index) => {
+    if (index === currentIndex) return;
+    setNextIndex(index);
+    setIsTransitioning(true);
+
+    // Wait for the fade animation to complete before updating the base image
+    setTimeout(() => {
+      setCurrentIndex(index);
+      setIsTransitioning(false);
+    }, 700); // Matches duration-700
+  };
 
   return (
-    <div className="relative w-full h-[420px] sm:h-[480px] md:h-[520px] overflow-hidden bg-black m-0 p-0">
-      {/* IMAGE */}
+    <div className="relative w-full h-[520px] sm:h-[580px] md:h-[620px] overflow-hidden bg-zinc-900 m-0 p-0">
+      
+      {/* BASE IMAGE (The current one) */}
       <img
         src={images[currentIndex]}
-        alt="Slide"
-        className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ${
-          fade ? "opacity-100" : "opacity-0"
+        alt="Current Slide"
+        className="absolute inset-0 w-full h-full object-cover object-center"
+      />
+
+      {/* OVERLAY IMAGE (The one fading in) */}
+      <img
+        src={images[nextIndex]}
+        alt="Next Slide"
+        className={`absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-700 ${
+          isTransitioning ? "opacity-100" : "opacity-0"
         }`}
       />
 
-      {/* DARK OVERLAY */}
-      <div className="absolute inset-0 bg-black/30"></div>
+      {/* DARK OVERLAY (Ensures text is always readable) */}
+      <div className="absolute inset-0 bg-black/40"></div>
 
       {/* TEXT OVERLAY */}
       <div className="absolute inset-0 flex items-center">
         <div className="max-w-4xl px-4 sm:px-8 md:px-10">
           <h1
-            className={`text-white text-2xl sm:text-3xl md:text-5xl font-semibold leading-tight transition-opacity duration-700 ${
-              fade ? "opacity-100" : "opacity-0"
+            className={`text-white text-2xl sm:text-3xl md:text-5xl font-semibold leading-tight transition-all duration-700 ${
+              isTransitioning ? "opacity-0 translate-y-2" : "opacity-100 translate-y-0"
             }`}
           >
             {captions[currentIndex]}
@@ -202,19 +245,15 @@ const ImageSlider = () => {
       </div>
 
       {/* INDICATORS */}
-      <div className="absolute bottom-4 sm:bottom-6 left-4 sm:left-10 flex space-x-2 sm:space-x-3">
+      <div className="absolute bottom-6 left-4 sm:left-10 flex space-x-3 z-10">
         {images.map((_, index) => (
           <button
             key={index}
-            onClick={() => {
-              setFade(false);
-              setTimeout(() => {
-                setCurrentIndex(index);
-                setFade(true);
-              }, 300);
-            }}
-            className={`w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full transition-all ${
-              currentIndex === index ? "bg-white" : "bg-white/50"
+            onClick={() => handleTransition(index)}
+            className={`w-3 h-3 rounded-full transition-all ${
+              (isTransitioning ? nextIndex : currentIndex) === index 
+                ? "bg-white w-8" // Active dot grows slightly
+                : "bg-white/50"
             }`}
           />
         ))}

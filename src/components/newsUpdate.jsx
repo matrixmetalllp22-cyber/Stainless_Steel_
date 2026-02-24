@@ -370,7 +370,7 @@ export default function WelcomePage() {
                       {/* Redesigned "Read More" button triggers modal */}
                       <button
                         onClick={() => openModal(service)}
-                        className="self-start flex items-center text-sm font-medium text-white bg-gradient-to-r from-blue-600 to-indigo-600 px-4 py-2 rounded-full shadow-md hover:shadow-lg transition-all duration-300 group/btn"
+                        className="self-start flex items-center text-sm font-medium text-white bg-gradient-to-r from-blue-300 to-indigo-400 px-4 py-2 rounded-full shadow-md hover:shadow-lg transition-all duration-300 group/btn"
                       >
                         <span>{service.buttonText}</span>
                         <FiArrowRight className="ml-2 transition-transform duration-300 group-hover/btn:translate-x-1" size={16} />
