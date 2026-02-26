@@ -21,6 +21,13 @@ import Slitting from "./pages/services/Slitting";
 import CutToLength from "./pages/services/CutToLength";
 import Packing from "./pages/services/Packing";
 import Blanking from "./pages/services/Blanking";
+import UltraLightGaugeCTLLine from "./pages/services/Ultra-LightGaugeCTLLine";
+import HeavyGaugeCTLLine from "./pages/services/Heavy Gauge CTL Line";
+import UltraPrecisionNarrowSlittingLine from "./pages/services/Ultra-Precision Narrow Slitting Line";
+import WideWidthPrecisionSlittingLine from "./pages/services/Wide-Width Precision Slitting Line";
+import ContinuousCoilToCoilProcessingLine from "./pages/services/Continuous Coil-to-Coil Processing Line";
+import SheetToSheetProcessingLine from "./pages/services/Sheet-to-Sheet Processing Line";
+import HighPrecisionFilmLaminationLine from "./pages/services/High-Precision Film Lamination Line";
 
 // Product pages
 import StainlessSteelSheets from "./components/2bba-mill-finish";
@@ -129,6 +136,13 @@ function AppContent() {
             <Route path="/machinery/slitting" element={<Slitting />} />
             <Route path="/machinery/blanking" element={<Blanking />} />
             <Route path="/machinery/packing" element={<Packing />} />
+            <Route path="/machinery/ultra-light-gauge-ctl-line" element={<UltraLightGaugeCTLLine />} />
+            <Route path="/machinery/heavy-gauge-ctl-line" element={<HeavyGaugeCTLLine />} />
+            <Route path="/machinery/ultra-precision-narrow-slitting-line" element={<UltraPrecisionNarrowSlittingLine />} />
+            <Route path="/machinery/wide-width-precision-slitting-line" element={<WideWidthPrecisionSlittingLine />} />
+            <Route path="/machinery/continuous-coil-to-coil-processing-line" element={<ContinuousCoilToCoilProcessingLine />} />
+            <Route path="/machinery/sheet-to-sheet-processing-line" element={<SheetToSheetProcessingLine />} />
+            <Route path="/machinery/high-precision-film-lamination-line" element={<HighPrecisionFilmLaminationLine />} />
           </Routes>
         </main>
         <Footer />

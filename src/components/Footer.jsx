@@ -270,7 +270,7 @@ export default function Footer() {
             
             <h3 className="text-sm font-semibold tracking-wider uppercase mb-4 text-gray-400">Quick Links</h3>
             <ul className="space-y-3">
-              {['About Us', 'Applications', 'Resources', 'Contact'].map((item) => (
+              {['About', 'Applications', 'Resources', 'Contact'].map((item) => (
                 <li key={item}>
                   <Link 
                     to={`/${item.toLowerCase().replace(' ', '-')}`}
@@ -295,15 +295,14 @@ export default function Footer() {
                 <div>
                   <p className="font-medium">Matrix Metal Private Limited</p>
                   <p className="text-gray-300 text-sm">
-                    7, P.C Lane, S.P Road Cross<br />
-                    Bengaluru 560 002, INDIA
+                    3RD PHASE, 139 & 140, 9TH MAIN ROAD, 100 Feet Road, Peenya, Bengaluru, Karnataka 560058s
                   </p>
                 </div>
               </li>
               
               <li className="flex items-center space-x-3">
                 <FaPhone className="text-orange-600 flex-shrink-0" />
-                <span className="text-gray-300">+91 80 4132 5007</span>
+                <span className="text-gray-300">+91 9036864329</span>
               </li>
               
               <li className="flex items-center space-x-3">
@@ -312,7 +311,7 @@ export default function Footer() {
                   href="mailto:info@minoxmetal.com" 
                   className="text-gray-300 hover:text-white transition-colors duration-200"
                 >
-                  info@minoxmetal.com
+                     matrixmetalllp@gmail.com
                 </a>
               </li>
             </ul>

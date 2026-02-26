@@ -18,25 +18,33 @@ export default function Header() {
   ];
 
   const machineryItems = [
-    "Cut to Length",
-    "Slitting",
-    "Blanking",
-    "Packing",
+    // "Cut to Length",
+    // "Slitting",
+    // "Blanking",
+    // "Packing",
+    "Ultra-Light Gauge CTL Line",
+    "Heavy Gauge CTL Line",
+    "Ultra-Precision Narrow Slitting Line",
+    "Wide-Width Precision Slitting Line",
+    "Continuous Coil-to-Coil Processing Line",
+    "Sheet-to-Sheet Processing Line",
+    "High-Precision Film Lamination Line",
+    
     
   ];
 
   const productItems = [
-    "2B/BA Mill Finish",
-    "#4 Brushed",
-    "Hairline",
-    "#8 Super Mirror",
-    "Bead Blast",
-    "Vibration",
-    "S.S. Strips",
-    "Etched",
-    "Embossed",
-    "Mosaic Tiles",
-    "Pipes & Tubes",
+    // "2B/BA Mill Finish",
+    // "#4 Brushed",
+    // "Hairline",
+    // "#8 Super Mirror",
+    // "Bead Blast",
+    // "Vibration",
+    // "S.S. Strips",
+    // "Etched",
+    // "Embossed",
+    // "Mosaic Tiles",
+    // "Pipes & Tubes",
   ];
 
   return (

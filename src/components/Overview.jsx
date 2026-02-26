@@ -1,940 +1,1015 @@
-// import React, { useState } from "react";
+
+
+// import React from "react";
 // import { motion } from "framer-motion";
+// import { useInView } from "react-intersection-observer";
+// import { Factory, Target, Award, Users, Shield, Globe } from "lucide-react";
 
-// export default function Overview() {
-//   const [tab, setTab] = useState("vision");
-//   const [showIntroModal, setShowIntroModal] = useState(false);
-//   const [selectedCard, setSelectedCard] = useState(null);
+// export default function AboutUs() {
+//   const [titleRef, titleInView] = useInView({
+//     triggerOnce: true,
+//     threshold: 0.1,
+//   });
 
-//   const tabContent = {
-//     vision: (
-//       <div className="space-y-3 text-gray-700">
-//         <p>
-//           To stand as the definitive force in advanced metal processing and industrial automation — setting standards that are not merely followed but revered.
-//         </p>
-//         <p>
-//           Matrix Metals envisions a future where precision is absolute, engineering is uncompromising, and performance is engineered at a level that leaves no room for mediocrity.
-//         </p>
-//       </div>
-//     ),
-//     philosophy: (
-//       <div className="space-y-3 text-gray-700">
-//         <p>
-//           Matrix Metals operates on a philosophy forged from discipline, intellect, and unwavering engineering integrity.
-//         </p>
-//         <p>We do not guess — we calculate. We do not assume — we validate. We do not follow — we lead.</p>
-//       </div>
-//     ),
-//     values: (
-//       <div className="space-y-3 text-gray-700">
-//         <ul className="list-decimal list-inside space-y-1">
-//           <li>Unrelenting Excellence</li>
-//           <li>Absolute Reliability</li>
-//           <li>Strategic Innovation</li>
-//           <li>Client-Centric Leadership</li>
-//           <li>Zero-Defect Quality Mindset</li>
-//           <li>Ethical Command</li>
-//           <li>Safety as a Structural Principle</li>
-//           <li>Respect and Professional Strength</li>
-//         </ul>
-//       </div>
-//     ),
+//   const [contentRef, contentInView] = useInView({
+//     triggerOnce: true,
+//     threshold: 0.1,
+//   });
+
+//   const [imageRef, imageInView] = useInView({
+//     triggerOnce: true,
+//     threshold: 0.1,
+//   });
+
+//   // Animation variants
+//   const fadeInUp = {
+//     hidden: { opacity: 0, y: 30 },
+//     visible: { opacity: 1, y: 0 },
 //   };
 
-//   // 7 sections data with full content from user
-//   const infoBlocks = [
-//     {
-//       title: "Joint Venture",
-//       text: "Matrix Metals LLP was established in 2022 as a strategic joint venture between Akash Aluminium and Mysore Tube Suppliers.",
-//       fullContent: `Matrix Metals LLP was established in 2022 as a strategic Joint Venture between two highly reputed industry leaders — Akash Aluminium and Mysore Tube Suppliers. This alliance was created with a unified vision: to build India's most advanced and largest metal service centre, engineered to deliver precision, scale, and unmatched operational capability.
-
-// The Joint Venture capitalizes on the combined legacy, technical strength, and market influence of both brands. By integrating their long-standing expertise, the partnership introduces an industry-first, fully managed, end-to-end solution for metal processing, distribution, and business application implementation — setting a new standard for efficiency and technological excellence.
-
-// Recognizing the growing demand for world-class metal processing infrastructure, the two companies took their first decisive step by initiating the construction of a state-of-the-art manufacturing and service facility in the industrial heart of Bangalore — Peenya Industrial Area. This location serves as a strategic hub, enabling seamless connectivity, faster supply chain execution, and direct access to India's expanding industrial corridors.
-
-// As the journey progresses, Matrix Metals LLP is poised to scale its operations significantly, with expanded capabilities, advanced machinery, and enhanced service offerings set to be commissioned in the Financial Year 2023. This progression marks the beginning of a new era in the Indian metal processing landscape.
-
-// Today, the company stands formally registered and recognized as MATRIX METALS LLP — a Joint Venture built on strength, vision, and a commitment to reshaping the future of metal service excellence in India.`,
+//   const staggerContainer = {
+//     hidden: { opacity: 0 },
+//     visible: {
+//       opacity: 1,
+//       transition: {
+//         staggerChildren: 0.15,
+//         delayChildren: 0.2,
+//       },
 //     },
-//     {
-//       title: "Management & Team",
-//       text: "Led by visionary professionals with decades of industry experience.",
-//       fullContent: `1. Leadership Built on Vision and Precision
-// The leadership of Matrix Metals LLP embodies a rare combination of strategic foresight, engineering intelligence, and operational discipline. Our management team is driven by a singular mission — to build India's most technologically advanced and globally competitive metal service organization. Every leader brings decades of industry experience, a deep understanding of market dynamics, and an unwavering commitment to excellence.
+//   };
 
-// 2. A Governance Structure Rooted in Strength and Integrity
-// Matrix Metals is guided by a governance framework that prioritizes transparency, accuracy, and responsible decision-making. Our management philosophy emphasizes long-term value creation, client trust, and technical credibility. The leadership ensures that every project, partnership, and operational milestone reflects the highest level of ethical and professional integrity.
+//   const fadeInLeft = {
+//     hidden: { opacity: 0, x: -30 },
+//     visible: { opacity: 1, x: 0 },
+//   };
 
-// 3. A Team of Specialists with Global-Standard Expertise
-// Our team is composed of highly skilled professionals across engineering, operations, quality control, automation, supply chain, and customer support. Each member is trained to operate with precision, accountability, and discipline — ensuring seamless execution across every stage of production. Matrix Metals empowers its team with continuous learning, global exposure, and cutting-edge tools to maintain an uncompromised standard of performance.
+//   const fadeInRight = {
+//     hidden: { opacity: 0, x: 30 },
+//     visible: { opacity: 1, x: 0 },
+//   };
 
-// 4. Operational Excellence Through Technical Mastery
-// The strength of Matrix Metals lies in its field-tested engineers, metallurgists, machine specialists, and process analysts who collectively bring unmatched depth to our operational ecosystem. Their expertise spans coil processing, slitting, CTL lines, polishing technologies, aluminium handling, stainless-steel applications, and automation systems. This technical mastery allows the company to execute complex projects with precision and deliver output that consistently meets international benchmarks.
+//   const scaleIn = {
+//     hidden: { opacity: 0, scale: 0.9 },
+//     visible: { opacity: 1, scale: 1 },
+//   };
 
-// 5. A Culture That Demands Performance and Innovation
-// Matrix Metals operates with a high-performance culture where innovation is not encouraged — it is expected. Our team is trained to think analytically, act decisively, and respond to challenges with engineered solutions that enhance productivity and strengthen client outcomes. Every individual is aligned to a core belief: quality is non-negotiable, timelines are commitments, and excellence is the only acceptable output.
-
-// 6. Unified Strength: Collaboration that Drives Results
-// The management and team function as a cohesive, mission-driven unit. Departments collaborate seamlessly, blending their expertise to deliver superior project execution and customer satisfaction. This unity forms the backbone of Matrix Metals and is a driving force behind our rapid growth, robust brand reputation, and industry leadership.
-
-// 7. People Who Power the Future of Matrix Metals
-// The true strength of Matrix Metals is its people — individuals who bring passion, discipline, and technical brilliance to every task they undertake. Their collective commitment to innovation, safety, and operational excellence positions the company as a trusted partner in India's evolving manufacturing landscape. The Matrix Metals team stands prepared to lead the next phase of industrial transformation with confidence and authority.`,
-//     },
-//     {
-//       title: "Organization",
-//       text: "Built on a robust organizational framework engineered for clarity, efficiency, and long-term scalability.",
-//       fullContent: `1. A Structurally Strong and Strategically Designed Organization
-// Matrix Metals LLP is built on a robust organizational framework engineered for clarity, efficiency, and long-term scalability. Every function — from leadership to operations, engineering, quality, logistics, and customer service — is structured to deliver seamless coordination and uncompromised performance. The organization operates with a clear chain of responsibility, ensuring swift decision-making and flawless execution across all levels.
-
-// 2. Departments Aligned for Precision and Performance
-// Our organizational design integrates specialized departments, each led by experts who bring deep industry knowledge and operational discipline. These include:
-
-// Engineering & Technical Services
-// Production & Operations
-// Quality Assurance & Metallurgy
-// Supply Chain & Logistics Management
-// Project Execution & Infrastructure Development
-// Sales, Marketing & Client Integration
-// Automation & Industrial Control Systems
-// Finance, Compliance & Administration
-
-// Every department functions with clearly defined roles, standardized processes, and a performance-driven culture that supports the company's mission of delivering global-quality solutions.
-
-// 3. Cross-Functional Collaboration as a Core Strength
-// Matrix Metals operates as a unified ecosystem where each department collaborates seamlessly, ensuring fast turnaround, high efficiency, and consistent output quality. Our cross-functional coordination enables us to manage complex, multi-stage operations — from coil handling and processing to precision finishing and line integration — with exceptional accuracy. This collaborative approach forms the backbone of our organizational effectiveness.
-
-// 4. Empowering People, Enhancing Capabilities
-// The organization is powered by a team of highly skilled engineers, technicians, analysts, and support staff who embody the company's values of precision, innovation, and integrity. Matrix Metals invests heavily in employee development, advanced training, and technological upskilling to ensure our team remains ahead of evolving industry demands. We believe that empowering people directly strengthens our operational excellence.
-
-// 5. Governance and Compliance with Global Standards
-// Matrix Metals is governed by a rigorous compliance framework that aligns with international industry standards. Our organizational policies ensure transparency, ethical conduct, safety, and consistency in every activity we undertake. From procurement and material handling to processing and dispatch, every step is executed under strict monitoring systems and global best practices.
-
-// 6. Future-Ready Organizational Vision
-// The organization is designed with scalability at its core. As Matrix Metals expands its capabilities, production lines, and service offerings, the organizational structure adapts to support larger volumes, advanced technology integrations, and broader market penetration. This forward-thinking approach ensures that Matrix Metals remains agile, competitive, and prepared for future industrial transformation.
-
-// 7. An Organization Engineered to Lead
-// Matrix Metals LLP is more than a company — it is a highly disciplined industrial organization built to redefine metal processing excellence in India. With strong leadership, specialized departments, intelligent workflows, and a culture of accountability, the organization stands poised to lead the next decade of innovation and growth in the metal manufacturing and service sector.`,
-//     },
-//     {
-//       title: "Infrastructure & Capabilities",
-//       text: "World-class facilities with high-precision processing technologies and advanced automation.",
-//       fullContent: `1. World-Class Infrastructure Engineered for High-Volume Precision
-// Matrix Metals LLP operates with an infrastructure designed to support heavy-duty industrial performance and global-quality output. Our facilities integrate advanced machinery, intelligent material flow systems, and high-capacity processing zones capable of handling large coil volumes with exceptional accuracy. Every square foot of the plant is engineered for efficiency, safety, and uninterrupted operational reliability.
-
-// 2. State-of-the-Art Processing Technologies
-// The core strength of Matrix Metals lies in its technologically advanced equipment and automated workflows. Our capabilities include:
-
-// High-precision slitting lines
-// Advanced cut-to-length (CTL) systems
-// No.4 and hairline polishing lines
-// Aluminium and stainless steel coil processing units
-// Quality control laboratories with metallurgical testing instruments
-// Automated material handling and storage architecture
-
-// This infrastructure allows us to deliver products that meet strict dimensional accuracy, structural consistency, and international industry standards.
-
-// 3. Intelligent Logistics and Supply Chain Integration
-// Our operations are supported by a sophisticated logistical framework that ensures smooth inbound and outbound movement of materials. Strategically located in the industrial hub of Peenya, Bangalore, Matrix Metals has seamless access to transport networks, industrial suppliers, OEMs, and distribution channels. This supply chain strength empowers the company to maintain short lead times, high reliability, and unbroken production cycles.
-
-// 4. Quality Control With Zero-Compromise Standards
-// Quality is not a department at Matrix Metals — it is a discipline embedded into every step of our workflow. Our quality infrastructure includes:
-
-// Dimensional and surface inspection systems
-// Alloy verification tools
-// Process monitoring sensors
-// Advanced testing instruments
-// Strict material traceability protocols
-
-// Every coil, sheet, and finished product is passed through comprehensive quality gates, ensuring zero tolerance for defects.
-
-// 5. Automation, Data Intelligence & Future-Ready Technology
-// Matrix Metals integrates modern industrial automation, real-time monitoring systems, and data-driven decision frameworks across its operations. This ensures consistent outputs, predictive maintenance, and higher energy efficiency. We are continuously expanding our capabilities to include Industry 4.0 integrations such as:
-
-// Smart sensors
-// Automated diagnostics
-// Real-time production dashboards
-// Predictive process controls
-
-// Our infrastructure is not static — it evolves continuously to remain future-ready.
-
-// 6. Scalable Capacity for Long-Term Growth
-// The facility is designed to support rapid expansion both in production volume and technology adoption. As market demand increases, Matrix Metals can scale operations without disruption, enabling faster commissioning of new lines, broader material handling capabilities, and increased output capacity. This scalability ensures that Matrix Metals remains resilient, competitive, and prepared to lead the industry for decades ahead.`,
-//     },
-//     {
-//       title: "Corporate Governance",
-//       text: "Rooted in absolute integrity, ethical conduct, transparency, and responsible leadership.",
-//       fullContent: `1. Governance Built on Integrity and Accountability
-// Matrix Metals LLP operates under a governance framework rooted in absolute integrity, ethical conduct, and uncompromising accountability. Every decision, policy, and operational directive is guided by a commitment to transparency and responsible leadership. We hold ourselves answerable not only to regulatory standards, but to the trust our clients, partners, and stakeholders place in us.
-
-// 2. Structured Leadership for Effective Oversight
-// Our governance structure ensures clarity of roles, hierarchy, and responsibility. The management team functions through well-defined channels that enable disciplined execution, rapid decision-making, and stringent oversight across all departments. This ensures that every business action reflects mature judgment, operational wisdom, and strategic alignment with the company's long-term vision.
-
-// 3. Transparency as a Non-Negotiable Standard
-// At Matrix Metals, transparency is not an operational preference — it is a mandatory principle. We maintain open, accurate, and timely communication across internal teams and external stakeholders. All financial, technical, and operational activities are documented, reviewed, and executed in accordance with recognized best practices, ensuring complete clarity in every transaction and engagement.
-
-// 4. Strong Compliance With Legal and Ethical Frameworks
-// The company adheres strictly to all statutory, regulatory, and industrial compliance norms. Our compliance mechanisms include well-documented SOPs, periodic audits, risk assessments, and quality checks to ensure that every aspect of the organization aligns with national and international standards. Ethical conduct, anti-corruption measures, and fair business practices form the backbone of our governance ethos.
-
-// 5. Risk Management Driven by Discipline and Foresight
-// Matrix Metals implements a robust risk management system designed to identify vulnerabilities, evaluate operational threats, and implement proactive mitigation strategies. This disciplined approach ensures business continuity, safeguards investments, minimizes operational uncertainty, and strengthens long-term organizational resilience.
-
-// 6. Protection of Stakeholder Interest
-// We operate with a duty-bound mandate to protect the interests of all stakeholders — customers, partners, employees, investors, and the community. Our governance principles ensure that stakeholder welfare is prioritized in every strategic and operational decision. We believe that the strength of an organization lies in the trust it builds and preserves.
-
-// 7. Commitment to Ethical Leadership and Responsible Growth
-// Corporate Governance at Matrix Metals is reinforced by leadership that values fairness, respect, and responsible business conduct. We pursue growth through disciplined execution, sustainable development, and ethical operations. Our leadership sets the standard for professional conduct, ensuring that every employee reflects the organization's principle of excellence with integrity.
-
-// 8. Continuous Monitoring, Evaluation & Improvement
-// Governance is not static — it evolves. Matrix Metals consistently evaluates its policies, operational frameworks, and decision-making processes to ensure adherence to global best practices. Through audits, internal reviews, and performance assessments, we maintain a governance system that is dynamic, adaptable, and future-ready.`,
-//     },
-//     {
-//       title: "HR & People Philosophy",
-//       text: "Excellence, accountability, continuous learning, merit-based growth, and developing leaders.",
-//       fullContent: `1. People as the Core of Organizational Strength
-// At Matrix Metals LLP, we believe that the true strength of any industrial enterprise lies not only in its machinery or technology, but in the caliber of its people. Our HR philosophy is built on the conviction that a high-performance organization is shaped by empowered individuals, disciplined teams, and a culture that values both competence and character. Every employee is viewed as a strategic asset with the potential to influence the future of the company.
-
-// 2. A Culture of Excellence, Accountability & Professionalism
-// We cultivate a culture where excellence is expected, accountability is embraced, and professionalism is non-negotiable. Our people operate with clarity, discipline, and a results-driven mindset. We encourage decision-making grounded in logic, engineering intelligence, and ethical responsibility — ensuring that every action aligns with the company's long-term vision of leadership in the metal service industry.
-
-// 3. Continuous Learning, Growth & Skill Advancement
-// Matrix Metals invests heavily in building talent that is future-ready. Our HR strategy includes:
-
-// Continuous technical and operational training
-// Leadership development programs
-// Cross-functional exposure
-// Certifications and external learning opportunities
-// Real-world industrial learning pathways
-
-// We ensure that every team member grows in competence, confidence, and capability — empowering them to deliver excellence in a rapidly evolving manufacturing landscape.
-
-// 4. Performance-Driven, Merit-Based Growth
-// We reward performance, discipline, and innovation. Career growth at Matrix Metals is shaped by merit, contribution, and commitment rather than tenure alone. Our evaluation systems are transparent, structured, and aligned with organizational goals, ensuring that individuals who demonstrate initiative, creativity, and operational precision rise quickly within the company.
-
-// 5. Strong Employee Relations & Mutual Respect
-// We maintain a people-first environment rooted in respect, fairness, and transparent communication. Matrix Metals values diversity of thought, experience, and background — recognizing that strong teams are built on inclusive collaboration. We foster an atmosphere where employees feel heard, supported, and empowered to challenge norms constructively.
-
-// 6. Safety, Wellbeing & Responsible Work Practices
-// Safety is not an instruction at Matrix Metals — it is a philosophy. We enforce rigorous safety protocols, training programs, and workplace standards that protect our employees' wellbeing at every stage of operation. We ensure a healthy, clean, and secure environment where individuals can perform with full confidence and peace of mind.
-
-// 7. Building Leaders for Tomorrow
-// We do not just build teams — we build leaders. Matrix Metals identifies and nurtures high-potential individuals, preparing them for roles of greater responsibility and influence. Through structured mentorship, exposure to critical projects, and hands-on leadership opportunities, we cultivate the next generation of managers, engineers, and industry leaders.
-
-// 8. Unified Workforce, Shared Vision
-// Every member of Matrix Metals is aligned to a shared mission: to elevate the company to global standards of engineering and operational excellence. Our people work not as independent units but as a cohesive force — disciplined, collaborative, and committed to delivering outcomes that reflect the strength of the Matrix Metals brand.`,
-//     },
-//     {
-//       title: "Culture & Performance",
-//       text: "High-performance culture with discipline, innovation, and relentless pursuit of excellence.",
-//       fullContent: `1. People Are Our Power — The Engine Behind Every Victory
-// Matrix Metals LLP is built on the conviction that exceptional organizations are created by exceptional people. Technology can be purchased; skill can be trained — but discipline, character, and relentless drive cannot be manufactured. Our people are the force that propels this company forward, and we expect every individual to operate with the precision, intensity, and responsibility worthy of the Matrix Metals name.
-
-// 2. A High-Performance Culture Where Mediocrity Cannot Survive
-// We do not tolerate average work, unclear thinking, or complacency. Our culture demands excellence as the baseline and superiority as the standard. Every team member is expected to think like a leader, act with conviction, and execute with a level of rigor that pushes the boundaries of industrial performance. At Matrix Metals, accountability is absolute, deadlines are decisive, and results speak louder than intentions.
-
-// 3. Continuous Development with Relentless Focus on Mastery
-// We invest in people who invest in themselves. Training is not optional — it is integral. Our HR strategy aggressively drives continuous development, advanced technical specialization, and cross-functional mastery. We shape professionals who are sharp, fast, and future-ready — individuals capable of handling complex engineering challenges with confidence and authority.
-
-// 4. Merit Is the Only Currency That Counts
-// Growth at Matrix Metals is earned — not given. Promotions, opportunities, responsibilities, and leadership roles are awarded to those who prove their capability through performance, discipline, and measurable impact. We celebrate problem-solvers, strategic thinkers, and individuals who take ownership of outcomes. Those who rise here are those who stand out, step up, and deliver without excuses.
-
-// 5. A Workforce Governed by Respect, Strength, and Unified Purpose
-// We cultivate a culture of mutual respect — not softness. Our team communicates with clarity, operates with integrity, and stands united under a shared mission: to establish Matrix Metals as India's most formidable and technologically superior metal service organization. Respect here is earned through conduct, competence, and contribution. Every voice is valued — but every voice must be accountable.
-
-// 6. Safety and Discipline Are Non-Negotiable Commandments
-// In our environment, safety is enforced with military-grade seriousness. Protocols are followed without exception; procedures are executed without deviation. Every employee is expected to demonstrate discipline in workflow, machine handling, and operational behavior. A safe team is a strong team — and strength is the foundation of our performance philosophy.
-
-// 7. We Build Leaders, Not Followers
-// Matrix Metals does not recruit followers — we cultivate leaders. Our employees are expected to take initiative, make informed decisions, and drive progress with unwavering leadership energy. Through structured mentorship, challenging assignments, and exposure to high-impact operations, we develop individuals who can command teams, manage complexity, and build the future of the organization.
-
-// 8. One Team. One Standard. One Mission.
-// Every individual at Matrix Metals is expected to align with a single uncompromising mission: to elevate this organization to the highest tier of industrial excellence and global competitiveness. We operate as a unified force — disciplined, focused, and relentless in execution. Our people are not just employees; they are the architects of our success and the foundation of our dominance in the metal processing sector.`,
-//     },
-//     {
-//   title: "Careers at Matrix Metals",
-//   text: "Build your future with a company that builds leaders.",
-//   fullContent: `1. A Workplace Built for Performers, Not Passengers
-// Careers at Matrix Metals LLP are designed for individuals who thrive on responsibility, precision, and relentless excellence. We do not just hire employees — we seek high-caliber professionals who are driven, solution-focused, and uncompromising when it comes to discipline and delivery.
-
-// 2. Who We Look For
-// Matrix Metals is the place for people who aspire to lead, innovate, and outperform. We welcome:
-// • Engineers with sharp analytical focus and problem-solving capability
-// • Professionals who take ownership instead of waiting for instructions
-// • Individuals who value accuracy, speed, and structured execution
-// • Learners committed to continuous growth, skill advancement, and adaptability
-// • Leaders driven by integrity, courage, accountability, and strong ethics
-
-// 3. A Culture Engineered for Excellence
-// Our environment is built on high performance, structured discipline, and mutual respect. Every role is designed with clarity, purpose, and measurable outcomes — empowering individuals to operate with confidence, alignment, and impact.
-
-// 4. Growth Built on Merit and Mastery
-// At Matrix Metals, growth is earned — not granted by tenure. We offer a fast-paced professional journey where career elevation is based purely on demonstrated competence, contribution, and leadership qualities. High performers progress rapidly; mediocrity has no space here.
-
-// 5. Training, Learning & Advanced Skill Development
-// Employees gain exposure to cutting-edge technologies, expert mentorship, and cross-functional learning pathways. Our commitment is to develop individuals into industry-leading professionals equipped with global operational standards.
-
-// 6. A Safe, Empowering, and Professional Workplace
-// We maintain an environment that prioritizes safety, respect, and operational ethics. Every individual is provided the tools, structure, and support required to perform at their highest capability while maintaining well-being and confidence.
-
-// 7. A Place to Contribute, Lead, and Transform
-// Matrix Metals LLP is not merely a workplace — it is a professional proving ground. Those who join us build not just careers, but legacies of discipline, innovation, and leadership.
-
-// Here, careers are not built — they are forged.`,
-// },
-// {
-//   title: "Signature Initiatives & Leadership Impact",
-//   text: "Strategic transformation driven by innovation, precision, and global-standard execution.",
-//   fullContent: `1. Transforming Matrix Metals Into a High-Precision Engineering Powerhouse
-// Under Jeeteen’s leadership, Matrix Metals has evolved into a sophisticated, multi-capability aluminium engineering and processing ecosystem. His strategic directives enabled the integration of:
-// • Precision slitting
-// • Advanced CTL (Cut-To-Length)
-// • Coil-to-coil surface conditioning
-// • Multi-metal degreasing technology
-// • Laminated aluminium system manufacturing
-
-// This transformation has strengthened operational reliability, reduced production variances, and enhanced output consistency — especially for high-tolerance, advanced industrial and architectural applications.
-
-// 2. Global Machinery Integration & International Technology Partnerships
-// Jeeteen has served as the lead strategist and technical decision-maker for procuring globally benchmarked machinery and technological systems. His ability to evaluate multi-variable engineering frameworks, decode complex technical specifications, and convert them into scalable deployment plans has positioned Matrix Metals at a world-class operational benchmark. This ensures that every machine installed meets criteria of precision, durability, and long-term operational return.
-
-// 3. Leadership in Advanced Materials R&D
-// With a forward-looking approach to innovation, Jeeteen has driven research and development initiatives focused on next-generation aluminium solutions including:
-// • ASA film fusion with 3xxx aluminium grades
-// • Surface tension optimization for superior coating and adhesion traits
-// • Controlled RA profiling for architectural-grade finishing standards
-// • Chemical/environmental compatibility protocols for lifecycle performance stability
-
-// These R&D initiatives have unlocked premium-value, application-specific product pathways, enabling Matrix Metals to operate in segments demanding precision, reliability, and engineered customization.
-
-// Through strategic insight, disciplined execution, and innovation-focused leadership, Jeeteen continues to shape Matrix Metals into a future-ready industry leader.`,
-// },
-
-
-//   ];
+//   const floatingAnimation = {
+//     hidden: { y: 0 },
+//     visible: {
+//       y: [-10, 10, -10],
+//       transition: {
+//         duration: 6,
+//         repeat: Infinity,
+//         ease: "easeInOut"
+//       }
+//     }
+//   };
 
 //   return (
-//     <div className="min-h-screen bg-gradient-to-b from-slate-50 via-slate-100 to-slate-200 text-gray-900 font-sans">
-//       {/* HERO */}
-//       <header className="relative overflow-hidden">
-//         <div className="absolute inset-0 -z-10">
-//           <img
-//             src="/Images/aluminium-sector.jpg"
-//             alt="Overview hero"
-//             className="w-full h-[320px] md:h-[420px] object-cover opacity-30"
-//           />
-//           <div className="absolute inset-0 bg-gradient-to-r from-slate-900/70 to-slate-800/50" />
-//         </div>
+//     <div className="w-full bg-gradient-to-b from-gray-50 to-white py-20 px-4 md:px-8 overflow-hidden relative">
+//       {/* Decorative Background Elements */}
+//       {/* <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-orange-500 via-orange-500 to-orange-500"></div> */}
+//       <div className="absolute top-20 left-10 w-40 h-40 bg-blue-100 rounded-full mix-blend-multiply filter blur-3xl opacity-30"></div>
+//       <div className="absolute bottom-20 right-10 w-60 h-60 bg-purple-100 rounded-full mix-blend-multiply filter blur-3xl opacity-20"></div>
 
-//         <div className="relative container-custom px-6 py-12 md:py-16 text-white">
-//           <motion.h1
-//             initial={{ opacity: 0, y: 20 }}
-//             animate={{ opacity: 1, y: 0 }}
-//             transition={{ duration: 0.6 }}
-//             className="text-4xl md:text-6xl text-orange-400 font-extrabold tracking-tight mb-2"
-//           >
-//             Matrix Metals
-//           </motion.h1>
-
-//           <motion.p
-//             initial={{ opacity: 0 }}
-//             animate={{ opacity: 1 }}
-//             transition={{ delay: 0.15, duration: 0.6 }}
-//             className="text-sm md:text-base text-gray-500 max-w-3xl mb-6"
-//           >
-//             Matrix Metals is a next-generation industrial solutions company built on precision engineering, operational excellence, and deep domain expertise in coil processing technologies.
-//           </motion.p>
-
-//           <motion.button
-//             initial={{ opacity: 0 }}
-//             animate={{ opacity: 1 }}
-//             transition={{ delay: 0.3, duration: 0.6 }}
-//             onClick={() => setShowIntroModal(true)}
-//             className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-lg font-semibold transition"
-//           >
-//             Read More
-//           </motion.button>
-//         </div>
-//       </header>
-
-//       {/* MAIN SECTION */}
-//       <main className="container-custom px-6 py-8 md:py-12">
-//         {/* Tabs Section */}
-//         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+//       {/* Title */}
+//       <motion.div
+//         ref={titleRef}
+//         initial="hidden"
+//         animate={titleInView ? "visible" : "hidden"}
+//         variants={fadeInUp}
+//         transition={{ duration: 0.8, type: "spring" }}
+//         className="max-w-6xl mx-auto mb-16 relative"
+//       >
+//         <div className="text-center">
+//           <span className="inline-block px-4 py-1.5 bg-blue-50 text-orange-400 rounded-full text-sm font-medium mb-4 border border-blue-100">
+//             Our Story
+//           </span>
+//           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 tracking-tight">
+//              <span className="bg-gradient-to-r from-orange-600 to-red-300 bg-clip-text text-transparent">Matrix Metals</span>
+//           </h1>
 //           <motion.div
-//             initial={{ opacity: 0, y: 20 }}
-//             whileInView={{ opacity: 1, y: 0 }}
-//             transition={{ duration: 0.6 }}
-//             viewport={{ once: true }}
-//             className="lg:col-span-2 bg-white/60 backdrop-blur-sm rounded-2xl p-10 shadow-md border border-slate-200"
-//           >
-//             <h2 className="text-3xl font-bold text-gray-900 mb-4">Matrix Metals Organization</h2>
-//             <p className="text-gray-600 leading-relaxed max-w-prose">
-//               Matrix Metals Service Center Private Limited is a joint venture of Akash Aluminium and Mysore Tube Suppliers. We leverage decades of combined expertise in metal processing, automation, and operational excellence to deliver world-class solutions.
-//             </p>
-//           </motion.div>
-
-//           <motion.aside
-//             initial={{ opacity: 0, y: 20 }}
-//             whileInView={{ opacity: 1, y: 0 }}
-//             transition={{ duration: 0.6, delay: 0.1 }}
-//             viewport={{ once: true }}
-//             className="bg-white rounded-2xl p-6 shadow-md border border-slate-200"
-//           >
-//             <div className="flex gap-3 mb-4">
-//               {["vision", "philosophy", "values"].map((t) => (
-//                 <button
-//                   key={t}
-//                   onClick={() => setTab(t)}
-//                   className={`px-3 py-2 text-sm font-semibold rounded-md transition ${
-//                     tab === t
-//                       ? "bg-orange-800 text-white shadow"
-//                       : "bg-gray-100 text-gray-700 hover:bg-gray-200"
-//                   }`}
-//                 >
-//                   {t[0].toUpperCase() + t.slice(1)}
-//                 </button>
-//               ))}
-//             </div>
-
-//             <div className="bg-gradient-to-br from-slate-50 to-slate-100 rounded-lg p-5 border border-slate-200">
-//               <h4 className="text-sm font-semibold text-orange-800 mb-2 capitalize">{tab}</h4>
-//               {tabContent[tab]}
-//             </div>
-//           </motion.aside>
+//             initial={{ width: 0 }}
+//             animate={titleInView ? { width: 100 } : { width: 0 }}
+//             transition={{ duration: 1, delay: 0.5 }}
+//             className="h-1.5 bg-gradient-to-r from-orange-500 to-purple-500 mx-auto rounded-full w-24"
+//           />
 //         </div>
+//       </motion.div>
 
-//         {/* Info Blocks - 7 sections */}
-//         <div className="mt-12 grid gap-6 md:grid-cols-3">
-//           {infoBlocks.map((b, i) => (
-//             <motion.div
-//               key={i}
-//               initial={{ opacity: 0, y: 12 }}
-//               whileInView={{ opacity: 1, y: 0 }}
-//               transition={{ delay: 0.1 * i, duration: 0.5 }}
-//               viewport={{ once: true }}
-//               className="bg-slate-900 text-white rounded-2xl p-6 shadow-lg relative overflow-hidden"
+//       {/* Main Content */}
+//       <div className="max-w-7xl mx-auto relative">
+//         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+//           {/* Left Content */}
+//           <motion.div
+//             ref={contentRef}
+//             initial="hidden"
+//             animate={contentInView ? "visible" : "hidden"}
+//             variants={staggerContainer}
+//             className="space-y-10"
+//           >
+//             <motion.div 
+//               variants={fadeInLeft}
+//               className="inline-flex items-center gap-3 px-4 py-2 bg-white rounded-full shadow-sm border border-gray-100"
 //             >
-//               <h5 className="font-bold mb-3 text-lg">{b.title}</h5>
-//               <p className="text-sm text-slate-200 leading-relaxed">{b.text}</p>
+//               <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
+//               <span className="text-sm font-medium text-gray-600">SINCE 1959</span>
+//             </motion.div>
 
-//               <div className="mt-5 flex gap-3">
-//                 <button
-//                   onClick={() => setSelectedCard(i)}
-//                   className="bg-amber-500 text-white px-4 py-2 rounded-md text-sm font-semibold shadow hover:brightness-95 transition"
-//                 >
-//                   Read more
-//                 </button>
-//                 <button className="bg-white/10 text-white px-4 py-2 rounded-md text-sm hover:bg-white/20 transition">
-//                   →
-//                 </button>
+//             <motion.div variants={fadeInLeft}>
+//               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6 leading-tight">
+//                 India's Premier Stainless Steel 
+//                 <span className="text-blue-600"> Surface Finishes</span> Expert
+//               </h2>
+//             </motion.div>
+
+//             <motion.div 
+//               variants={fadeInLeft} 
+//               transition={{ delay: 0.1 }}
+//               className="space-y-6"
+//             >
+//               <div className="flex items-start gap-4">
+//                 <div className="mt-1.5 p-2 bg-blue-50 rounded-lg">
+//                   <Target className="w-5 h-5 text-blue-600" />
+//                 </div>
+//                 <p className="text-gray-700 leading-relaxed text-lg">
+//                   <span className="font-medium text-gray-900">Minox Metal Private Limited</span>, based in Bengaluru, specializes in processing stainless steel flat products through cutting, slitting, and polishing to achieve various finishes including No.4, Hairline, Scotch Brite, No.8, Bead Blast, Vibration, Etched, and PVD Coated.
+//                 </p>
+//               </div>
+
+//               <div className="flex items-start gap-4">
+//                 <div className="mt-1.5 p-2 bg-purple-50 rounded-lg">
+//                   <Award className="w-5 h-5 text-purple-600" />
+//                 </div>
+//                 <p className="text-gray-700 leading-relaxed text-lg">
+//                   As one of the world's premier stainless steel service centers with a legacy since 1959, we excel in Processing, Import, Export, and Trading—combining traditional craftsmanship with modern innovation.
+//                 </p>
+//               </div>
+
+//               <div className="flex items-start gap-4">
+//                 <div className="mt-1.5 p-2 bg-green-50 rounded-lg">
+//                   <Globe className="w-5 h-5 text-green-600" />
+//                 </div>
+//                 <p className="text-gray-700 leading-relaxed text-lg">
+//                   Serving diverse sectors from architecture and construction to automotive and aviation, we deliver stainless steel solutions that power innovation across industries.
+//                 </p>
 //               </div>
 //             </motion.div>
-//           ))}
-//         </div>
-//       </main>
 
-//       {/* Card Detail Modal */}
-//       {selectedCard !== null && (
-//         <motion.div
-//           initial={{ opacity: 0 }}
-//           animate={{ opacity: 1 }}
-//           exit={{ opacity: 0 }}
-//           className="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4"
-//           onClick={() => setSelectedCard(null)}
-//         >
-//           <motion.div
-//             initial={{ opacity: 0, scale: 0.9 }}
-//             animate={{ opacity: 1, scale: 1 }}
-//             exit={{ opacity: 0, scale: 0.9 }}
-//             className="bg-white rounded-2xl shadow-2xl max-h-[90vh] overflow-y-auto w-full max-w-4xl"
-//             onClick={(e) => e.stopPropagation()}
-//           >
-//             {/* Modal Header */}
-//             <div className="sticky top-0 bg-gradient-to-r from-slate-900 to-slate-800 text-white p-6 flex justify-between items-center">
-//               <h2 className="text-2xl sm:text-3xl font-bold">{infoBlocks[selectedCard].title}</h2>
-//               <button
-//                 onClick={() => setSelectedCard(null)}
-//                 className="text-2xl hover:text-orange-400 transition"
-//               >
-//                 ×
-//               </button>
-//             </div>
-
-//             {/* Modal Content */}
-//             <div className="p-6 sm:p-8 space-y-4 text-gray-800">
-//               {infoBlocks[selectedCard].fullContent.split('\n\n').map((paragraph, idx) => (
-//                 <p key={idx} className="leading-relaxed text-sm sm:text-base">
-//                   {paragraph}
-//                 </p>
+//             {/* Stats Grid */}
+//             <motion.div
+//               variants={scaleIn}
+//               transition={{ delay: 0.4 }}
+//               className="grid grid-cols-2 md:grid-cols-4 gap-6 pt-8 border-t border-gray-100"
+//             >
+//               {[
+//                 { icon: <Factory />, value: "1959", label: "Established", color: "bg-blue-50 text-blue-600" },
+//                 { icon: <Award />, value: "60+", label: "Years Experience", color: "bg-purple-50 text-purple-600" },
+//                 { icon: <Shield />, value: "100%", label: "Quality Focus", color: "bg-green-50 text-green-600" },
+//                 { icon: <Globe />, value: "Global", label: "Reach", color: "bg-orange-50 text-orange-600" }
+//               ].map((stat, index) => (
+//                 <motion.div
+//                   key={index}
+//                   whileHover={{ y: -8, scale: 1.05 }}
+//                   initial={{ opacity: 0, y: 20 }}
+//                   animate={contentInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+//                   transition={{ delay: 0.5 + index * 0.1 }}
+//                   className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 group"
+//                 >
+//                   <div className={`w-14 h-14 ${stat.color} rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}>
+//                     <div className="w-7 h-7">
+//                       {stat.icon}
+//                     </div>
+//                   </div>
+//                   <div className="text-3xl font-bold text-gray-900 mb-1">{stat.value}</div>
+//                   <div className="text-sm font-medium text-gray-600">{stat.label}</div>
+//                 </motion.div>
 //               ))}
+//             </motion.div>
 
-//               {/* Close Button */}
-//               <div className="mt-8 flex justify-center pt-4 border-t">
-//                 <button
-//                   onClick={() => setSelectedCard(null)}
-//                   className="bg-orange-500 hover:bg-orange-600 text-white px-6 sm:px-8 py-2 sm:py-3 rounded-lg font-semibold transition text-sm sm:text-base"
-//                 >
-//                   Close
-//                 </button>
-//               </div>
-//             </div>
-//           </motion.div>
-//         </motion.div>
-//       )}
-
-//       {/* Introduction Modal */}
-//       {showIntroModal && (
-//         <motion.div
-//           initial={{ opacity: 0 }}
-//           animate={{ opacity: 1 }}
-//           exit={{ opacity: 0 }}
-//           className="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4"
-//           onClick={() => setShowIntroModal(false)}
-//         >
-//           <motion.div
-//             initial={{ opacity: 0, scale: 0.9 }}
-//             animate={{ opacity: 1, scale: 1 }}
-//             exit={{ opacity: 0, scale: 0.9 }}
-//             className="bg-white rounded-2xl shadow-2xl max-h-[90vh] overflow-y-auto w-full max-w-4xl"
-//             onClick={(e) => e.stopPropagation()}
-//           >
-//             {/* Modal Header */}
-//             <div className="sticky top-0 bg-gradient-to-r from-slate-900 to-slate-800 text-white p-6 flex justify-between items-center">
-//               <h2 className="text-2xl sm:text-3xl font-bold">Matrix Metals — Introduction</h2>
-//               <button
-//                 onClick={() => setShowIntroModal(false)}
-//                 className="text-2xl hover:text-orange-400 transition flex-shrink-0"
+//             {/* CTA Button */}
+//             {/* <motion.div
+//               variants={fadeInLeft}
+//               transition={{ delay: 0.6 }}
+//               className="pt-6"
+//             >
+//               <motion.button
+//                 whileHover={{ scale: 1.05 }}
+//                 whileTap={{ scale: 0.95 }}
+//                 className="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-xl hover:shadow-xl transition-all duration-300 hover:shadow-blue-500/25"
 //               >
-//                 ×
-//               </button>
-//             </div>
-
-//             {/* Modal Content */}
-//             <div className="p-6 sm:p-8 space-y-6 text-gray-800">
-//               <div>
-//                 <h3 className="text-xl sm:text-2xl font-bold text-orange-600 mb-3">Who We Are</h3>
-//                 <p className="leading-relaxed text-sm sm:text-base">
-//                   Matrix Metals is a next-generation industrial solutions company built on precision engineering, operational excellence, and deep domain expertise in coil processing technologies. We operate at the intersection of advanced machinery, automation intelligence, and high-performance manufacturing—delivering solutions that consistently exceed global benchmarks. With a leadership vision rooted in innovation and uncompromising quality, Matrix Metals has rapidly evolved into one of India's most trusted engineering partners.
-//                 </p>
-//               </div>
-
-//               <div>
-//                 <h3 className="text-xl sm:text-2xl font-bold text-orange-600 mb-3">What We Deliver</h3>
-//                 <p className="leading-relaxed text-sm sm:text-base">
-//                   Our capabilities span across coil-to-coil processing lines, slitting, cut-to-length systems, polishing lines, lamination technologies, and advanced automation integration. Each project is executed with engineering discipline and a zero-defect philosophy. We combine scientific analysis, real-world manufacturing experience, and rigorous technical documentation to create systems that elevate production efficiency, enhance material yield, and strengthen quality consistency across industries.
-//                 </p>
-//               </div>
-
-//               <div>
-//                 <h3 className="text-xl sm:text-2xl font-bold text-orange-600 mb-3">Our Engineering Edge</h3>
-//                 <p className="leading-relaxed text-sm sm:text-base">
-//                   What distinguishes Matrix Metals is our ability to translate complex industrial challenges into clear, executable, and future-proof solutions. Our team brings global-level expertise in metallurgy, machine design, automation control, and process diagnostics—allowing us to solve problems proactively rather than reactively. Every recommendation we provide is grounded in data, field experience, and a deep understanding of how industrial ecosystems operate at scale.
-//                 </p>
-//               </div>
-
-//               <div>
-//                 <h3 className="text-xl sm:text-2xl font-bold text-orange-600 mb-3">Our Commitment to Clients</h3>
-//                 <p className="leading-relaxed text-sm sm:text-base">
-//                   We work as long-term partners, not vendors. Every Matrix Metals engagement is driven by transparency, technical accuracy, and an unwavering commitment to safeguarding client interests. Our consultative approach ensures that each customer receives tailored engineering solutions aligned with their production goals, financial targets, and future expansion plans. We treat every project as a mission to deliver measurable improvement and operational transformation.
-//                 </p>
-//               </div>
-
-//               <div>
-//                 <h3 className="text-xl sm:text-2xl font-bold text-orange-600 mb-3">Our Vision for the Future</h3>
-//                 <p className="leading-relaxed text-sm sm:text-base">
-//                   Matrix Metals is shaping the next era of industrial advancement—where intelligent automation, sustainable manufacturing, and precision engineering merge to create globally competitive facilities. Our vision is to empower manufacturers with world-class technology, high-performing processes, and long-term reliability. As we continue to expand our capabilities and partnerships, Matrix Metals remains dedicated to setting new standards for engineering excellence and industry leadership.
-//                 </p>
-//               </div>
-
-//               <div>
-//                 <h3 className="text-xl sm:text-2xl font-bold text-orange-600 mb-3">Technology-Driven Engineering Culture</h3>
-//                 <p className="leading-relaxed text-sm sm:text-base">
-//                   Matrix Metals operates with a technology-first mindset, constantly integrating advanced automation, data intelligence, and system-level optimization into every project we execute. Our engineering culture is built on precision, evidence-based design, and continuous improvement. This allows us to deliver solutions that not only meet current industrial requirements but also anticipate the challenges of tomorrow—making our clients future-ready in a rapidly evolving global market.
-//                 </p>
-//               </div>
-
-//               <div>
-//                 <h3 className="text-xl sm:text-2xl font-bold text-orange-600 mb-3">Global Vendor Collaboration & Compliance</h3>
-//                 <p className="leading-relaxed text-sm sm:text-base">
-//                   With deep exposure to international machinery ecosystems, Matrix Metals collaborates with industry-leading manufacturers across Asia, Europe, and the United States. Our ability to evaluate, specify, and integrate global-standard systems gives our clients access to world-class technologies with complete transparency and compliance. Whether it is technical audits, vendor selection, quality validation, or cross-border project coordination, Matrix Metals ensures every detail is handled with professional rigor.
-//                 </p>
-//               </div>
-
-//               <div>
-//                 <h3 className="text-xl sm:text-2xl font-bold text-orange-600 mb-3">Strategic Project Management Excellence</h3>
-//                 <p className="leading-relaxed text-sm sm:text-base">
-//                   Every Matrix Metals project is executed through a structured and disciplined project management framework. From technical feasibility and engineering documentation to installation oversight and performance validation, we follow a process-driven approach that minimizes risk and maximizes operational output. Our planning precision, timeline adherence, and strong communication standards make us a preferred execution partner for high-value industrial investments.
-//                 </p>
-//               </div>
-
-//               <div>
-//                 <h3 className="text-xl sm:text-2xl font-bold text-orange-600 mb-3">Empowering Industries Across Sectors</h3>
-//                 <p className="leading-relaxed text-sm sm:text-base">
-//                   Matrix Metals empowers manufacturers across a wide spectrum—stainless steel, aluminum, aerospace, defense, automotive, consumer durables, and advanced sheet metal applications. Our cross-industry exposure gives us the ability to design smarter lines, optimize complex workflows, and introduce solutions that deliver significant value in diverse operational environments. We understand that every industry operates with unique demands, and Matrix Metals is equipped to meet them with agility and expertise.
-//                 </p>
-//               </div>
-
-//               <div>
-//                 <h3 className="text-xl sm:text-2xl font-bold text-orange-600 mb-3">A Brand Built on Integrity & Performance</h3>
-//                 <p className="leading-relaxed text-sm sm:text-base">
-//                   Above all, Matrix Metals is a brand defined by integrity, precision, and performance. Our commitment to truth, accuracy, and engineering honesty is reflected in every interaction, every document, and every project milestone. Clients trust us because we deliver what we promise, defend their interests, and stand behind the long-term success of every installation. This commitment forms the foundation of our reputation and the reason behind our growing presence in India's high-performance manufacturing landscape.
-//                 </p>
-//               </div>
-
-//               {/* Close Button */}
-//               <div className="mt-8 flex justify-center pt-4 border-t">
-//                 <button
-//                   onClick={() => setShowIntroModal(false)}
-//                   className="bg-orange-500 hover:bg-orange-600 text-white px-6 sm:px-8 py-2 sm:py-3 rounded-lg font-semibold transition text-sm sm:text-base"
-//                 >
-//                   Close
-//                 </button>
-//               </div>
-//             </div>
+//                 Explore Our Process
+//                 <span className="ml-2">→</span>
+//               </motion.button>
+//             </motion.div> */}
 //           </motion.div>
+
+//           {/* Right Image Section */}
+//           <motion.div
+//             ref={imageRef}
+//             initial="hidden"
+//             animate={imageInView ? "visible" : "hidden"}
+//             variants={fadeInRight}
+//             transition={{ duration: 0.8, type: "spring" }}
+//             className="relative"
+//           >
+//             <div className="relative group">
+//               {/* Main Image Container */}
+//               <motion.div
+//                 animate={floatingAnimation}
+//                 className="absolute -inset-4 bg-linear-to-r from-blue-400 to-purple-400 rounded-3xl opacity-20 blur-xl group-hover:opacity-30 transition-opacity duration-300"
+//               />
+              
+//               <motion.div
+//                 whileHover={{ scale: 1.02 }}
+//                 transition={{ duration: 0.5, type: "spring" }}
+//                 className="relative overflow-hidden rounded-2xl shadow-2xl border-8 border-white"
+//               >
+//                 <motion.img
+//                   initial={{ scale: 1.1, rotate: 1 }}
+//                   animate={imageInView ? { scale: 1, rotate: 0 } : { scale: 1.1, rotate: 1 }}
+//                   transition={{ duration: 1, ease: "easeOut" }}
+//                   src="/Images/aluminium-sector.jpg"
+//                   alt="Minox Metal Facility"
+//                   className="w-full h-[500px] object-cover group-hover:scale-105 transition-transform duration-700"
+//                 />
+                
+//                 {/* Image Overlay Gradient */}
+//                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+//               </motion.div>
+
+//               {/* Floating Cards */}
+//               <motion.div
+//                 initial={{ opacity: 0, x: 20 }}
+//                 animate={imageInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 20 }}
+//                 transition={{ delay: 0.3, duration: 0.6 }}
+//                 className="absolute -bottom-6 -left-6 bg-white rounded-xl shadow-2xl p-6 border border-gray-100 max-w-xs"
+//               >
+//                 <div className="flex items-center gap-3 mb-3">
+//                   <div className="w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center">
+//                     <Users className="w-6 h-6 text-blue-600" />
+//                   </div>
+//                   <div>
+//                     <div className="text-2xl font-bold text-gray-900">150+</div>
+//                     <div className="text-sm text-gray-600">Dedicated Team</div>
+//                   </div>
+//                 </div>
+//                 <p className="text-sm text-gray-700">Experts in stainless steel processing and innovation</p>
+//               </motion.div>
+
+//               <motion.div
+//                 initial={{ opacity: 0, x: -20 }}
+//                 animate={imageInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
+//                 transition={{ delay: 0.5, duration: 0.6 }}
+//                 className="absolute -top-6 -right-6 bg-gradient-to-r from-orange-600 to-purple-600 rounded-xl shadow-2xl p-6 max-w-xs"
+//               >
+//                 <div className="text-white">
+//                   <div className="text-sm opacity-90 mb-2">CERTIFIED QUALITY</div>
+//                   <h3 className="text-xl font-bold mb-2">ISO 9001:2015</h3>
+//                   <p className="text-sm opacity-90">International quality standards compliance</p>
+//                 </div>
+//               </motion.div>
+//             </div>
+
+//             {/* Image Caption */}
+//             <motion.div
+//               initial={{ opacity: 0, y: 20 }}
+//               animate={imageInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+//               transition={{ delay: 0.7, duration: 0.6 }}
+//               className="mt-12 pl-8 relative"
+//             >
+//               <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-blue-500 to-purple-500 rounded-full"></div>
+//               <div>
+//                 <div className="text-sm text-gray-500 uppercase tracking-wider font-medium mb-2">
+//                   INDUSTRY LEADERS
+//                 </div>
+//                 <h3 className="text-2xl font-bold text-gray-900">
+//                   Precision Engineering & 
+//                   <span className="text-blue-600"> Innovative Solutions</span>
+//                 </h3>
+//                 <p className="text-gray-600 mt-2">
+//                   Our Bengaluru facility combines advanced technology with decades of expertise
+//                 </p>
+//               </div>
+//             </motion.div>
+//           </motion.div>
+//         </div>
+
+//         {/* Bottom CTA */}
+//         <motion.div
+//           initial={{ opacity: 0, y: 30 }}
+//           whileInView={{ opacity: 1, y: 0 }}
+//           transition={{ duration: 0.6, delay: 0.2 }}
+//           viewport={{ once: true }}
+//           className="mt-24 pt-12 border-t border-gray-100"
+//         >
+//           <div className="text-center max-w-3xl mx-auto">
+//             <motion.div
+//               initial={{ scale: 0 }}
+//               whileInView={{ scale: 1 }}
+//               transition={{ type: "spring", delay: 0.3 }}
+//               className="w-16 h-16 bg-gradient-to-r from-orange-500 to-purple-500 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg"
+//             >
+//               <Shield className="w-8 h-8 text-white" />
+//             </motion.div>
+//             <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
+//               Quality & Innovation Since 1959
+//             </h3>
+//             <p className="text-lg text-gray-600 mb-8">
+//               Combining six decades of craftsmanship with cutting-edge technology to deliver exceptional stainless steel solutions worldwide.
+//             </p>
+//             {/* <div className="flex flex-wrap gap-4 justify-center">
+//               <motion.button
+//                 whileHover={{ scale: 1.05 }}
+//                 whileTap={{ scale: 0.95 }}
+//                 className="px-8 py-3 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-semibold rounded-xl hover:shadow-lg transition-all duration-300"
+//               >
+//                 View Our Products
+//               </motion.button>
+//               <motion.button
+//                 whileHover={{ scale: 1.05 }}
+//                 whileTap={{ scale: 0.95 }}
+//                 className="px-8 py-3 bg-white text-gray-700 font-semibold rounded-xl border border-gray-200 hover:border-gray-300 hover:shadow-lg transition-all duration-300"
+//               >
+//                 Contact Our Team
+//               </motion.button>
+//             </div> */}
+//           </div>
 //         </motion.div>
-//       )}
+//       </div>
 //     </div>
 //   );
 // }
 
 
+
+
+
+
+
+// import React from "react";
+// import { motion } from "framer-motion";
+// import { useInView } from "react-intersection-observer";
+// import { Settings, Ruler, Activity, ShieldCheck, Cpu, HardHat } from "lucide-react";
+
+// export default function AboutUs() {
+//   const [titleRef, titleInView] = useInView({ triggerOnce: true, threshold: 0.1 });
+//   const [contentRef, contentInView] = useInView({ triggerOnce: true, threshold: 0.1 });
+//   const [imageRef, imageInView] = useInView({ triggerOnce: true, threshold: 0.1 });
+
+//   // Industrial Animation Variants
+//   const containerVariants = {
+//     hidden: { opacity: 0 },
+//     visible: {
+//       opacity: 1,
+//       transition: { staggerChildren: 0.15, delayChildren: 0.3 }
+//     }
+//   };
+
+//   const mechanicalSlide = {
+//     hidden: { opacity: 0, x: -50 },
+//     visible: { 
+//       opacity: 1, 
+//       x: 0,
+//       transition: { type: "spring", stiffness: 100, damping: 20 }
+//     }
+//   };
+
+//   const revealClip = {
+//     hidden: { clipPath: "inset(0 100% 0 0)" },
+//     visible: { 
+//       clipPath: "inset(0 0% 0 0)",
+//       transition: { duration: 1, ease: "easeInOut" }
+//     }
+//   };
+
+//   return (
+//     <div className="w-full bg-slate-50 py-24 px-4 md:px-8 overflow-hidden relative">
+//       {/* Decorative Progress Line */}
+//       <motion.div 
+//         initial={{ scaleX: 0 }}
+//         animate={{ scaleX: 1 }}
+//         transition={{ duration: 1.5, ease: "circOut" }}
+//         className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-100 via-blue-600 to-blue-100 origin-left"
+//       />
+      
+//       {/* Title Section */}
+//       <motion.div
+//         ref={titleRef}
+//         initial="hidden"
+//         animate={titleInView ? "visible" : "hidden"}
+//         variants={containerVariants}
+//         className="max-w-7xl mx-auto mb-20 text-center"
+//       >
+//         <motion.span variants={mechanicalSlide} className="inline-block px-4 py-1 border border-blue-200 bg-blue-50 text-blue-700 text-xs font-bold tracking-widest uppercase rounded mb-4">
+//           Corporate Profile
+//         </motion.span>
+//         <motion.h1 variants={revealClip} className="text-4xl md:text-6xl font-black text-slate-900 mb-6 tracking-tighter">
+//           MATRIX <span className="text-blue-600">METALS</span> LLP
+//         </motion.h1>
+//         <motion.p variants={mechanicalSlide} className="text-lg md:text-xl text-slate-600 font-medium max-w-3xl mx-auto">
+//           Engineering Discipline. Industrial Precision. Enduring Reliability.
+//         </motion.p>
+//       </motion.div>
+
+//       <div className="max-w-7xl mx-auto">
+//         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+          
+//           {/* Left Content */}
+//           <motion.div
+//             ref={contentRef}
+//             initial="hidden"
+//             animate={contentInView ? "visible" : "hidden"}
+//             variants={containerVariants}
+//             className="space-y-8"
+//           >
+//             <motion.div variants={mechanicalSlide} className="prose prose-slate lg:prose-lg">
+//               <p className="text-slate-700 leading-relaxed">
+//                 Matrix Metals LLP is a stainless steel processing enterprise headquartered in 
+//                 <span className="font-semibold text-slate-900"> Bengaluru, India</span>, operating from the Peenya Industrial district under the 
+//                 <span className="text-blue-600 font-bold"> MoOWR framework</span>.
+//               </p>
+//             </motion.div>
+
+//             {/* Distinction Quote with Pulse Animation */}
+//             <motion.div 
+//               variants={mechanicalSlide}
+//               className="bg-slate-900 text-white p-8 rounded-lg shadow-xl relative overflow-hidden group"
+//             >
+//               <motion.div 
+//                 animate={{ rotate: 360 }}
+//                 transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+//                 className="absolute -top-10 -right-10 opacity-5 text-white"
+//               >
+//                 <Settings size={200} />
+//               </motion.div>
+//               <h3 className="text-blue-400 font-bold uppercase tracking-widest text-sm mb-3">Our Distinction</h3>
+//               <p className="text-lg font-medium leading-snug relative z-10">
+//                 "We do not operate as traders of material. We function as a structured surface and precision engineering facility."
+//               </p>
+//             </motion.div>
+
+//             <motion.div variants={mechanicalSlide} className="space-y-4">
+//               <h3 className="text-2xl font-bold text-slate-900">Our Operational Philosophy</h3>
+//               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+//                 {[
+//                   { icon: <Activity />, title: "Procedural Control" },
+//                   { icon: <Ruler />, title: "Mechanical Accuracy" },
+//                   { icon: <Cpu />, title: "Strategic Partnership" }
+//                 ].map((item, i) => (
+//                   <motion.div 
+//                     key={i}
+//                     whileHover={{ scale: 1.02, backgroundColor: "#eff6ff" }}
+//                     className="flex items-center gap-3 p-4 bg-white border border-slate-200 rounded-md transition-colors"
+//                   >
+//                     <span className="text-blue-600">{item.icon}</span>
+//                     <span className="font-bold text-sm text-slate-800 uppercase tracking-tight">{item.title}</span>
+//                   </motion.div>
+//                 ))}
+//               </div>
+//             </motion.div>
+//           </motion.div>
+
+//           {/* Right Content */}
+//           <motion.div
+//             ref={imageRef}
+//             initial="hidden"
+//             animate={imageInView ? "visible" : "hidden"}
+//             variants={containerVariants}
+//             className="lg:pl-10"
+//           >
+//             <div className="relative border-l-4 border-blue-600 pl-8 py-2">
+//               <motion.h2 variants={revealClip} className="text-3xl font-bold text-slate-900 mb-6">Our Foundation</motion.h2>
+//               <motion.p variants={mechanicalSlide} className="text-slate-600 text-lg mb-8 leading-relaxed">
+//                 Established with a clear industrial objective: to raise the standard of stainless steel processing through engineering discipline and process accountability.
+//               </motion.p>
+              
+//               <div className="space-y-6">
+//                 {[
+//                   { icon: <ShieldCheck />, title: "System-Driven Quality", text: "We believe that precision is not achieved by inspection — it is achieved by system design." },
+//                   { icon: <HardHat />, title: "Technical Governance", text: "Governed by calibrated parameters and repeatable methodology." }
+//                 ].map((item, i) => (
+//                   <motion.div variants={mechanicalSlide} key={i} className="flex gap-4">
+//                     <div className="mt-1 flex-shrink-0 w-10 h-10 bg-slate-100 rounded flex items-center justify-center text-blue-600">
+//                       {item.icon}
+//                     </div>
+//                     <div>
+//                       <h4 className="font-bold text-slate-900 uppercase text-sm tracking-wide">{item.title}</h4>
+//                       <p className="text-slate-600 text-sm">{item.text}</p>
+//                     </div>
+//                   </motion.div>
+//                 ))}
+//               </div>
+
+//               {/* Technical Spec Card with "Scanning" Animation */}
+//               <motion.div 
+//                 variants={mechanicalSlide}
+//                 className="mt-12 bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm relative"
+//               >
+//                 <div className="bg-slate-50 px-6 py-3 border-b border-slate-200 flex justify-between items-center">
+//                   <span className="text-xs font-black text-slate-400 uppercase tracking-widest">Process Methodology</span>
+//                   <div className="flex gap-1">
+//                     <motion.div animate={{ opacity: [1, 0, 1] }} transition={{ repeat: Infinity, duration: 1 }} className="w-2 h-2 rounded-full bg-blue-500" />
+//                     <div className="w-2 h-2 rounded-full bg-slate-300" />
+//                   </div>
+//                 </div>
+//                 <div className="p-6 relative overflow-hidden">
+//                    {/* Scanning line effect */}
+//                    <motion.div 
+//                      animate={{ y: [0, 120, 0] }}
+//                      transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+//                      className="absolute inset-0 w-full h-1 bg-blue-500/10 z-0 pointer-events-none"
+//                    />
+                   
+//                    <p className="text-sm font-mono text-slate-500 mb-4 font-bold tracking-tight">
+//                     CALIBRATED PARAMETERS
+//                    </p>
+//                    <div className="grid grid-cols-2 gap-y-3 relative z-10">
+//                       {["Slitting Precision", "Surface Integrity", "Flatness Correction", "Burr Minimisation"].map((text, i) => (
+//                         <motion.div 
+//                           key={i}
+//                           initial={{ opacity: 0 }}
+//                           animate={imageInView ? { opacity: 1 } : {}}
+//                           transition={{ delay: 1 + (i * 0.2) }}
+//                           className="text-xs font-bold text-slate-800 flex items-center gap-2"
+//                         >
+//                           <div className="w-1 h-1 bg-blue-500" /> {text}
+//                         </motion.div>
+//                       ))}
+//                    </div>
+//                 </div>
+//               </motion.div>
+//             </div>
+//           </motion.div>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 import React from "react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { Factory, Target, Award, Users, Shield, Globe } from "lucide-react";
+import { 
+  Settings, Ruler, Activity, ShieldCheck, 
+  Cpu, HardHat, Factory, Leaf, Zap, Award 
+} from "lucide-react";
 
 export default function AboutUs() {
-  const [titleRef, titleInView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  });
+  const [titleRef, titleInView] = useInView({ triggerOnce: true, threshold: 0.1 });
+  const [contentRef, contentInView] = useInView({ triggerOnce: true, threshold: 0.1 });
+  const [imageRef, imageInView] = useInView({ triggerOnce: true, threshold: 0.1 });
+  const [advRef, advInView] = useInView({ triggerOnce: true, threshold: 0.1 });
 
-  const [contentRef, contentInView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  });
-
-  const [imageRef, imageInView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  });
-
-  // Animation variants
-  const fadeInUp = {
-    hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0 },
-  };
-
-  const staggerContainer = {
+  // Industrial Animation Variants
+  const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: {
-        staggerChildren: 0.15,
-        delayChildren: 0.2,
-      },
-    },
-  };
-
-  const fadeInLeft = {
-    hidden: { opacity: 0, x: -30 },
-    visible: { opacity: 1, x: 0 },
-  };
-
-  const fadeInRight = {
-    hidden: { opacity: 0, x: 30 },
-    visible: { opacity: 1, x: 0 },
-  };
-
-  const scaleIn = {
-    hidden: { opacity: 0, scale: 0.9 },
-    visible: { opacity: 1, scale: 1 },
-  };
-
-  const floatingAnimation = {
-    hidden: { y: 0 },
-    visible: {
-      y: [-10, 10, -10],
-      transition: {
-        duration: 6,
-        repeat: Infinity,
-        ease: "easeInOut"
-      }
+      transition: { staggerChildren: 0.15, delayChildren: 0.3 }
     }
   };
 
-  return (
-    <div className="w-full bg-gradient-to-b from-gray-50 to-white py-20 px-4 md:px-8 overflow-hidden relative">
-      {/* Decorative Background Elements */}
-      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500"></div>
-      <div className="absolute top-20 left-10 w-40 h-40 bg-blue-100 rounded-full mix-blend-multiply filter blur-3xl opacity-30"></div>
-      <div className="absolute bottom-20 right-10 w-60 h-60 bg-purple-100 rounded-full mix-blend-multiply filter blur-3xl opacity-20"></div>
+  const mechanicalSlide = {
+    hidden: { opacity: 0, x: -50 },
+    visible: { 
+      opacity: 1, 
+      x: 0,
+      transition: { type: "spring", stiffness: 100, damping: 20 }
+    }
+  };
 
-      {/* Title */}
+  const revealClip = {
+    hidden: { clipPath: "inset(0 100% 0 0)" },
+    visible: { 
+      clipPath: "inset(0 0% 0 0)",
+      transition: { duration: 1, ease: "easeInOut" }
+    }
+  };
+
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
+  };
+
+  return (
+    <div className="w-full bg-slate-50 py-24 px-4 md:px-8 overflow-hidden relative">
+      {/* Decorative Progress Line */}
+      <motion.div 
+        initial={{ scaleX: 0 }}
+        animate={{ scaleX: 1 }}
+        transition={{ duration: 1.5, ease: "circOut" }}
+        className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-100 via-blue-600 to-blue-100 origin-left"
+      />
+      
+      {/* Title Section */}
       <motion.div
         ref={titleRef}
         initial="hidden"
         animate={titleInView ? "visible" : "hidden"}
-        variants={fadeInUp}
-        transition={{ duration: 0.8, type: "spring" }}
-        className="max-w-6xl mx-auto mb-16 relative"
+        variants={containerVariants}
+        className="max-w-7xl mx-auto mb-20 text-center"
       >
-        <div className="text-center">
-          <span className="inline-block px-4 py-1.5 bg-blue-50 text-blue-600 rounded-full text-sm font-medium mb-4 border border-blue-100">
-            Our Story
-          </span>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 tracking-tight">
-             <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Matrix Metals</span>
-          </h1>
-          <motion.div
-            initial={{ width: 0 }}
-            animate={titleInView ? { width: 100 } : { width: 0 }}
-            transition={{ duration: 1, delay: 0.5 }}
-            className="h-1.5 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto rounded-full w-24"
-          />
-        </div>
+        <motion.span variants={mechanicalSlide} className="inline-block px-4 py-1 border border-blue-200 bg-blue-50 text-blue-700 text-xs font-bold tracking-widest uppercase rounded mb-4">
+          Corporate Profile
+        </motion.span>
+        <motion.h1 variants={revealClip} className="text-4xl md:text-6xl font-black text-slate-900 mb-6 tracking-tighter">
+          MATRIX <span className="text-blue-600">METALS</span> LLP
+        </motion.h1>
+        <motion.p variants={mechanicalSlide} className="text-lg md:text-xl text-slate-600 font-medium max-w-3xl mx-auto">
+          Engineering Discipline. Industrial Precision. Enduring Reliability.
+        </motion.p>
       </motion.div>
 
-      {/* Main Content */}
-      <div className="max-w-7xl mx-auto relative">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+      <div className="max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start mb-24">
+          
           {/* Left Content */}
           <motion.div
             ref={contentRef}
             initial="hidden"
             animate={contentInView ? "visible" : "hidden"}
-            variants={staggerContainer}
-            className="space-y-10"
+            variants={containerVariants}
+            className="space-y-8"
           >
+            <motion.div variants={mechanicalSlide} className="prose prose-slate lg:prose-lg">
+              <p className="text-slate-700 leading-relaxed">
+                Matrix Metals LLP is a stainless steel processing enterprise headquartered in 
+                <span className="font-semibold text-slate-900"> Bengaluru, India</span>, operating from the Peenya Industrial district under the 
+                <span className="text-blue-600 font-bold"> MoOWR framework</span>.
+              </p>
+            </motion.div>
+
+            {/* Distinction Quote */}
             <motion.div 
-              variants={fadeInLeft}
-              className="inline-flex items-center gap-3 px-4 py-2 bg-white rounded-full shadow-sm border border-gray-100"
+              variants={mechanicalSlide}
+              className="bg-slate-900 text-white p-8 rounded-lg shadow-xl relative overflow-hidden group"
             >
-              <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
-              <span className="text-sm font-medium text-gray-600">SINCE 1959</span>
-            </motion.div>
-
-            <motion.div variants={fadeInLeft}>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6 leading-tight">
-                India's Premier Stainless Steel 
-                <span className="text-blue-600"> Surface Finishes</span> Expert
-              </h2>
-            </motion.div>
-
-            <motion.div 
-              variants={fadeInLeft} 
-              transition={{ delay: 0.1 }}
-              className="space-y-6"
-            >
-              <div className="flex items-start gap-4">
-                <div className="mt-1.5 p-2 bg-blue-50 rounded-lg">
-                  <Target className="w-5 h-5 text-blue-600" />
-                </div>
-                <p className="text-gray-700 leading-relaxed text-lg">
-                  <span className="font-medium text-gray-900">Minox Metal Private Limited</span>, based in Bengaluru, specializes in processing stainless steel flat products through cutting, slitting, and polishing to achieve various finishes including No.4, Hairline, Scotch Brite, No.8, Bead Blast, Vibration, Etched, and PVD Coated.
-                </p>
-              </div>
-
-              <div className="flex items-start gap-4">
-                <div className="mt-1.5 p-2 bg-purple-50 rounded-lg">
-                  <Award className="w-5 h-5 text-purple-600" />
-                </div>
-                <p className="text-gray-700 leading-relaxed text-lg">
-                  As one of the world's premier stainless steel service centers with a legacy since 1959, we excel in Processing, Import, Export, and Trading—combining traditional craftsmanship with modern innovation.
-                </p>
-              </div>
-
-              <div className="flex items-start gap-4">
-                <div className="mt-1.5 p-2 bg-green-50 rounded-lg">
-                  <Globe className="w-5 h-5 text-green-600" />
-                </div>
-                <p className="text-gray-700 leading-relaxed text-lg">
-                  Serving diverse sectors from architecture and construction to automotive and aviation, we deliver stainless steel solutions that power innovation across industries.
-                </p>
-              </div>
-            </motion.div>
-
-            {/* Stats Grid */}
-            <motion.div
-              variants={scaleIn}
-              transition={{ delay: 0.4 }}
-              className="grid grid-cols-2 md:grid-cols-4 gap-6 pt-8 border-t border-gray-100"
-            >
-              {[
-                { icon: <Factory />, value: "1959", label: "Established", color: "bg-blue-50 text-blue-600" },
-                { icon: <Award />, value: "60+", label: "Years Experience", color: "bg-purple-50 text-purple-600" },
-                { icon: <Shield />, value: "100%", label: "Quality Focus", color: "bg-green-50 text-green-600" },
-                { icon: <Globe />, value: "Global", label: "Reach", color: "bg-orange-50 text-orange-600" }
-              ].map((stat, index) => (
-                <motion.div
-                  key={index}
-                  whileHover={{ y: -8, scale: 1.05 }}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={contentInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                  transition={{ delay: 0.5 + index * 0.1 }}
-                  className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 group"
-                >
-                  <div className={`w-14 h-14 ${stat.color} rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}>
-                    <div className="w-7 h-7">
-                      {stat.icon}
-                    </div>
-                  </div>
-                  <div className="text-3xl font-bold text-gray-900 mb-1">{stat.value}</div>
-                  <div className="text-sm font-medium text-gray-600">{stat.label}</div>
-                </motion.div>
-              ))}
-            </motion.div>
-
-            {/* CTA Button */}
-            {/* <motion.div
-              variants={fadeInLeft}
-              transition={{ delay: 0.6 }}
-              className="pt-6"
-            >
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-xl hover:shadow-xl transition-all duration-300 hover:shadow-blue-500/25"
+              <motion.div 
+                animate={{ rotate: 360 }}
+                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                className="absolute -top-10 -right-10 opacity-5 text-white"
               >
-                Explore Our Process
-                <span className="ml-2">→</span>
-              </motion.button>
-            </motion.div> */}
+                <Settings size={200} />
+              </motion.div>
+              <h3 className="text-blue-400 font-bold uppercase tracking-widest text-sm mb-3">Our Distinction</h3>
+              <p className="text-lg font-medium leading-snug relative z-10">
+                "We do not operate as traders of material. We function as a structured surface and precision engineering facility."
+              </p>
+            </motion.div>
+
+            <motion.div variants={mechanicalSlide} className="space-y-4">
+              <h3 className="text-2xl font-bold text-slate-900">Our Operational Philosophy</h3>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                {[
+                  { icon: <Activity />, title: "Procedural Control" },
+                  { icon: <Ruler />, title: "Mechanical Accuracy" },
+                  { icon: <Cpu />, title: "Strategic Partnership" }
+                ].map((item, i) => (
+                  <motion.div 
+                    key={i}
+                    whileHover={{ scale: 1.02, backgroundColor: "#eff6ff" }}
+                    className="flex items-center gap-3 p-4 bg-white border border-slate-200 rounded-md transition-colors"
+                  >
+                    <span className="text-blue-600">{item.icon}</span>
+                    <span className="font-bold text-sm text-slate-800 uppercase tracking-tight">{item.title}</span>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
           </motion.div>
 
-          {/* Right Image Section */}
+          {/* Right Content */}
           <motion.div
             ref={imageRef}
             initial="hidden"
             animate={imageInView ? "visible" : "hidden"}
-            variants={fadeInRight}
-            transition={{ duration: 0.8, type: "spring" }}
-            className="relative"
+            variants={containerVariants}
+            className="lg:pl-10"
           >
-            <div className="relative group">
-              {/* Main Image Container */}
-              <motion.div
-                animate={floatingAnimation}
-                className="absolute -inset-4 bg-gradient-to-r from-blue-400 to-purple-400 rounded-3xl opacity-20 blur-xl group-hover:opacity-30 transition-opacity duration-300"
-              />
+            <div className="relative border-l-4 border-blue-600 pl-8 py-2">
+              <motion.h2 variants={revealClip} className="text-3xl font-bold text-slate-900 mb-6">Our Foundation</motion.h2>
+              <motion.p variants={mechanicalSlide} className="text-slate-600 text-lg mb-8 leading-relaxed">
+                Established with a clear industrial objective: to raise the standard of stainless steel processing through engineering discipline and process accountability.
+              </motion.p>
               
-              <motion.div
-                whileHover={{ scale: 1.02 }}
-                transition={{ duration: 0.5, type: "spring" }}
-                className="relative overflow-hidden rounded-2xl shadow-2xl border-8 border-white"
-              >
-                <motion.img
-                  initial={{ scale: 1.1, rotate: 1 }}
-                  animate={imageInView ? { scale: 1, rotate: 0 } : { scale: 1.1, rotate: 1 }}
-                  transition={{ duration: 1, ease: "easeOut" }}
-                  src="/Images/aluminium-sector.jpg"
-                  alt="Minox Metal Facility"
-                  className="w-full h-[500px] object-cover group-hover:scale-105 transition-transform duration-700"
-                />
-                
-                {/* Image Overlay Gradient */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              </motion.div>
-
-              {/* Floating Cards */}
-              <motion.div
-                initial={{ opacity: 0, x: 20 }}
-                animate={imageInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 20 }}
-                transition={{ delay: 0.3, duration: 0.6 }}
-                className="absolute -bottom-6 -left-6 bg-white rounded-xl shadow-2xl p-6 border border-gray-100 max-w-xs"
-              >
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center">
-                    <Users className="w-6 h-6 text-blue-600" />
-                  </div>
-                  <div>
-                    <div className="text-2xl font-bold text-gray-900">150+</div>
-                    <div className="text-sm text-gray-600">Dedicated Team</div>
-                  </div>
-                </div>
-                <p className="text-sm text-gray-700">Experts in stainless steel processing and innovation</p>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                animate={imageInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
-                transition={{ delay: 0.5, duration: 0.6 }}
-                className="absolute -top-6 -right-6 bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl shadow-2xl p-6 max-w-xs"
-              >
-                <div className="text-white">
-                  <div className="text-sm opacity-90 mb-2">CERTIFIED QUALITY</div>
-                  <h3 className="text-xl font-bold mb-2">ISO 9001:2015</h3>
-                  <p className="text-sm opacity-90">International quality standards compliance</p>
-                </div>
-              </motion.div>
-            </div>
-
-            {/* Image Caption */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={imageInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-              transition={{ delay: 0.7, duration: 0.6 }}
-              className="mt-12 pl-8 relative"
-            >
-              <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-blue-500 to-purple-500 rounded-full"></div>
-              <div>
-                <div className="text-sm text-gray-500 uppercase tracking-wider font-medium mb-2">
-                  INDUSTRY LEADERS
-                </div>
-                <h3 className="text-2xl font-bold text-gray-900">
-                  Precision Engineering & 
-                  <span className="text-blue-600"> Innovative Solutions</span>
-                </h3>
-                <p className="text-gray-600 mt-2">
-                  Our Bengaluru facility combines advanced technology with decades of expertise
-                </p>
+              <div className="space-y-6">
+                {[
+                  { icon: <ShieldCheck />, title: "System-Driven Quality", text: "We believe that precision is not achieved by inspection — it is achieved by system design." },
+                  { icon: <HardHat />, title: "Technical Governance", text: "Governed by calibrated parameters and repeatable methodology." }
+                ].map((item, i) => (
+                  <motion.div variants={mechanicalSlide} key={i} className="flex gap-4">
+                    <div className="mt-1 flex-shrink-0 w-10 h-10 bg-slate-100 rounded flex items-center justify-center text-blue-600">
+                      {item.icon}
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-slate-900 uppercase text-sm tracking-wide">{item.title}</h4>
+                      <p className="text-slate-600 text-sm">{item.text}</p>
+                    </div>
+                  </motion.div>
+                ))}
               </div>
-            </motion.div>
+            </div>
           </motion.div>
         </div>
 
-        {/* Bottom CTA */}
+        {/* --- NEW SECTION: Product Advantages & Sustainability --- */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          viewport={{ once: true }}
-          className="mt-24 pt-12 border-t border-gray-100"
+          ref={advRef}
+          initial="hidden"
+          animate={advInView ? "visible" : "hidden"}
+          variants={containerVariants}
+          className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-16 border-t border-slate-200"
         >
-          <div className="text-center max-w-3xl mx-auto">
-            <motion.div
-              initial={{ scale: 0 }}
-              whileInView={{ scale: 1 }}
-              transition={{ type: "spring", delay: 0.3 }}
-              className="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-500 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg"
-            >
-              <Shield className="w-8 h-8 text-white" />
-            </motion.div>
-            <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
-              Quality & Innovation Since 1959
-            </h3>
-            <p className="text-lg text-gray-600 mb-8">
-              Combining six decades of craftsmanship with cutting-edge technology to deliver exceptional stainless steel solutions worldwide.
+          {/* Advantage 1: Engineered Excellence */}
+          <motion.div variants={fadeInUp} className="bg-white p-8 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
+            <div className="w-12 h-12 bg-blue-600 text-white rounded-lg flex items-center justify-center mb-6">
+              <Award size={24} />
+            </div>
+            <h3 className="text-xl font-bold text-slate-900 mb-4 uppercase tracking-tight">Product Advantages</h3>
+            <p className="text-slate-600 text-sm leading-relaxed">
+              Every processed coil and sheet reflects controlled precision and structural stability. Our advantage lies in disciplined execution governed by calibrated systems and measurable parameters for high-demand industrial applications.
             </p>
-            {/* <div className="flex flex-wrap gap-4 justify-center">
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-8 py-3 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-semibold rounded-xl hover:shadow-lg transition-all duration-300"
-              >
-                View Our Products
-              </motion.button>
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-8 py-3 bg-white text-gray-700 font-semibold rounded-xl border border-gray-200 hover:border-gray-300 hover:shadow-lg transition-all duration-300"
-              >
-                Contact Our Team
-              </motion.button>
-            </div> */}
-          </div>
+          </motion.div>
+
+          {/* Advantage 2: Make In India */}
+          <motion.div variants={fadeInUp} className="bg-blue-600 p-8 rounded-2xl text-white shadow-lg relative overflow-hidden group">
+             <motion.div 
+               animate={{ scale: [1, 1.1, 1] }} 
+               transition={{ repeat: Infinity, duration: 4 }}
+               className="absolute -right-4 -bottom-4 opacity-10"
+             >
+               <Factory size={160} />
+             </motion.div>
+            <div className="w-12 h-12 bg-white/20 backdrop-blur-md text-white rounded-lg flex items-center justify-center mb-6">
+              <Zap size={24} />
+            </div>
+            <h3 className="text-xl font-bold mb-4 uppercase tracking-tight">Make In India</h3>
+            <p className="text-blue-50 text-sm leading-relaxed">
+              We strengthen domestic manufacturing by localising precision conversion and surface engineering. We reduce dependency on external processing while ensuring international-grade standards within India’s industrial ecosystem.
+            </p>
+          </motion.div>
+
+          {/* Advantage 3: Sustainability */}
+          <motion.div variants={fadeInUp} className="bg-white p-8 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
+            <div className="w-12 h-12 bg-emerald-600 text-white rounded-lg flex items-center justify-center mb-6">
+              <Leaf size={24} />
+            </div>
+            <h3 className="text-xl font-bold text-slate-900 mb-4 uppercase tracking-tight">Eco-Responsibility</h3>
+            <p className="text-slate-600 text-sm leading-relaxed">
+              Sustainability is embedded in our philosophy. From UV conditioning to scrap minimisation and energy-conscious equipment selection, we maintain technical standards without compromising environmental stewardship.
+            </p>
+          </motion.div>
+        </motion.div>
+
+        {/* Footer Note */}
+        <motion.div 
+          variants={fadeInUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="mt-16 text-center"
+        >
+          <p className="text-slate-400 font-mono text-xs uppercase tracking-[0.3em]">
+            Precision . Contribution . Responsibility
+          </p>
         </motion.div>
       </div>
     </div>
   );
-}
+} 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// import React from "react";
+// import { motion } from "framer-motion";
+// import { useInView } from "react-intersection-observer";
+// import { 
+//   Settings, Ruler, Activity, ShieldCheck, 
+//   Cpu, HardHat, Factory, Leaf, Zap, Award, 
+//   CheckCircle2, Globe
+// } from "lucide-react";
+
+// export default function AboutUs() {
+//   const [titleRef, titleInView] = useInView({ triggerOnce: true, threshold: 0.1 });
+//   const [advRef, advInView] = useInView({ triggerOnce: true, threshold: 0.1 });
+
+//   // Animation Variants
+//   const containerVariants = {
+//     hidden: { opacity: 0 },
+//     visible: {
+//       opacity: 1,
+//       transition: { staggerChildren: 0.2, delayChildren: 0.1 }
+//     }
+//   };
+
+//   const cardSlideUp = {
+//     hidden: { opacity: 0, y: 40, scale: 0.95 },
+//     visible: { 
+//       opacity: 1, 
+//       y: 0, 
+//       scale: 1,
+//       transition: { type: "spring", stiffness: 100, damping: 15 } 
+//     }
+//   };
+
+//   const lineGrow = {
+//     hidden: { width: 0 },
+//     visible: { width: "100%", transition: { duration: 1, ease: "easeInOut" } }
+//   };
+
+//   return (
+//     <div className="w-full bg-slate-50 py-24 px-4 md:px-8 overflow-hidden">
+//       <div className="max-w-7xl mx-auto">
+        
+//         {/* Previous sections would be above this... */}
+
+//         {/* --- DYNAMIC PRODUCT ADVANTAGES SECTION --- */}
+//         <div className="mt-32">
+//           <motion.div
+//             ref={titleRef}
+//             initial="hidden"
+//             animate={titleInView ? "visible" : "hidden"}
+//             className="mb-16"
+//           >
+//             <div className="flex items-center gap-4 mb-4">
+//               <motion.div 
+//                 variants={lineGrow} 
+//                 className="h-px bg-blue-600 hidden md:block" 
+//               />
+//               <span className="text-blue-600 font-black tracking-[0.2em] uppercase text-sm whitespace-nowrap">
+//                 Strategic Value
+//               </span>
+//             </div>
+            
+//             <h2 className="text-4xl md:text-5xl font-black text-slate-900 tracking-tighter mb-6">
+//               OUR <span className="text-blue-600">PRODUCT ADVANTAGES</span>
+//             </h2>
+//             <p className="text-slate-600 max-w-2xl text-lg leading-relaxed">
+//               Matrix Metals LLP delivers stainless steel solutions engineered for performance, 
+//               longevity, and environmental responsibility through disciplined execution.
+//             </p>
+//           </motion.div>
+
+//           <motion.div
+//             ref={advRef}
+//             initial="hidden"
+//             animate={advInView ? "visible" : "hidden"}
+//             variants={containerVariants}
+//             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+//           >
+//             {/* 1. Engineered Performance */}
+//             <motion.div variants={cardSlideUp} className="group bg-white p-8 rounded-xl border border-slate-200 shadow-sm hover:border-blue-500 transition-all duration-300">
+//               <div className="mb-6 inline-flex p-3 rounded-lg bg-slate-100 text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-colors">
+//                 <Settings size={28} />
+//               </div>
+//               <h3 className="text-xl font-bold text-slate-900 mb-4 uppercase tracking-tight">Engineered Precision</h3>
+//               <p className="text-slate-600 text-sm leading-relaxed mb-4">
+//                 Our advantage lies not merely in conversion capability, but in disciplined execution governed by calibrated systems. Every processed coil reflects structural stability and surface integrity.
+//               </p>
+//               <ul className="space-y-2">
+//                 {['Controlled Resource Utilisation', 'High-Demand Applications', 'Technical Certainty'].map((item, i) => (
+//                   <li key={i} className="flex items-center gap-2 text-xs font-bold text-slate-500 uppercase">
+//                     <CheckCircle2 size={14} className="text-blue-500" /> {item}
+//                   </li>
+//                 ))}
+//               </ul>
+//             </motion.div>
+
+//             {/* 2. National Impact (Make In India) */}
+//             <motion.div variants={cardSlideUp} className="group bg-slate-900 p-8 rounded-xl shadow-2xl relative overflow-hidden">
+//               <div className="absolute top-0 right-0 p-4 opacity-10 text-white">
+//                 <Factory size={120} />
+//               </div>
+//               <div className="mb-6 inline-flex p-3 rounded-lg bg-blue-600 text-white">
+//                 <Globe size={28} />
+//               </div>
+//               <h3 className="text-xl font-bold text-white mb-4 uppercase tracking-tight">Make In India</h3>
+//               <p className="text-slate-300 text-sm leading-relaxed">
+//                 As a proud participant in the <span className="text-blue-400 font-bold">Make in India initiative</span>, we localise precision conversion to reduce dependency on external processing while ensuring international-grade standards within the domestic ecosystem.
+//               </p>
+//               <div className="mt-6 pt-6 border-t border-slate-800">
+//                 <span className="text-[10px] font-black tracking-widest text-blue-500 uppercase">National Manufacturing Growth</span>
+//               </div>
+//             </motion.div>
+
+//             {/* 3. Sustainability & Stewardship */}
+//             <motion.div variants={cardSlideUp} className="group bg-white p-8 rounded-xl border border-slate-200 shadow-sm hover:border-emerald-500 transition-all duration-300">
+//               <div className="mb-6 inline-flex p-3 rounded-lg bg-slate-100 text-emerald-600 group-hover:bg-emerald-600 group-hover:text-white transition-colors">
+//                 <Leaf size={28} />
+//               </div>
+//               <h3 className="text-xl font-bold text-slate-900 mb-4 uppercase tracking-tight">Eco-Responsibility</h3>
+//               <p className="text-slate-600 text-sm leading-relaxed">
+//                 Sustainability is embedded within our processing philosophy. We use energy-conscious equipment, efficient water usage in cleaning lines, and controlled chemical management systems.
+//               </p>
+//               <div className="mt-4 flex gap-2">
+//                 <span className="px-2 py-1 bg-emerald-50 text-emerald-700 text-[10px] font-bold rounded border border-emerald-100">SCRAP MINIMISATION</span>
+//                 <span className="px-2 py-1 bg-emerald-50 text-emerald-700 text-[10px] font-bold rounded border border-emerald-100">UV CONDITIONING</span>
+//               </div>
+//             </motion.div>
+//           </motion.div>
+          
+//           {/* Bottom Commitment Summary */}
+//           <motion.div 
+//             initial={{ opacity: 0 }}
+//             whileInView={{ opacity: 1 }}
+//             transition={{ delay: 0.8 }}
+//             className="mt-12 p-6 bg-blue-50 border border-blue-100 rounded-lg text-center"
+//           >
+//             <div className="relative max-w-2xl mx-auto">
+//   {/* Quote icon */}
+//   <span className="absolute -top-4 -left-2 text-5xl text-blue-200 font-serif">“</span>
+
+//   <p className="text-gray-700 font-medium italic text-base md:text-lg leading-relaxed bg-blue-50 p-6 rounded-2xl shadow-sm border border-blue-100">
+//     Matrix Metals LLP stands as a manufacturing partner that delivers stainless steel performance with technical certainty, national contribution, and sustainable industrial responsibility.
+//   </p>
+
+//   <span className="absolute -bottom-6 right-2 text-5xl text-blue-200 font-serif">”</span>
+// </div>
+//           </motion.div>
+//         </div>
+
+//       </div>
+//     </div>
+//   );
+// }

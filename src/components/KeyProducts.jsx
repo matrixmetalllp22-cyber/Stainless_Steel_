@@ -75,23 +75,34 @@
 
 
 
-
-
 import React from "react";
 
 export default function GallerySection() {
-  const images = [
-    { title: "Train", bg: "bg-gray-300" },
-    { title: "Elevator", bg: "bg-gray-400" },
-    { title: "Bean Sculpture", bg: "bg-gray-500" },
-    { title: "Gucci Building", bg: "bg-gray-600" },
-    { title: "Kitchen", bg: "bg-gray-700" },
-    { title: "Rusty Pipes", bg: "bg-gray-800" },
+  // ✅ Only filenames
+  const files = [
+    "application01.jpg",
+    "application02.jpg",
+    "application03.jpg",
+    "application04.jpg",
+    "application05.jpg",
+    "application06.jpg",
+    "application07.jpg",
+    "application08.png",
+    "application09.png",
+    // "application11.jpg",
+    // "application12.webp",
+    // "application13.webp",
+    // "application14.webp",
   ];
+
+  // ✅ Convert to gallery objects
+  const images = files.map((file, index) => ({
+    title: `Application ${index + 1}`,
+    src: `/Images/${file}`,
+  }));
 
   return (
     <section className="py-16 bg-gray-100">
-      {/* Container */}
       <div className="max-w-6xl mx-auto px-6">
         
         {/* Header */}
@@ -99,48 +110,38 @@ export default function GallerySection() {
           GALLERY
         </h2>
 
-        {/* Gallery Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-1">
+        {/* Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
+        {/* <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-1"> */}
           {images.map((item, index) => (
             <div
               key={index}
               className="group relative overflow-hidden aspect-[4/3] cursor-pointer rounded-lg"
             >
-              {/* Background */}
-              <div
-                className={`absolute inset-0 ${item.bg}
+              {/* Image */}
+              <img
+                src={item.src}
+                alt={item.title}
+                loading="lazy"
+                className="absolute inset-0 w-full h-full object-cover
                 transition-all duration-700 ease-out
                 group-hover:scale-110
                 group-hover:rotate-1
-                group-hover:brightness-75`}
-              ></div>
+                group-hover:brightness-75"
+              />
 
-              {/* Dark Overlay */}
-              <div
-                className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent
-                opacity-0 group-hover:opacity-100
-                transition duration-500"
-              ></div>
+              {/* Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition duration-500"></div>
 
               {/* Text */}
-              <div
-                className="absolute inset-0 flex items-center justify-center
-                opacity-0 translate-y-6
-                group-hover:opacity-100
-                group-hover:translate-y-0
-                transition-all duration-500"
-              >
+              <div className="absolute inset-0 flex items-center justify-center opacity-0 translate-y-6 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500">
                 <span className="text-white text-xl font-semibold tracking-wide">
                   {item.title}
                 </span>
               </div>
 
-              {/* Shadow on Hover */}
-              <div
-                className="absolute inset-0
-                group-hover:shadow-2xl
-                transition duration-500"
-              ></div>
+              {/* Shadow */}
+              <div className="absolute inset-0 group-hover:shadow-2xl transition duration-500"></div>
             </div>
           ))}
         </div>
@@ -149,12 +150,8 @@ export default function GallerySection() {
         <div className="flex justify-center mt-12">
           <a
             href="/Applications"
-            className="bg-teal-500 text-gray-900 font-bold
-            px-8 py-3 rounded-full
-            transition-all duration-300
-            hover:bg-teal-600
-            hover:scale-110
-            hover:shadow-xl"
+            className="bg-teal-500 text-gray-900 font-bold px-8 py-3 rounded-full
+            transition-all duration-300 hover:bg-teal-600 hover:scale-110 hover:shadow-xl"
           >
             VIEW ALL &gt;&gt;
           </a>
