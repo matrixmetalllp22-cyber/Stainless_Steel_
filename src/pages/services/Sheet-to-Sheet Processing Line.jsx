@@ -114,9 +114,12 @@ export default function EurosheetS2S1650() {
             <span className="h-[2px] w-12 bg-amber-500" />
             <span className="text-amber-500 font-mono tracking-[0.3em] text-sm uppercase">S2S Processing Line</span>
           </div>
-          <h1 className="text-6xl md:text-9xl font-bold tracking-tighter mb-4">
+          <h1 className="text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-bold tracking-tighter mb-4 break-words">
             EUROSHEET<span className="text-amber-500 font-light italic">S2S</span>
-          </h1>
+            </h1>
+          {/* <h1 className="text-6xl md:text-9xl font-bold tracking-tighter mb-4">
+            EUROSHEET<span className="text-amber-500 font-light italic">S2S</span>
+          </h1> */}
           <p className="text-stone-400 text-xl md:text-2xl max-w-2xl font-light leading-relaxed mb-12">
             Engineered for high-value sheet fabrication, the 1650 series delivers 
             unmatched surface protection and dimensional consistency across 0.25 – 3.0 mm gauges.

@@ -253,8 +253,6 @@
 
 
 
-
-
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { 
@@ -268,9 +266,9 @@ import {
   ShieldCheck, 
   Factory, 
   HardHat,
-  ArrowRight,
   X,
-  ChevronRight
+  ChevronRight,
+  Menu
 } from "lucide-react";
 
 export default function EurosplitServoSlit1850() {
@@ -287,67 +285,64 @@ export default function EurosplitServoSlit1850() {
   const features = [
     {
       title: "Wide-Width Stability",
-      icon: <MoveHorizontal className="w-6 h-6" />,
+      icon: <MoveHorizontal className="w-5 h-5 md:w-6 md:h-6" />,
       desc: "Designed for wide coil processing with structural rigidity. The slitting head maintains alignment across large widths, while reinforced frame construction prevents deflection to ensure consistent strip geometry.",
     },
     {
       title: "Heavy-Duty Decoiling",
-      icon: <Factory className="w-6 h-6" />,
-      desc: "High-capacity decoilers manage wide and heavy coils. Torque-controlled drives ensure stable strip payoff and manage coil inertia smoothly even during rapid acceleration.",
+      icon: <Factory className="w-5 h-5 md:w-6 md:h-6" />,
+      desc: "High-capacity decoilers manage wide and heavy coils. Torque-controlled drives ensure stable strip payoff and manage coil inertia smoothly.",
     },
     {
       title: "Precision Knife Alignment",
-      icon: <Dna className="w-6 h-6" />,
-      desc: "Digital knife positioning ensures dimensional accuracy. Precision spacers maintain exact strip widths with uniform load distribution to enhance knife life and ensure consistent tolerances.",
+      icon: <Dna className="w-5 h-5 md:w-6 md:h-6" />,
+      desc: "Digital knife positioning ensures dimensional accuracy. Precision spacers maintain exact strip widths with uniform load distribution.",
     },
     {
       title: "Loop & Tension Engineering",
-      icon: <Repeat className="w-6 h-6" />,
-      desc: "Accumulator loop systems stabilise strip tension. Dynamic monitoring prevents strip distortion and absorbs load fluctuations efficiently to preserve strip flatness.",
+      icon: <Repeat className="w-5 h-5 md:w-6 md:h-6" />,
+      desc: "Accumulator loop systems stabilise strip tension. Dynamic monitoring prevents strip distortion and absorbs load fluctuations efficiently.",
     },
     {
-      title: "Recoiling & Coil Integrity",
-      icon: <Layers className="w-6 h-6" />,
-      desc: "Recoiler systems maintain tight coil winding with torque feedback to prevent telescoping. High strip alignment ensures uniform coil build and improves handling safety.",
+      title: "Recoiling Integrity",
+      icon: <Layers className="w-5 h-5 md:w-6 md:h-6" />,
+      desc: "Recoiler systems maintain tight coil winding with torque feedback to prevent telescoping and ensure uniform coil build.",
     },
     {
-      title: "Edge & Scrap Management",
-      icon: <Trash2 className="w-6 h-6" />,
-      desc: "Edge trimming modules remove damaged coil edges while scrap winding systems ensure clean operation, improving downstream processing and waste efficiency.",
+      title: "Scrap Management",
+      icon: <Trash2 className="w-5 h-5 md:w-6 md:h-6" />,
+      desc: "Edge trimming modules remove damaged coil edges while scrap winding systems ensure clean operation and waste efficiency.",
     },
     {
       title: "Automation Efficiency",
-      icon: <MonitorDot className="w-6 h-6" />,
-      desc: "Automated setups and digital presets reduce downtime and improve repeatability. Rapid tool changes enhance production flexibility and overall operational productivity.",
+      icon: <MonitorDot className="w-5 h-5 md:w-6 md:h-6" />,
+      desc: "Automated setups and digital presets reduce downtime. Rapid tool changes enhance production flexibility and productivity.",
     },
     {
       title: "Surface Preservation",
-      icon: <ShieldCheck className="w-6 h-6" />,
-      desc: "Anti-abrasion rollers and guided alignment systems protect coated surfaces from scratches, ensuring material aesthetics and surface finish integrity remain intact.",
+      icon: <ShieldCheck className="w-5 h-5 md:w-6 md:h-6" />,
+      desc: "Anti-abrasion rollers protect coated surfaces from scratches, ensuring material aesthetics remain intact.",
     },
     {
       title: "Industrial Processing",
-      icon: <BarChart3 className="w-6 h-6" />,
-      desc: "Ideal for service centres and OEM supply chains. Supports automotive, appliance, and construction sectors across multiple material grades for high-volume production.",
+      icon: <BarChart3 className="w-5 h-5 md:w-6 md:h-6" />,
+      desc: "Ideal for service centres and OEM supply chains. Supports automotive, appliance, and construction sectors.",
     },
     {
       title: "Industrial Durability",
-      icon: <HardHat className="w-6 h-6" />,
-      desc: "Heavy-duty components and balanced rotating assemblies ensure long service life. Energy-efficient drives and simplified maintenance access reduce long-term operating costs.",
+      icon: <HardHat className="w-5 h-5 md:w-6 md:h-6" />,
+      desc: "Heavy-duty components and balanced rotating assemblies ensure long service life and reduced operating costs.",
     }
   ];
 
   return (
-    <div className="bg-[#05070a] text-slate-200 min-h-screen font-sans selection:bg-emerald-500/30">
+    <div className="bg-[#05070a] text-slate-200 min-h-screen font-sans selection:bg-emerald-500/30 overflow-x-hidden">
       
-      {/* NAVBAR */}
-      
-
       {/* HERO SECTION */}
-      <section className="relative pt-32 pb-20 px-8 overflow-hidden">
+      <section className="relative pt-20 md:pt-32 pb-12 md:pb-20 px-4 md:px-8 overflow-hidden">
         {/* Background Visual */}
-        <div className="absolute top-0 right-0 w-2/3 h-full opacity-30 pointer-events-none">
-          <div className="absolute inset-0 bg-gradient-to-l from-emerald-500/20 to-transparent" />
+        <div className="absolute top-0 right-0 w-full md:w-2/3 h-full opacity-20 md:opacity-30 pointer-events-none">
+          <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-l from-emerald-500/20 to-[#05070a]" />
           <img 
             src="https://images.pexels.com/photos/35787175/pexels-photo-35787175.jpeg" 
             alt="Steel Processing"
@@ -357,55 +352,62 @@ export default function EurosplitServoSlit1850() {
 
         <div className="max-w-7xl mx-auto relative z-10">
           <motion.div 
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            className="max-w-2xl"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="max-w-3xl"
           >
-            <h1 className="text-8xl font-black tracking-tighter leading-none mb-4">
+            <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-black tracking-tighter leading-[0.9] mb-6">
               SERVO<span className="text-emerald-500">SLIT</span><br />1850
             </h1>
-            <p className="text-slate-400 text-xl leading-relaxed mb-8 border-l-2 border-emerald-500 pl-6">
-              The industry standard for wide-width precision. Engineered for high-volume OEM supply chains and service centers processing coils up to 1850mm.
+            <p className="text-slate-400 text-lg md:text-xl leading-relaxed mb-10 border-l-2 border-emerald-500 pl-4 md:pl-6 max-w-xl">
+              The industry standard for wide-width precision. Engineered for high-volume OEM supply chains processing coils up to 1850mm.
             </p>
 
-            <div className="grid grid-cols-2 gap-4 mb-10">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4 mb-10">
               {technicalData.map((data, idx) => (
-                <div key={idx} className="bg-white/5 p-4 rounded-lg border border-white/5">
+                <div key={idx} className="bg-white/5 p-4 rounded-xl border border-white/5 backdrop-blur-sm">
                   <div className="text-[10px] uppercase tracking-widest text-emerald-500 font-bold mb-1">{data.label}</div>
-                  <div className="text-lg font-semibold">{data.value}</div>
+                  <div className="text-base md:text-lg font-semibold">{data.value}</div>
                 </div>
               ))}
             </div>
+
+            <button 
+              onClick={() => setModalOpen(true)}
+              className="w-full sm:w-auto bg-emerald-500 text-black px-8 py-4 rounded-full font-bold uppercase tracking-wider hover:bg-emerald-400 transition-colors"
+            >
+              Request Technical Specs
+            </button>
           </motion.div>
         </div>
       </section>
 
       {/* INTERACTIVE FEATURE EXPLORER */}
-      <section className="py-24 px-8 bg-[#080b10]">
+      <section className="py-16 md:py-24 px-4 md:px-8 bg-[#080b10]">
         <div className="max-w-7xl mx-auto">
-          <div className="mb-16">
-            <h2 className="text-4xl font-bold tracking-tight mb-2">System Architecture</h2>
+          <div className="mb-10 md:mb-16 text-center md:text-left">
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-2">System Architecture</h2>
             <p className="text-slate-500">Select a module to view technical capabilities</p>
           </div>
 
-          <div className="grid lg:grid-cols-12 gap-12">
-            {/* Sidebar Navigation */}
-            <div className="lg:col-span-4 flex flex-col gap-2">
+          <div className="grid lg:grid-cols-12 gap-8 md:gap-12">
+            {/* Sidebar Navigation - Scrollable on Mobile */}
+            <div className="lg:col-span-4 flex flex-row lg:flex-col gap-2 overflow-x-auto lg:overflow-x-visible pb-4 lg:pb-0 snap-x">
               {features.map((item, idx) => (
                 <button
                   key={idx}
                   onClick={() => setActiveTab(idx)}
-                  className={`flex items-center justify-between p-4 rounded-xl transition-all text-left group ${
+                  className={`flex-shrink-0 snap-start flex items-center justify-between p-3 md:p-4 rounded-xl transition-all text-left group min-w-[240px] lg:min-w-full ${
                     activeTab === idx 
                     ? "bg-emerald-500 text-black shadow-[0_0_30px_rgba(16,185,129,0.2)]" 
                     : "bg-white/5 hover:bg-white/10 text-slate-300"
                   }`}
                 >
-                  <div className="flex items-center gap-4">
+                  <div className="flex items-center gap-3 md:gap-4">
                     <span className={activeTab === idx ? "text-black" : "text-emerald-500"}>{item.icon}</span>
-                    <span className="font-bold text-sm uppercase tracking-wider">{item.title}</span>
+                    <span className="font-bold text-xs md:text-sm uppercase tracking-wider">{item.title}</span>
                   </div>
-                  <ChevronRight className={`w-4 h-4 transition-transform ${activeTab === idx ? "rotate-90" : ""}`} />
+                  <ChevronRight className={`hidden md:block w-4 h-4 transition-transform ${activeTab === idx ? "rotate-90" : ""}`} />
                 </button>
               ))}
             </div>
@@ -415,20 +417,21 @@ export default function EurosplitServoSlit1850() {
               <AnimatePresence mode="wait">
                 <motion.div
                   key={activeTab}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                  className="bg-gradient-to-br from-slate-900 to-black border border-white/10 p-12 rounded-3xl min-h-[400px] flex flex-col justify-center relative overflow-hidden"
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -20 }}
+                  className="bg-gradient-to-br from-slate-900 to-black border border-white/10 p-6 md:p-12 rounded-2xl md:rounded-3xl min-h-[350px] md:min-h-[450px] flex flex-col justify-center relative overflow-hidden"
                 >
                   <div className="absolute top-0 right-0 p-8 opacity-5">
                     {features[activeTab].icon}
                   </div>
-                  <div className="text-emerald-500 font-mono mb-4">Module 0{activeTab + 1} // Precision Systems</div>
-                  <h3 className="text-5xl font-bold mb-6">{features[activeTab].title}</h3>
-                  <p className="text-xl text-slate-400 leading-relaxed max-w-2xl">
+                  <div className="text-emerald-500 font-mono text-xs md:text-sm mb-4 tracking-widest">
+                    MODULE 0{activeTab + 1} // PRECISION_SYSTEMS
+                  </div>
+                  <h3 className="text-3xl md:text-5xl font-bold mb-4 md:mb-6">{features[activeTab].title}</h3>
+                  <p className="text-base md:text-xl text-slate-400 leading-relaxed max-w-2xl">
                     {features[activeTab].desc}
                   </p>
-                  
                 </motion.div>
               </AnimatePresence>
             </div>
@@ -436,35 +439,35 @@ export default function EurosplitServoSlit1850() {
         </div>
       </section>
 
-      {/* FOOTER CALL TO ACTION */}
-     
-
       {/* MODAL */}
       <AnimatePresence>
         {modalOpen && (
           <motion.div 
-            className="fixed inset-0 z-[100] flex items-center justify-center p-6"
+            className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
           >
             <div className="absolute inset-0 bg-black/90 backdrop-blur-md" onClick={() => setModalOpen(false)} />
             <motion.div 
-              className="bg-[#111] border border-emerald-500/30 w-full max-w-xl p-10 rounded-3xl relative z-10"
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
+              className="bg-[#111] border border-emerald-500/30 w-full max-w-xl p-6 md:p-10 rounded-2xl md:rounded-3xl relative z-10 max-h-[90vh] overflow-y-auto"
+              initial={{ scale: 0.9, opacity: 0, y: 20 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
             >
-              <button onClick={() => setModalOpen(false)} className="absolute top-6 right-6 text-slate-500 hover:text-white">
-                <X size={24} />
+              <button onClick={() => setModalOpen(false)} className="absolute top-4 right-4 md:top-6 md:right-6 text-slate-500 hover:text-white transition-colors">
+                <X size={28} />
               </button>
-              <h2 className="text-3xl font-bold mb-6">Inquiry Portal</h2>
-              <form className="space-y-4">
-                <div className="grid grid-cols-2 gap-4">
-                  <input type="text" placeholder="Name" className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 outline-none focus:border-emerald-500" />
-                  <input type="text" placeholder="Company" className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 outline-none focus:border-emerald-500" />
+              <h2 className="text-2xl md:text-3xl font-bold mb-6">Inquiry Portal</h2>
+              <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <input type="text" placeholder="Name" className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 outline-none focus:border-emerald-500 w-full" />
+                  <input type="text" placeholder="Company" className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 outline-none focus:border-emerald-500 w-full" />
                 </div>
                 <input type="email" placeholder="Email Address" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 outline-none focus:border-emerald-500" />
                 <textarea placeholder="Specific Material Requirements..." rows="4" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 outline-none focus:border-emerald-500" />
-                <button className="w-full bg-emerald-500 text-black font-black py-4 rounded-xl">SEND REQUEST</button>
+                <button className="w-full bg-emerald-500 text-black font-black py-4 rounded-xl hover:bg-emerald-400 transition-transform active:scale-[0.98]">
+                  SEND REQUEST
+                </button>
               </form>
             </motion.div>
           </motion.div>
