@@ -67,32 +67,32 @@ export default function Home() {
         <React.Fragment key={i}>
           {[
             {
-              image: 'Images/QualityControl.jpg',
-              title: 'QUALITY CONTROL',
+              image: 'Images/lifetime-warranty-label-lifetime-warranty-on-product-quality-and-reliability-2PGRPP3.jpg',
+              title: 'LIFETIME WARRANTY',
               desc: 'Full-range testing ensuring the highest standards.'
             },
             {
-              image: 'Images/Orders.jpg',
+              image: 'Images/5_Key_Factors_for_Designing_an_Efficient_Lean_Food_Processing_Layout_2.jpg',
               title: 'EFFICIENT PROCESSING',
               desc: "Fast-track order fulfillment for critical materials."
             },
             {
-              image: 'Images/Warranty.jpg',
-              title: 'LIFETIME WARRANTY',
+              image: 'Images/quality-control-approved-seal-stamp-green-flat-vector.jpg',
+              title: 'QUALITY CONTROL',
               desc: 'Legendary quality backed by our craft guarantee.'
             },
             {
-              image: 'Images/Delivery.jpg',
+              image: 'Images/global-steel-production-falls-5-pc-in-may-indias-output-rises-4-pc.avif',
               title: 'GLOBAL DELIVERY',
               desc: 'Seamless logistics infrastructure for worldwide reach.'
             },
             {
-              image: 'Images/LeadTime.jpg',
+              image: 'Images/What-is-Manufacturing-Lead-Time-_02.jpg',
               title: 'FASTEST LEAD TIME',
               desc: 'Industry-leading same or next day delivery.'
             },
             {
-              image: 'Images/Improving Metal Reliability for High-Performance Manufacturing.jpg',
+              image: 'Images/trends-in-steel-packaging-1.jpg',
               title: 'STURDY PACKAGING',
               desc: 'Heavy-duty wooden crates for maximum protection.'
             }
