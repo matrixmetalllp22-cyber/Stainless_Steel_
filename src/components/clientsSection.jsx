@@ -93,7 +93,7 @@ export default function ClientsSlider() {
               animate={{ x: paused ? "0%" : ["0%", "-50%"] }}
               transition={{
                 repeat: Infinity,
-                duration: 50,
+                duration: 8,
                 ease: "linear",
               }}
             >
@@ -110,7 +110,7 @@ export default function ClientsSlider() {
               animate={{ x: paused ? "0%" : ["-50%", "0%"] }}
               transition={{
                 repeat: Infinity,
-                duration: 60,
+                duration: 5,
                 ease: "linear",
               }}
             >

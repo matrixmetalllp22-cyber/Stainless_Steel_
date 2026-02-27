@@ -89,10 +89,11 @@ export default function GallerySection() {
     "application07.jpg",
     "application08.png",
     "application09.png",
-    // "application11.jpg",
-    // "application12.webp",
-    // "application13.webp",
-    // "application14.webp",
+    "application11.jpg",
+    "application12.webp",
+    "application13.webp",
+    "application14.webp",
+    
   ];
 
   // ✅ Convert to gallery objects
