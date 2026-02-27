@@ -276,7 +276,7 @@ export default function Header() {
     { name: "PRODUCTS", path: "/products", dropdown: "products" },
     { name: "MACHINERY", path: "/machinery/cut-to-length", dropdown: "machinery" },
     { name: "APPLICATIONS", path: "/applications" },
-    { name: "RESOURCES", path: "/resources" },
+    { name: "CERTIFICATES", path: "/resources" },
     { name: "CONTACT US", path: "/contact" },
   ];
 
