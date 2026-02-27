@@ -253,6 +253,237 @@
 
 
 
+// import React, { useState } from "react";
+// import { motion, AnimatePresence } from "framer-motion";
+// import { 
+//   BarChart3, 
+//   MoveHorizontal, 
+//   Dna, 
+//   Repeat, 
+//   Layers, 
+//   Trash2, 
+//   MonitorDot, 
+//   ShieldCheck, 
+//   Factory, 
+//   HardHat,
+//   X,
+//   ChevronRight,
+//   Menu
+// } from "lucide-react";
+
+// export default function EurosplitServoSlit1850() {
+//   const [activeTab, setActiveTab] = useState(0);
+//   const [modalOpen, setModalOpen] = useState(false);
+
+//   const technicalData = [
+//     { label: "Max Width", value: "1850 mm" },
+//     { label: "Thickness Range", value: "0.25 – 3.0 mm" },
+//     { label: "Drive System", value: "Servo-Synchronized" },
+//     { label: "Application", value: "Automotive / OEM" }
+//   ];
+
+//   const features = [
+//     {
+//       title: "Wide-Width Stability",
+//       icon: <MoveHorizontal className="w-5 h-5 md:w-6 md:h-6" />,
+//       desc: "Designed for wide coil processing with structural rigidity. The slitting head maintains alignment across large widths, while reinforced frame construction prevents deflection to ensure consistent strip geometry.",
+//     },
+//     {
+//       title: "Heavy-Duty Decoiling",
+//       icon: <Factory className="w-5 h-5 md:w-6 md:h-6" />,
+//       desc: "High-capacity decoilers manage wide and heavy coils. Torque-controlled drives ensure stable strip payoff and manage coil inertia smoothly.",
+//     },
+//     {
+//       title: "Precision Knife Alignment",
+//       icon: <Dna className="w-5 h-5 md:w-6 md:h-6" />,
+//       desc: "Digital knife positioning ensures dimensional accuracy. Precision spacers maintain exact strip widths with uniform load distribution.",
+//     },
+//     {
+//       title: "Loop & Tension Engineering",
+//       icon: <Repeat className="w-5 h-5 md:w-6 md:h-6" />,
+//       desc: "Accumulator loop systems stabilise strip tension. Dynamic monitoring prevents strip distortion and absorbs load fluctuations efficiently.",
+//     },
+//     {
+//       title: "Recoiling Integrity",
+//       icon: <Layers className="w-5 h-5 md:w-6 md:h-6" />,
+//       desc: "Recoiler systems maintain tight coil winding with torque feedback to prevent telescoping and ensure uniform coil build.",
+//     },
+//     {
+//       title: "Scrap Management",
+//       icon: <Trash2 className="w-5 h-5 md:w-6 md:h-6" />,
+//       desc: "Edge trimming modules remove damaged coil edges while scrap winding systems ensure clean operation and waste efficiency.",
+//     },
+//     {
+//       title: "Automation Efficiency",
+//       icon: <MonitorDot className="w-5 h-5 md:w-6 md:h-6" />,
+//       desc: "Automated setups and digital presets reduce downtime. Rapid tool changes enhance production flexibility and productivity.",
+//     },
+//     {
+//       title: "Surface Preservation",
+//       icon: <ShieldCheck className="w-5 h-5 md:w-6 md:h-6" />,
+//       desc: "Anti-abrasion rollers protect coated surfaces from scratches, ensuring material aesthetics remain intact.",
+//     },
+//     {
+//       title: "Industrial Processing",
+//       icon: <BarChart3 className="w-5 h-5 md:w-6 md:h-6" />,
+//       desc: "Ideal for service centres and OEM supply chains. Supports automotive, appliance, and construction sectors.",
+//     },
+//     {
+//       title: "Industrial Durability",
+//       icon: <HardHat className="w-5 h-5 md:w-6 md:h-6" />,
+//       desc: "Heavy-duty components and balanced rotating assemblies ensure long service life and reduced operating costs.",
+//     }
+//   ];
+
+//   return (
+//     <div className="bg-[#05070a] text-slate-200 min-h-screen font-sans selection:bg-emerald-500/30 overflow-x-hidden">
+      
+//       {/* HERO SECTION */}
+//       <section className="relative pt-20 md:pt-32 pb-12 md:pb-20 px-4 md:px-8 overflow-hidden">
+//         {/* Background Visual */}
+//         <div className="absolute top-0 right-0 w-full md:w-2/3 h-full opacity-20 md:opacity-30 pointer-events-none">
+//           <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-l from-emerald-500/20 to-[#05070a]" />
+//           <img 
+//             src="https://images.pexels.com/photos/35787175/pexels-photo-35787175.jpeg" 
+//             alt="Steel Processing"
+//             className="w-full h-full object-cover grayscale"
+//           />
+//         </div>
+
+//         <div className="max-w-7xl mx-auto relative z-10">
+//           <motion.div 
+//             initial={{ opacity: 0, y: 30 }}
+//             animate={{ opacity: 1, y: 0 }}
+//             className="max-w-3xl"
+//           >
+//             <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-black tracking-tighter leading-[0.9] mb-6">
+//               SERVO<span className="text-emerald-500">SLIT</span><br />1850
+//             </h1>
+//             <p className="text-slate-400 text-lg md:text-xl leading-relaxed mb-10 border-l-2 border-emerald-500 pl-4 md:pl-6 max-w-xl">
+//               The industry standard for wide-width precision. Engineered for high-volume OEM supply chains processing coils up to 1850mm.
+//             </p>
+
+//             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4 mb-10">
+//               {technicalData.map((data, idx) => (
+//                 <div key={idx} className="bg-white/5 p-4 rounded-xl border border-white/5 backdrop-blur-sm">
+//                   <div className="text-[10px] uppercase tracking-widest text-emerald-500 font-bold mb-1">{data.label}</div>
+//                   <div className="text-base md:text-lg font-semibold">{data.value}</div>
+//                 </div>
+//               ))}
+//             </div>
+
+//             <button 
+//               onClick={() => setModalOpen(true)}
+//               className="w-full sm:w-auto bg-emerald-500 text-black px-8 py-4 rounded-full font-bold uppercase tracking-wider hover:bg-emerald-400 transition-colors"
+//             >
+//               Request Technical Specs
+//             </button>
+//           </motion.div>
+//         </div>
+//       </section>
+
+//       {/* INTERACTIVE FEATURE EXPLORER */}
+//       <section className="py-16 md:py-24 px-4 md:px-8 bg-[#080b10]">
+//         <div className="max-w-7xl mx-auto">
+//           <div className="mb-10 md:mb-16 text-center md:text-left">
+//             <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-2">System Architecture</h2>
+//             <p className="text-slate-500">Select a module to view technical capabilities</p>
+//           </div>
+
+//           <div className="grid lg:grid-cols-12 gap-8 md:gap-12">
+//             {/* Sidebar Navigation - Scrollable on Mobile */}
+//             <div className="lg:col-span-4 flex flex-row lg:flex-col gap-2 overflow-x-auto lg:overflow-x-visible pb-4 lg:pb-0 snap-x">
+//               {features.map((item, idx) => (
+//                 <button
+//                   key={idx}
+//                   onClick={() => setActiveTab(idx)}
+//                   className={`flex-shrink-0 snap-start flex items-center justify-between p-3 md:p-4 rounded-xl transition-all text-left group min-w-[240px] lg:min-w-full ${
+//                     activeTab === idx 
+//                     ? "bg-emerald-500 text-black shadow-[0_0_30px_rgba(16,185,129,0.2)]" 
+//                     : "bg-white/5 hover:bg-white/10 text-slate-300"
+//                   }`}
+//                 >
+//                   <div className="flex items-center gap-3 md:gap-4">
+//                     <span className={activeTab === idx ? "text-black" : "text-emerald-500"}>{item.icon}</span>
+//                     <span className="font-bold text-xs md:text-sm uppercase tracking-wider">{item.title}</span>
+//                   </div>
+//                   <ChevronRight className={`hidden md:block w-4 h-4 transition-transform ${activeTab === idx ? "rotate-90" : ""}`} />
+//                 </button>
+//               ))}
+//             </div>
+
+//             {/* Content Display */}
+//             <div className="lg:col-span-8">
+//               <AnimatePresence mode="wait">
+//                 <motion.div
+//                   key={activeTab}
+//                   initial={{ opacity: 0, x: 20 }}
+//                   animate={{ opacity: 1, x: 0 }}
+//                   exit={{ opacity: 0, x: -20 }}
+//                   className="bg-gradient-to-br from-slate-900 to-black border border-white/10 p-6 md:p-12 rounded-2xl md:rounded-3xl min-h-[350px] md:min-h-[450px] flex flex-col justify-center relative overflow-hidden"
+//                 >
+//                   <div className="absolute top-0 right-0 p-8 opacity-5">
+//                     {features[activeTab].icon}
+//                   </div>
+//                   <div className="text-emerald-500 font-mono text-xs md:text-sm mb-4 tracking-widest">
+//                     MODULE 0{activeTab + 1} // PRECISION_SYSTEMS
+//                   </div>
+//                   <h3 className="text-3xl md:text-5xl font-bold mb-4 md:mb-6">{features[activeTab].title}</h3>
+//                   <p className="text-base md:text-xl text-slate-400 leading-relaxed max-w-2xl">
+//                     {features[activeTab].desc}
+//                   </p>
+//                 </motion.div>
+//               </AnimatePresence>
+//             </div>
+//           </div>
+//         </div>
+//       </section>
+
+//       {/* MODAL */}
+//       <AnimatePresence>
+//         {modalOpen && (
+//           <motion.div 
+//             className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6"
+//             initial={{ opacity: 0 }}
+//             animate={{ opacity: 1 }}
+//             exit={{ opacity: 0 }}
+//           >
+//             <div className="absolute inset-0 bg-black/90 backdrop-blur-md" onClick={() => setModalOpen(false)} />
+//             <motion.div 
+//               className="bg-[#111] border border-emerald-500/30 w-full max-w-xl p-6 md:p-10 rounded-2xl md:rounded-3xl relative z-10 max-h-[90vh] overflow-y-auto"
+//               initial={{ scale: 0.9, opacity: 0, y: 20 }}
+//               animate={{ scale: 1, opacity: 1, y: 0 }}
+//             >
+//               <button onClick={() => setModalOpen(false)} className="absolute top-4 right-4 md:top-6 md:right-6 text-slate-500 hover:text-white transition-colors">
+//                 <X size={28} />
+//               </button>
+//               <h2 className="text-2xl md:text-3xl font-bold mb-6">Inquiry Portal</h2>
+//               <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
+//                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+//                   <input type="text" placeholder="Name" className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 outline-none focus:border-emerald-500 w-full" />
+//                   <input type="text" placeholder="Company" className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 outline-none focus:border-emerald-500 w-full" />
+//                 </div>
+//                 <input type="email" placeholder="Email Address" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 outline-none focus:border-emerald-500" />
+//                 <textarea placeholder="Specific Material Requirements..." rows="4" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 outline-none focus:border-emerald-500" />
+//                 <button className="w-full bg-emerald-500 text-black font-black py-4 rounded-xl hover:bg-emerald-400 transition-transform active:scale-[0.98]">
+//                   SEND REQUEST
+//                 </button>
+//               </form>
+//             </motion.div>
+//           </motion.div>
+//         )}
+//       </AnimatePresence>
+//     </div>
+//   );
+// }
+
+
+
+
+
+
+
+
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { 
@@ -267,212 +498,218 @@ import {
   Factory, 
   HardHat,
   X,
-  ChevronRight,
-  Menu
+  Plus,
+  MoveRight
 } from "lucide-react";
 
 export default function EurosplitServoSlit1850() {
-  const [activeTab, setActiveTab] = useState(0);
-  const [modalOpen, setModalOpen] = useState(false);
-
-  const technicalData = [
-    { label: "Max Width", value: "1850 mm" },
-    { label: "Thickness Range", value: "0.25 – 3.0 mm" },
-    { label: "Drive System", value: "Servo-Synchronized" },
-    { label: "Application", value: "Automotive / OEM" }
-  ];
+  const [selectedFeature, setSelectedFeature] = useState(null);
 
   const features = [
     {
+      id: 1,
       title: "Wide-Width Stability",
-      icon: <MoveHorizontal className="w-5 h-5 md:w-6 md:h-6" />,
-      desc: "Designed for wide coil processing with structural rigidity. The slitting head maintains alignment across large widths, while reinforced frame construction prevents deflection to ensure consistent strip geometry.",
+      icon: <MoveHorizontal />,
+      desc: "Designed for wide coil processing with structural rigidity. Reinforced frame construction prevents deflection across 1850mm spans.",
+      tag: "STRUCTURAL"
     },
     {
+      id: 2,
       title: "Heavy-Duty Decoiling",
-      icon: <Factory className="w-5 h-5 md:w-6 md:h-6" />,
-      desc: "High-capacity decoilers manage wide and heavy coils. Torque-controlled drives ensure stable strip payoff and manage coil inertia smoothly.",
+      icon: <Factory />,
+      desc: "High-capacity decoilers manage heavy coils with torque-controlled drives to ensure stable payoff and inertia management.",
+      tag: "LOAD"
     },
     {
-      title: "Precision Knife Alignment",
-      icon: <Dna className="w-5 h-5 md:w-6 md:h-6" />,
-      desc: "Digital knife positioning ensures dimensional accuracy. Precision spacers maintain exact strip widths with uniform load distribution.",
+      id: 3,
+      title: "Digital Knife Alignment",
+      icon: <Dna />,
+      desc: "Digital positioning ensures dimensional accuracy. Precision spacers maintain exact strip widths with uniform load distribution.",
+      tag: "KNIFE"
     },
     {
-      title: "Loop & Tension Engineering",
-      icon: <Repeat className="w-5 h-5 md:w-6 md:h-6" />,
-      desc: "Accumulator loop systems stabilise strip tension. Dynamic monitoring prevents strip distortion and absorbs load fluctuations efficiently.",
+      id: 4,
+      title: "Loop Engineering",
+      icon: <Repeat />,
+      desc: "Accumulator loop systems stabilise strip tension, preventing distortion by absorbing load fluctuations efficiently.",
+      tag: "LOOP"
     },
     {
+      id: 5,
       title: "Recoiling Integrity",
-      icon: <Layers className="w-5 h-5 md:w-6 md:h-6" />,
-      desc: "Recoiler systems maintain tight coil winding with torque feedback to prevent telescoping and ensure uniform coil build.",
+      icon: <Layers />,
+      desc: "Recoiler systems maintain tight winding with real-time torque feedback to prevent telescoping in wide-format coils.",
+      tag: "COIL"
     },
     {
+      id: 6,
       title: "Scrap Management",
-      icon: <Trash2 className="w-5 h-5 md:w-6 md:h-6" />,
-      desc: "Edge trimming modules remove damaged coil edges while scrap winding systems ensure clean operation and waste efficiency.",
+      icon: <Trash2 />,
+      desc: "Edge trimming modules remove damaged coil edges while scrap winding systems ensure high-speed waste efficiency.",
+      tag: "WASTE"
     },
     {
+      id: 7,
       title: "Automation Efficiency",
-      icon: <MonitorDot className="w-5 h-5 md:w-6 md:h-6" />,
-      desc: "Automated setups and digital presets reduce downtime. Rapid tool changes enhance production flexibility and productivity.",
+      icon: <MonitorDot />,
+      desc: "PLC-integrated presets reduce downtime. Rapid tool change modules enhance production flexibility for OEM supply chains.",
+      tag: "AUTO"
     },
     {
+      id: 8,
       title: "Surface Preservation",
-      icon: <ShieldCheck className="w-5 h-5 md:w-6 md:h-6" />,
-      desc: "Anti-abrasion rollers protect coated surfaces from scratches, ensuring material aesthetics remain intact.",
+      icon: <ShieldCheck />,
+      desc: "Anti-abrasion rollers protect coated and sensitive surfaces from scratches, ensuring peak material aesthetics.",
+      tag: "SHIELD"
     },
     {
+      id: 9,
       title: "Industrial Processing",
-      icon: <BarChart3 className="w-5 h-5 md:w-6 md:h-6" />,
-      desc: "Ideal for service centres and OEM supply chains. Supports automotive, appliance, and construction sectors.",
+      icon: <BarChart3 />,
+      desc: "Optimized for service centres supporting automotive and construction sectors with high-volume requirements.",
+      tag: "OEM"
     },
     {
+      id: 10,
       title: "Industrial Durability",
-      icon: <HardHat className="w-5 h-5 md:w-6 md:h-6" />,
-      desc: "Heavy-duty components and balanced rotating assemblies ensure long service life and reduced operating costs.",
+      icon: <HardHat />,
+      desc: "Balanced rotating assemblies and oversized components ensure maximum uptime and reduced long-term operating costs.",
+      tag: "DUTY"
     }
   ];
 
   return (
-    <div className="bg-[#05070a] text-slate-200 min-h-screen font-sans selection:bg-emerald-500/30 overflow-x-hidden">
+    <div className="bg-[#080a0d] text-stone-100 min-h-screen font-sans overflow-x-hidden">
       
       {/* HERO SECTION */}
-      <section className="relative pt-20 md:pt-32 pb-12 md:pb-20 px-4 md:px-8 overflow-hidden">
-        {/* Background Visual */}
-        <div className="absolute top-0 right-0 w-full md:w-2/3 h-full opacity-20 md:opacity-30 pointer-events-none">
-          <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-l from-emerald-500/20 to-[#05070a]" />
-          <img 
-            src="https://images.pexels.com/photos/35787175/pexels-photo-35787175.jpeg" 
-            alt="Steel Processing"
-            className="w-full h-full object-cover grayscale"
-          />
+      <section className="relative min-h-[85vh] flex flex-col justify-center px-6 md:px-20 border-b border-stone-800/50">
+        {/* Technical Grid Overlay */}
+        <div className="absolute right-0 top-0 w-full h-full opacity-5 pointer-events-none">
+          <div className="grid grid-cols-12 h-full">
+            {[...Array(60)].map((_, i) => (
+              <div key={i} className="border-r border-b border-emerald-500" />
+            ))}
+          </div>
         </div>
 
-        <div className="max-w-7xl mx-auto relative z-10">
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="max-w-3xl"
-          >
-            <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-black tracking-tighter leading-[0.9] mb-6">
-              SERVO<span className="text-emerald-500">SLIT</span><br />1850
-            </h1>
-            <p className="text-slate-400 text-lg md:text-xl leading-relaxed mb-10 border-l-2 border-emerald-500 pl-4 md:pl-6 max-w-xl">
-              The industry standard for wide-width precision. Engineered for high-volume OEM supply chains processing coils up to 1850mm.
-            </p>
+        <motion.div 
+          initial={{ opacity: 0, x: -30 }}
+          animate={{ opacity: 1, x: 0 }}
+          className="relative z-10"
+        >
+          <div className="flex items-center gap-4 mb-6">
+            <span className="h-[2px] w-12 bg-emerald-500" />
+            <span className="text-emerald-500 font-mono tracking-[0.4em] text-sm uppercase font-bold">Wide-Width Precision</span>
+          </div>
+          <h1 className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-black tracking-tighter mb-4 leading-none">
+            SERVOSLIT<span className="text-emerald-500 font-light italic">1850</span>
+          </h1>
+          <p className="text-stone-400 text-xl md:text-2xl max-w-2xl font-light leading-relaxed mb-12">
+            The industry standard for wide-format coil processing. 
+            Engineered for high-volume OEM supply chains and structural stability.
+          </p>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4 mb-10">
-              {technicalData.map((data, idx) => (
-                <div key={idx} className="bg-white/5 p-4 rounded-xl border border-white/5 backdrop-blur-sm">
-                  <div className="text-[10px] uppercase tracking-widest text-emerald-500 font-bold mb-1">{data.label}</div>
-                  <div className="text-base md:text-lg font-semibold">{data.value}</div>
-                </div>
-              ))}
+          <div className="flex flex-wrap gap-12">
+            <div>
+              <p className="text-stone-500 text-xs uppercase tracking-widest mb-2 font-bold">Max Strip Width</p>
+              <p className="text-4xl font-mono text-white tracking-tighter">1850<span className="text-emerald-500 text-xl ml-1">MM</span></p>
             </div>
+            <div className="w-px h-14 bg-stone-800 hidden md:block" />
+            <div>
+              <p className="text-stone-500 text-xs uppercase tracking-widest mb-2 font-bold">Gauge Range</p>
+              <p className="text-4xl font-mono text-white tracking-tighter">0.25—3.0<span className="text-emerald-500 text-xl ml-1">MM</span></p>
+            </div>
+          </div>
+        </motion.div>
+      </section>
 
-            <button 
-              onClick={() => setModalOpen(true)}
-              className="w-full sm:w-auto bg-emerald-500 text-black px-8 py-4 rounded-full font-bold uppercase tracking-wider hover:bg-emerald-400 transition-colors"
+      {/* MODULAR FEATURE GRID */}
+      <section className="p-6 md:p-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
+          {features.map((feature, idx) => (
+            <motion.div
+              key={feature.id}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: idx * 0.05 }}
+              viewport={{ once: true }}
+              onClick={() => setSelectedFeature(feature)}
+              className="group relative bg-[#111418] border border-stone-800 p-8 cursor-pointer hover:bg-emerald-950/20 hover:border-emerald-500/50 transition-all aspect-square flex flex-col justify-between overflow-hidden"
             >
-              Request Technical Specs
-            </button>
-          </motion.div>
+              <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-100 group-hover:text-emerald-400 transition-all">
+                <Plus size={20} />
+              </div>
+              
+              <div className="text-emerald-500 mb-4 transition-transform group-hover:scale-110">
+                {React.cloneElement(feature.icon, { size: 40, strokeWidth: 1.5 })}
+              </div>
+
+              <div>
+                <span className="text-[10px] font-mono text-stone-500 block mb-2 tracking-tighter uppercase font-bold">SERVO_SYS_1850_{feature.tag}</span>
+                <h3 className="text-lg font-bold uppercase tracking-tight leading-tight group-hover:text-emerald-400 transition-colors">
+                  {feature.title}
+                </h3>
+              </div>
+
+              {/* Signature Sheet Line Animation */}
+              <div className="absolute bottom-0 left-0 w-full h-1 bg-emerald-500 translate-y-1 group-hover:translate-y-0 transition-transform shadow-[0_-5px_15px_rgba(16,185,129,0.3)]" />
+            </motion.div>
+          ))}
         </div>
       </section>
 
-      {/* INTERACTIVE FEATURE EXPLORER */}
-      <section className="py-16 md:py-24 px-4 md:px-8 bg-[#080b10]">
-        <div className="max-w-7xl mx-auto">
-          <div className="mb-10 md:mb-16 text-center md:text-left">
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-2">System Architecture</h2>
-            <p className="text-slate-500">Select a module to view technical capabilities</p>
-          </div>
-
-          <div className="grid lg:grid-cols-12 gap-8 md:gap-12">
-            {/* Sidebar Navigation - Scrollable on Mobile */}
-            <div className="lg:col-span-4 flex flex-row lg:flex-col gap-2 overflow-x-auto lg:overflow-x-visible pb-4 lg:pb-0 snap-x">
-              {features.map((item, idx) => (
-                <button
-                  key={idx}
-                  onClick={() => setActiveTab(idx)}
-                  className={`flex-shrink-0 snap-start flex items-center justify-between p-3 md:p-4 rounded-xl transition-all text-left group min-w-[240px] lg:min-w-full ${
-                    activeTab === idx 
-                    ? "bg-emerald-500 text-black shadow-[0_0_30px_rgba(16,185,129,0.2)]" 
-                    : "bg-white/5 hover:bg-white/10 text-slate-300"
-                  }`}
-                >
-                  <div className="flex items-center gap-3 md:gap-4">
-                    <span className={activeTab === idx ? "text-black" : "text-emerald-500"}>{item.icon}</span>
-                    <span className="font-bold text-xs md:text-sm uppercase tracking-wider">{item.title}</span>
-                  </div>
-                  <ChevronRight className={`hidden md:block w-4 h-4 transition-transform ${activeTab === idx ? "rotate-90" : ""}`} />
-                </button>
-              ))}
-            </div>
-
-            {/* Content Display */}
-            <div className="lg:col-span-8">
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={activeTab}
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -20 }}
-                  className="bg-gradient-to-br from-slate-900 to-black border border-white/10 p-6 md:p-12 rounded-2xl md:rounded-3xl min-h-[350px] md:min-h-[450px] flex flex-col justify-center relative overflow-hidden"
-                >
-                  <div className="absolute top-0 right-0 p-8 opacity-5">
-                    {features[activeTab].icon}
-                  </div>
-                  <div className="text-emerald-500 font-mono text-xs md:text-sm mb-4 tracking-widest">
-                    MODULE 0{activeTab + 1} // PRECISION_SYSTEMS
-                  </div>
-                  <h3 className="text-3xl md:text-5xl font-bold mb-4 md:mb-6">{features[activeTab].title}</h3>
-                  <p className="text-base md:text-xl text-slate-400 leading-relaxed max-w-2xl">
-                    {features[activeTab].desc}
-                  </p>
-                </motion.div>
-              </AnimatePresence>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* MODAL */}
+      {/* SIDE DRAWER MODAL */}
       <AnimatePresence>
-        {modalOpen && (
+        {selectedFeature && (
           <motion.div 
-            className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6"
+            className="fixed inset-0 z-50 flex items-center justify-end p-0 md:p-6"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
           >
-            <div className="absolute inset-0 bg-black/90 backdrop-blur-md" onClick={() => setModalOpen(false)} />
+            <div className="absolute inset-0 bg-black/90 backdrop-blur-md" onClick={() => setSelectedFeature(null)} />
             <motion.div 
-              className="bg-[#111] border border-emerald-500/30 w-full max-w-xl p-6 md:p-10 rounded-2xl md:rounded-3xl relative z-10 max-h-[90vh] overflow-y-auto"
-              initial={{ scale: 0.9, opacity: 0, y: 20 }}
-              animate={{ scale: 1, opacity: 1, y: 0 }}
+              className="relative w-full max-w-2xl h-full bg-[#0d1014] border-l border-emerald-500/30 p-12 flex flex-col justify-center shadow-2xl"
+              initial={{ x: "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "100%" }}
+              transition={{ type: "spring", damping: 30, stiffness: 200 }}
             >
-              <button onClick={() => setModalOpen(false)} className="absolute top-4 right-4 md:top-6 md:right-6 text-slate-500 hover:text-white transition-colors">
-                <X size={28} />
+              <button 
+                onClick={() => setSelectedFeature(null)}
+                className="absolute top-12 right-12 text-stone-500 hover:text-white transition-colors"
+              >
+                <X size={36} />
               </button>
-              <h2 className="text-2xl md:text-3xl font-bold mb-6">Inquiry Portal</h2>
-              <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <input type="text" placeholder="Name" className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 outline-none focus:border-emerald-500 w-full" />
-                  <input type="text" placeholder="Company" className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 outline-none focus:border-emerald-500 w-full" />
-                </div>
-                <input type="email" placeholder="Email Address" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 outline-none focus:border-emerald-500" />
-                <textarea placeholder="Specific Material Requirements..." rows="4" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 outline-none focus:border-emerald-500" />
-                <button className="w-full bg-emerald-500 text-black font-black py-4 rounded-xl hover:bg-emerald-400 transition-transform active:scale-[0.98]">
-                  SEND REQUEST
-                </button>
-              </form>
+              
+              <div className="text-emerald-500 mb-8">
+                {React.cloneElement(selectedFeature.icon, { size: 80, strokeWidth: 1 })}
+              </div>
+              <p className="text-emerald-500 font-mono text-sm mb-4 tracking-[0.3em] uppercase font-bold">Architecture // Module 0{selectedFeature.id}</p>
+              <h2 className="text-5xl font-black mb-8 uppercase tracking-tighter leading-none">{selectedFeature.title}</h2>
+              <div className="w-24 h-1 bg-emerald-500 mb-10" />
+              <p className="text-stone-400 text-2xl font-light leading-relaxed mb-12 border-l-2 border-stone-800 pl-8">
+                {selectedFeature.desc}
+              </p>
+            
             </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
+
+      {/* INDUSTRIAL FOOTER */}
+      <section className="bg-[#05070a] py-32 px-6 border-t border-stone-800 text-center">
+        <h3 className="text-4xl md:text-5xl font-black mb-8 tracking-tighter uppercase">Power & Precision.</h3>
+        <p className="text-stone-500 mb-12 max-w-3xl mx-auto uppercase text-xs tracking-[0.4em] leading-loose font-bold italic">
+          Reinforced Frame • Synchronized Servo Loop • Real-time Tension Diagnostics
+        </p>
+        <div className="flex justify-center items-center gap-6 opacity-30">
+           <div className="h-[1px] w-32 bg-emerald-500" />
+           <span className="font-mono text-xs">SERVOSLIT 1850 SERIES</span>
+           <div className="h-[1px] w-32 bg-emerald-500" />
+        </div>
+      </section>
+
     </div>
   );
 }

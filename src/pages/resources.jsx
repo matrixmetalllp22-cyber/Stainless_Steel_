@@ -1,393 +1,344 @@
-// import React, { useState } from 'react';
-// import { Play, AlertTriangle } from 'lucide-react';
 
-// const NavigationComponent = () => {
-//   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  
-//   const navItems = [
-//     'HOME',
-//     'ABOUT US',
-//     'PRODUCTS',
-//     'MACHINERY',
-//     'APPLICATIONS',
-//     'RESOURCES',
-//     'CONTACT US'
+// import React, { useState, useRef } from 'react';
+// import { motion, useMotionValue, useSpring, useTransform, AnimatePresence } from 'framer-motion';
+// import { Award, X, ShieldCheck, Zap, Globe, ArrowUpRight } from 'lucide-react';
+
+// const CertificateCard = ({ cert, onSelect }) => {
+//   const x = useMotionValue(0);
+//   const y = useMotionValue(0);
+
+//   // Smooth springs for the 3D tilt effect
+//   const mouseX = useSpring(x, { stiffness: 150, damping: 20 });
+//   const mouseY = useSpring(y, { stiffness: 150, damping: 20 });
+
+//   const rotateX = useTransform(mouseY, [-0.5, 0.5], ["10deg", "-10deg"]);
+//   const rotateY = useTransform(mouseX, [-0.5, 0.5], ["-10deg", "10deg"]);
+
+//   const handleMouseMove = (e) => {
+//     const rect = e.currentTarget.getBoundingClientRect();
+//     const width = rect.width;
+//     const height = rect.height;
+//     const mouseXPos = e.clientX - rect.left;
+//     const mouseYPos = e.clientY - rect.top;
+//     x.set(mouseXPos / width - 0.5);
+//     y.set(mouseYPos / height - 0.5);
+//   };
+
+//   const handleMouseLeave = () => {
+//     x.set(0);
+//     y.set(0);
+//   };
+
+//   return (
+//     <motion.div
+//       style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
+//       onMouseMove={handleMouseMove}
+//       onMouseLeave={handleMouseLeave}
+//       onClick={() => onSelect(cert)}
+//       className="relative h-[500px] w-full cursor-none group"
+//     >
+//       {/* Perspective Shadow */}
+//       <div className="absolute inset-10 bg-blue-500/20 blur-[100px] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+      
+//       <div className="relative h-full w-full rounded-[2.5rem] bg-[#0a0a0a] border border-white/10 overflow-hidden backdrop-blur-3xl">
+//         {/* Animated Noise Texture Overlay */}
+//         <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
+        
+//         {/* The Image Layer */}
+//         <img 
+//           src={cert.image} 
+//           className="absolute inset-0 w-full h-full object-cover opacity-30 group-hover:opacity-60 group-hover:scale-110 transition-all duration-700 ease-out grayscale group-hover:grayscale-0"
+//           alt={cert.title}
+//         />
+
+//         {/* Content Overlay */}
+//         <div className="relative h-full flex flex-col justify-between p-10 z-20">
+//           <div className="flex justify-between items-start">
+//             <div className="h-14 w-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center backdrop-blur-xl">
+//               <Award className="text-blue-400 group-hover:text-blue-300 transition-colors" size={28} />
+//             </div>
+//             <div className="flex flex-col items-end">
+//               <span className="text-[10px] font-mono tracking-[0.3em] text-white/30 uppercase">Secure Record</span>
+//               <div className="h-[1px] w-12 bg-blue-500/50 mt-1 shadow-[0_0_10px_#3b82f6]" />
+//             </div>
+//           </div>
+
+//           <div className="space-y-4">
+//             <motion.div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-[10px] text-blue-400 font-mono">
+//               <Zap size={10} /> {cert.category}
+//             </motion.div>
+//             <h3 className="text-3xl font-light tracking-tight text-white leading-tight">
+//               {cert.title.split(' ').map((word, i) => (
+//                 <span key={i} className={i === 0 ? "font-bold block" : "opacity-80"}>{word} </span>
+//               ))}
+//             </h3>
+            
+//             <div className="flex items-center justify-between pt-6 border-t border-white/5">
+//               <p className="text-sm text-white/40 font-light italic">{cert.issuer}</p>
+//               <div className="h-10 w-10 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-white group-hover:text-black transition-all duration-500">
+//                 <ArrowUpRight size={20} />
+//               </div>
+//             </div>
+//           </div>
+//         </div>
+
+//         {/* Dynamic Inner Glow following mouse */}
+//         <motion.div 
+//           className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity"
+//           style={{
+//             background: `radial-gradient(circle at ${x.get() * 100 + 50}% ${y.get() * 100 + 50}%, rgba(59, 130, 246, 0.15) 0%, transparent 60%)`
+//           }}
+//         />
+//       </div>
+//     </motion.div>
+//   );
+// };
+
+// const UltraPremiumVault = () => {
+//   const [selected, setSelected] = useState(null);
+
+//   const certs = [
+//     { id: 1, title: "Principal Product Architect", issuer: "Meta Systems", category: "ENGINEERING", image: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?q=80&w=1200" },
+//     { id: 2, title: "Neural Sync Specialist", issuer: "Neuralink Corp", category: "BIOTECH", image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=1200" },
+//     { id: 3, title: "Global Security Director", issuer: "Interpol Cyber", category: "SECURITY", image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=1200" }
 //   ];
 
 //   return (
-//     <div className="min-h-screen bg-gray-50">
-//       {/* Navigation */}
-//       <nav className="bg-white shadow-md">
-//         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-//           <div className="flex justify-between h-16">
-//             {/* Logo placeholder */}
-//             <div className="flex items-center">
-//               <div className="h-8 w-32 bg-blue-600 rounded"></div>
-//             </div>
+//     <div className="min-h-screen bg-[#030303] text-white py-24 px-8 overflow-hidden">
+//       {/* Background Decorative Text */}
+//       <div className="fixed inset-0 overflow-hidden pointer-events-none opacity-[0.02] select-none font-black text-[20vw] leading-none uppercase flex items-center justify-center whitespace-nowrap">
+//         Credentials Verified
+//       </div>
 
-//             {/* Desktop Navigation */}
-//             <div className="hidden md:flex items-center space-x-8">
-//               {navItems.map((item) => (
-//                 <a
-//                   key={item}
-//                   href="#"
-//                   className="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors duration-200"
-//                 >
-//                   {item}
-//                 </a>
-//               ))}
-//             </div>
-
-//             {/* Mobile menu button */}
-//             <div className="md:hidden flex items-center">
-//               <button
-//                 onClick={() => setIsMenuOpen(!isMenuOpen)}
-//                 className="text-gray-700 hover:text-blue-600"
-//               >
-//                 <svg
-//                   className="h-6 w-6"
-//                   fill="none"
-//                   viewBox="0 0 24 24"
-//                   stroke="currentColor"
-//                 >
-//                   {isMenuOpen ? (
-//                     <path
-//                       strokeLinecap="round"
-//                       strokeLinejoin="round"
-//                       strokeWidth={2}
-//                       d="M6 18L18 6M6 6l12 12"
-//                     />
-//                   ) : (
-//                     <path
-//                       strokeLinecap="round"
-//                       strokeLinejoin="round"
-//                       strokeWidth={2}
-//                       d="M4 6h16M4 12h16M4 18h16"
-//                     />
-//                   )}
-//                 </svg>
-//               </button>
-//             </div>
+//       <div className="max-w-7xl mx-auto relative z-10">
+//         <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
+//           <div className="space-y-4">
+//             <h2 className="text-sm font-mono tracking-[0.5em] text-blue-500 uppercase italic">Digital Legacy</h2>
+//             <h1 className="text-6xl md:text-8xl font-bold tracking-tighter">Certificates<span className="text-blue-600">.</span></h1>
 //           </div>
-
-//           {/* Mobile Navigation */}
-//           {isMenuOpen && (
-//             <div className="md:hidden border-t border-gray-200">
-//               <div className="px-2 pt-2 pb-3 space-y-1">
-//                 {navItems.map((item) => (
-//                   <a
-//                     key={item}
-//                     href="#"
-//                     className="text-gray-700 hover:text-blue-600 block px-3 py-2 text-base font-medium"
-//                   >
-//                     {item}
-//                   </a>
-//                 ))}
-//               </div>
-//             </div>
-//           )}
-//         </div>
-//       </nav>
-
-//       {/* Main Content */}
-//       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-//         {/* Header */}
-//         <div className="text-center mb-12">
-//           <h1 className="text-4xl font-bold text-gray-900 mb-4">
-//             CORPORATE VIDEO
-//           </h1>
-//           <p className="text-lg text-gray-600">
-//             Watch our company introduction video
-//           </p>
+//           <div className="flex gap-12 text-sm font-mono text-white/30 uppercase tracking-widest pb-4">
+//             <div><span className="block text-white">03</span>Total Units</div>
+//             <div><span className="block text-white">2026</span>Active Year</div>
+//           </div>
 //         </div>
 
-//         {/* Video Section */}
-//         <div className="bg-white rounded-2xl shadow-xl overflow-hidden max-w-4xl mx-auto">
-//           {/* Video Error Display */}
-//           <div className="bg-gray-900 p-8 text-center">
-//             <div className="relative">
-//               {/* Video Error Overlay */}
-//               <div className="absolute inset-0 flex flex-col items-center justify-center bg-gray-900/90 backdrop-blur-sm z-10">
-//                 <div className="bg-red-500/20 rounded-full p-6 mb-4">
-//                   <AlertTriangle className="h-16 w-16 text-red-500" />
-//                 </div>
-                
-//                 <div className="text-white">
-//                   <div className="text-6xl font-bold text-red-500 mb-2">
-//                     Error 153
+//         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+//           {certs.map(cert => (
+//             <CertificateCard key={cert.id} cert={cert} onSelect={setSelected} />
+//           ))}
+//         </div>
+//       </div>
+
+//       {/* Full-Screen Ultra Modal */}
+//       <AnimatePresence>
+//         {selected && (
+//           <motion.div 
+//             initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+//             className="fixed inset-0 z-[100] bg-black/90 backdrop-blur-3xl flex items-center justify-center p-4 md:p-20"
+//             onClick={() => setSelected(null)}
+//           >
+//              <motion.div 
+//               initial={{ scale: 0.8, opacity: 0, rotateY: 20 }}
+//               animate={{ scale: 1, opacity: 1, rotateY: 0 }}
+//               exit={{ scale: 0.8, opacity: 0 }}
+//               className="relative max-w-6xl w-full aspect-[4/3] bg-[#0a0a0a] rounded-[3rem] border border-white/10 shadow-[0_0_100px_rgba(59,130,246,0.1)] overflow-hidden"
+//               onClick={e => e.stopPropagation()}
+//             >
+//               <img src={selected.image} className="w-full h-full object-contain p-8 md:p-16" alt="Certificate" />
+//               <div className="absolute bottom-10 left-10 right-10 flex justify-between items-center bg-black/40 backdrop-blur-xl p-6 rounded-2xl border border-white/5">
+//                 <div className="flex gap-4 items-center">
+//                   <div className="h-10 w-10 rounded-full bg-blue-600 flex items-center justify-center"><ShieldCheck size={20}/></div>
+//                   <div>
+//                     <h4 className="text-lg font-bold">{selected.title}</h4>
+//                     <p className="text-xs text-white/40 uppercase tracking-widest font-mono">Issued by {selected.issuer}</p>
 //                   </div>
-//                   <div className="text-2xl font-semibold mb-4">
-//                     Video player configuration error
-//                   </div>
-//                   <p className="text-gray-300 max-w-md mx-auto">
-//                     The video player cannot be loaded due to configuration issues.
-//                   </p>
 //                 </div>
+//                 <button onClick={() => setSelected(null)} className="px-6 py-2 bg-white text-black text-xs font-bold rounded-full hover:bg-blue-500 hover:text-white transition-colors">
+//                   Close Explorer
+//                 </button>
 //               </div>
-
-//               {/* Video Player Placeholder */}
-//               <div className="aspect-video bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center">
-//                 <div className="text-center">
-//                   <div className="h-24 w-24 border-4 border-white/30 rounded-full flex items-center justify-center mx-auto mb-4">
-//                     <Play className="h-12 w-12 text-white ml-1" />
-//                   </div>
-//                   <p className="text-white/60 text-lg">
-//                     Video player unavailable
-//                   </p>
-//                 </div>
-//               </div>
-//             </div>
-//           </div>
-
-//           {/* YouTube Link Section */}
-//           <div className="bg-gradient-to-r from-blue-50 to-indigo-50 p-6">
-//             <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-//               <div>
-//                 <h3 className="text-lg font-semibold text-gray-900">
-//                   Watch on YouTube instead
-//                 </h3>
-//                 <p className="text-gray-600 mt-1">
-//                   The video is available directly on YouTube
-//                 </p>
-//               </div>
-              
-//               <a
-//                 href="https://www.youtube.com/watch?v=example"
-//                 target="_blank"
-//                 rel="noopener noreferrer"
-//                 className="inline-flex items-center justify-center px-6 py-3 bg-red-600 text-white font-medium rounded-lg hover:bg-red-700 transition-colors duration-200 shadow-sm hover:shadow-md"
-//               >
-//                 <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
-//                   <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z" />
-//                 </svg>
-//                 Watch video on YouTube
-//               </a>
-//             </div>
-//           </div>
-//         </div>
-
-//         {/* Additional Info */}
-//         <div className="mt-8 text-center text-gray-500 text-sm">
-//           <p>
-//             If the issue persists, please contact our technical support team.
-//           </p>
-//         </div>
-//       </main>
-
-//       {/* Footer */}
-//       <footer className="bg-gray-800 text-white mt-12">
-//         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-//           <div className="flex flex-col md:flex-row justify-between items-center">
-//             <div className="mb-4 md:mb-0">
-//               <div className="h-6 w-40 bg-blue-500 rounded"></div>
-//             </div>
-//             <div className="flex flex-wrap justify-center gap-6">
-//               {navItems.slice(0, 4).map((item) => (
-//                 <a
-//                   key={item}
-//                   href="#"
-//                   className="text-gray-300 hover:text-white transition-colors duration-200"
-//                 >
-//                   {item}
-//                 </a>
-//               ))}
-//             </div>
-//           </div>
-//           <div className="border-t border-gray-700 mt-6 pt-6 text-center text-gray-400 text-sm">
-//             <p>© {new Date().getFullYear()} Company Name. All rights reserved.</p>
-//           </div>
-//         </div>
-//       </footer>
+//             </motion.div>
+//           </motion.div>
+//         )}
+//       </AnimatePresence>
 //     </div>
 //   );
 // };
 
-// export default NavigationComponent;
+// export default UltraPremiumVault;
 
 
 
 
-import React, { useState } from 'react';
-import { AlertTriangle, Play, Youtube, X } from 'lucide-react';
 
-const CorporateVideo = () => {
-  const [showError, setShowError] = useState(false);
-  const [isPlaying, setIsPlaying] = useState(false);
 
-  const youtubeUrl = "https://youtu.be/OTYtQKm8O9E?si=Ys8pxUWdOyYonHcD";
-  
-  // Extract video ID from URL
-  const getVideoId = (url) => {
-    const match = url.match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))([^?&]+)/);
-    return match ? match[1] : null;
-  };
 
-  const videoId = getVideoId(youtubeUrl);
-  const embedUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
 
-  const handlePlayVideo = () => {
-    setIsPlaying(true);
-  };
 
-  const handleCloseVideo = () => {
-    setIsPlaying(false);
+
+
+import React, { useState, useEffect } from 'react';
+import { motion, useMotionValue, useSpring, useTransform, AnimatePresence } from 'framer-motion';
+import { Award, X, ShieldCheck, Zap, ArrowUpRight, Menu } from 'lucide-react';
+
+const CertificateCard = ({ cert, onSelect }) => {
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Check if device is mobile to disable 3D tilt for better UX
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  const mouseX = useSpring(x, { stiffness: 150, damping: 20 });
+  const mouseY = useSpring(y, { stiffness: 150, damping: 20 });
+
+  const rotateX = useTransform(mouseY, [-0.5, 0.5], isMobile ? ["0deg", "0deg"] : ["10deg", "-10deg"]);
+  const rotateY = useTransform(mouseX, [-0.5, 0.5], isMobile ? ["0deg", "0deg"] : ["-10deg", "10deg"]);
+
+  const handleMouseMove = (e) => {
+    if (isMobile) return;
+    const rect = e.currentTarget.getBoundingClientRect();
+    x.set((e.clientX - rect.left) / rect.width - 0.5);
+    y.set((e.clientY - rect.top) / rect.height - 0.5);
   };
 
   return (
-    <div className="min-h-screen bg-linear-to-br from-gray-50 to-blue-50 flex items-center justify-center p-4">
-      <div className="w-full max-w-4xl">
-        {/* Header */}
-        <div className="text-center mb-8">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            CORPORATE VIDEO
-          </h1>
-          <p className="text-gray-600 text-lg">
-            Watch our official company introduction
-          </p>
-        </div>
+    <motion.div
+      style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={() => { x.set(0); y.set(0); }}
+      onClick={() => onSelect(cert)}
+      className="relative h-[400px] sm:h-[450px] md:h-[500px] w-full cursor-pointer group"
+    >
+      {/* Background Glow */}
+      <div className="absolute inset-10 bg-blue-500/10 blur-[80px] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+      
+      <div className="relative h-full w-full rounded-[2rem] md:rounded-[2.5rem] bg-[#0d0d0d] border border-white/10 overflow-hidden backdrop-blur-3xl shadow-2xl">
+        {/* Grain Overlay */}
+        <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
+        
+        <img 
+          src={cert.image} 
+          className="absolute inset-0 w-full h-full object-cover opacity-20 group-hover:opacity-40 group-hover:scale-105 transition-all duration-700 ease-out"
+          alt={cert.title}
+        />
 
-        {/* Video Container */}
-        <div className="bg-white rounded-2xl shadow-2xl overflow-hidden transition-all duration-300 hover:shadow-3xl">
-          {/* Video Player Section */}
-          <div className="relative bg-gray-900">
-            {/* Video Player */}
-            {isPlaying ? (
-              <div className="relative">
-                {/* Close button for video */}
-                <button
-                  onClick={handleCloseVideo}
-                  className="absolute top-4 right-4 z-20 bg-black/70 text-white p-2 rounded-full hover:bg-black transition-colors duration-200"
-                >
-                  <X className="h-5 w-5" />
-                </button>
-                
-                {/* YouTube Embed */}
-                <div className="aspect-video">
-                  <iframe
-                    src={embedUrl}
-                    title="Corporate Video"
-                    className="w-full h-full"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                  ></iframe>
-                </div>
-              </div>
-            ) : (
-              /* Video Preview with Error State */
-              <div className="relative">
-                {/* Error Overlay - Toggleable */}
-                {showError && (
-                  <div className="absolute inset-0 flex flex-col items-center justify-center bg-gray-900/95 backdrop-blur-sm z-10 p-4">
-                    <div className="bg-red-500/20 rounded-full p-6 mb-4">
-                      <AlertTriangle className="h-16 w-16 text-red-500" />
-                    </div>
-                    
-                    <div className="text-white text-center">
-                      <div className="text-4xl md:text-5xl font-bold text-red-500 mb-2">
-                        Error 153
-                      </div>
-                      <div className="text-xl md:text-2xl font-semibold mb-4">
-                        Video player configuration error
-                      </div>
-                      <p className="text-gray-300 max-w-md mx-auto mb-6">
-                        The video player cannot be loaded due to configuration issues.
-                      </p>
-                      <button
-                        onClick={() => setShowError(false)}
-                        className="px-6 py-2 bg-white/20 hover:bg-white/30 text-white rounded-lg transition-colors duration-200"
-                      >
-                        Hide Error
-                      </button>
-                    </div>
-                  </div>
-                )}
-
-                {/* Video Preview Thumbnail */}
-                <div className="aspect-video bg-linear-to-br from-gray-800 to-gray-900 flex flex-col items-center justify-center">
-                  {/* YouTube Thumbnail */}
-                  <div className="relative mb-6">
-                    <img
-                      src={`https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`}
-                      alt="Video Thumbnail"
-                      className="rounded-lg shadow-lg max-w-md w-full opacity-80"
-                      onError={(e) => {
-                        e.target.src = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
-                      }}
-                    />
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <button
-                        onClick={handlePlayVideo}
-                        className="group relative"
-                      >
-                        <div className="h-24 w-24 md:h-32 md:w-32 bg-red-600 rounded-full flex items-center justify-center transform transition-transform duration-300 group-hover:scale-110 group-hover:bg-red-700 shadow-2xl">
-                          <Play className="h-12 w-12 md:h-16 md:w-16 text-white ml-2" />
-                        </div>
-                      </button>
-                    </div>
-                  </div>
-
-                  {/* Error Toggle Button */}
-                  <button
-                    onClick={() => setShowError(!showError)}
-                    className="flex items-center gap-2 px-4 py-2 bg-gray-800/50 hover:bg-gray-800/70 text-gray-300 rounded-lg transition-colors duration-200"
-                  >
-                    <AlertTriangle className="h-4 w-4" />
-                    {showError ? 'Hide Error' : 'Show Error 153'}
-                  </button>
-                </div>
-              </div>
-            )}
+        <div className="relative h-full flex flex-col justify-between p-6 sm:p-8 md:p-10 z-20">
+          <div className="flex justify-between items-start">
+            <div className="h-12 w-12 md:h-14 md:w-14 rounded-xl md:rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center backdrop-blur-xl">
+              <Award className="text-blue-400" size={24} />
+            </div>
+            <div className="flex flex-col items-end">
+              <span className="text-[8px] md:text-[10px] font-mono tracking-[0.2em] text-white/30 uppercase text-right">Encrypted ID<br/>{cert.id}</span>
+            </div>
           </div>
 
-          {/* YouTube Link Section */}
-          <div className="bg-linear-to-r from-red-50 to-red-100 p-6 border-t border-red-200">
-            <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-              <div className="flex items-center gap-3">
-                <div className="bg-red-600 p-2 rounded-lg">
-                  <Youtube className="h-6 w-6 text-white" />
-                </div>
-                <div>
-                  <h3 className="text-lg font-semibold text-gray-900">
-                    Watch on YouTube
-                  </h3>
-                  <p className="text-gray-600 text-sm">
-                    For best viewing experience
-                  </p>
-                </div>
-              </div>
-              
-              <div className="flex gap-3">
-                {!isPlaying && (
-                  <button
-                    onClick={handlePlayVideo}
-                    className="inline-flex items-center justify-center px-6 py-3 bg-red-600 text-white font-medium rounded-lg hover:bg-red-700 transition-all duration-200 shadow-sm hover:shadow-md"
-                  >
-                    <Play className="h-5 w-5 mr-2" />
-                    Play Video
-                  </button>
-                )}
-                
-                <a
-                  href={youtubeUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center px-6 py-3 bg-white text-gray-800 font-medium rounded-lg border border-gray-300 hover:bg-gray-50 transition-all duration-200 shadow-sm hover:shadow-md"
-                >
-                  <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z" />
-                  </svg>
-                  Open YouTube
-                </a>
+          <div className="space-y-3 md:space-y-4">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-[9px] md:text-[10px] text-blue-400 font-mono">
+              <Zap size={10} /> {cert.category}
+            </div>
+            <h3 className="text-2xl md:text-3xl font-light tracking-tight text-white leading-tight">
+              {cert.title}
+            </h3>
+            
+            <div className="flex items-center justify-between pt-4 md:pt-6 border-t border-white/5">
+              <p className="text-xs md:text-sm text-white/40 font-light">{cert.issuer}</p>
+              <div className="h-8 w-8 md:h-10 md:w-10 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-white group-hover:text-black transition-all duration-500">
+                <ArrowUpRight size={18} />
               </div>
             </div>
           </div>
         </div>
-
-        {/* Instructions */}
-        
       </div>
+    </motion.div>
+  );
+};
+
+const FinalPremiumVault = () => {
+  const [selected, setSelected] = useState(null);
+
+  const certs = [
+    { id: "X-992", title: "Principal Systems Architect", issuer: "Meta Global", category: "ENGINEERING", image: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?q=80&w=1200" },
+    { id: "B-104", title: "Neural Sync Interface", issuer: "Neuralink Corp", category: "BIOTECH", image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=1200" },
+    { id: "S-001", title: "Global Security Lead", issuer: "Interpol Cyber", category: "SECURITY", image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=1200" }
+  ];
+
+  return (
+    <div className="min-h-screen bg-[#050505] text-white py-12 px-4 sm:px-8 md:py-24 overflow-x-hidden">
+      {/* Background Decorative Element */}
+      <div className="fixed top-0 left-0 w-full h-full pointer-events-none opacity-[0.03] flex items-center justify-center">
+        <h1 className="text-[25vw] font-black uppercase tracking-tighter select-none">Vault</h1>
+      </div>
+
+      <div className="max-w-7xl mx-auto relative z-10">
+        <header className="flex flex-col gap-4 mb-16 md:mb-24">
+          <div className="flex items-center gap-2 text-blue-500 font-mono text-[10px] md:text-xs tracking-[0.4em] uppercase">
+            <span className="h-[1px] w-8 bg-blue-500" /> 
+            Professional Digital Assets
+          </div>
+          <h1 className="text-5xl sm:text-7xl md:text-9xl font-bold tracking-tighter leading-[0.85]">
+            Certifications<span className="text-blue-600">.</span>
+          </h1>
+        </header>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10">
+          {certs.map(cert => (
+            <CertificateCard key={cert.id} cert={cert} onSelect={setSelected} />
+          ))}
+        </div>
+      </div>
+
+      {/* Responsive Modal */}
+      <AnimatePresence>
+        {selected && (
+          <motion.div 
+            initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[100] bg-black/95 backdrop-blur-2xl flex items-center justify-center p-4"
+            onClick={() => setSelected(null)}
+          >
+            <motion.div 
+              initial={{ scale: 0.9, opacity: 0, y: 20 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.9, opacity: 0, y: 20 }}
+              className="relative w-full max-w-5xl max-h-[90vh] bg-[#111] rounded-[1.5rem] md:rounded-[3rem] border border-white/10 overflow-hidden flex flex-col"
+              onClick={e => e.stopPropagation()}
+            >
+              {/* Top Bar for Mobile */}
+              <div className="p-4 md:p-6 flex justify-between items-center border-b border-white/5 bg-white/[0.02]">
+                <div className="flex items-center gap-2">
+                  <ShieldCheck className="text-blue-500" size={18} />
+                  <span className="text-[10px] font-mono tracking-widest uppercase text-white/60">Verified Document</span>
+                </div>
+                <button onClick={() => setSelected(null)} className="p-2 hover:bg-white/10 rounded-full transition-colors">
+                  <X size={24} />
+                </button>
+              </div>
+
+              {/* Scrollable Image Area */}
+              <div className="flex-1 overflow-y-auto p-4 md:p-12 flex items-center justify-center bg-black/40">
+                <img 
+                  src={selected.image} 
+                  className="max-w-full h-auto rounded-lg shadow-2xl border border-white/5" 
+                  alt="Certificate Full View" 
+                />
+              </div>
+
+              {/* Bottom Info Bar */}
+              <div className="p-6 md:p-8 bg-black border-t border-white/5">
+                <h4 className="text-xl md:text-2xl font-bold">{selected.title}</h4>
+                <p className="text-xs md:text-sm text-white/40 mt-1">{selected.issuer} — ID: {selected.id}</p>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };
 
-export default CorporateVideo;
+export default FinalPremiumVault;

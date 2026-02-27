@@ -1,233 +1,64 @@
-// import React, { useState } from "react";
-// import { motion } from "framer-motion";
-
-// const clients = [
-//   { name: "Tata Motors", logo: "/Logos/TVS-Motor-Company.png" },
-//   { name: "Bosch", logo: "/Logos/Ola-Cabs-Logo.png" },
-//   { name: "Bajaj", logo: "/Logos/Wave_mec.png" },
-//   { name: "Maruti Suzuki", logo: "/Logos/Taal.png" },
-//   { name: "Mahindra", logo: "/Logos/Boeing.png" },
-//   { name: "Hyundai", logo: "/Logos/BEML.png" },
-//   { name: "Hero MotoCorp", logo: "/Logos/DRDO.png" },
-//   { name: "TVS", logo: "/Logos/mg.png" },
-//   { name: "Ashok Leyland", logo: "/Logos/indian_railways.png" },
-//   { name: "Volvo Eicher", logo: "/Logos/General_Electric.png" },
-//   { name: "Siemens", logo: "/Logos/Siemens.png" },
-//   { name: "Hitachi", logo: "/Logos/Hitachi.png" },
-//   { name: "AEQUS", logo: "/Logos/AEQUS.png" },
-//   { name: "Garuda", logo: "/Logos/garuda.png" },
-// ];
-
-// export default function ClientsSlider() {
-//   const [isPaused, setIsPaused] = useState(false);
-//   const [loadedImages, setLoadedImages] = useState({});
-
-//   // Handle image load
-//   const handleImageLoad = (name) => {
-//     setLoadedImages(prev => ({ ...prev, [name]: true }));
-//   };
-
-//   // Duplicate clients for seamless loop
-//   const duplicatedClients = [...clients, ...clients];
-
-//   return (
-//     <section className="py-12 sm:py-16 lg:py-20 bg-white relative overflow-hidden">
-//       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-//         <div className="text-center mb-10 lg:mb-14">
-//           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
-//             Trusted by Industry Leaders
-//           </h2>
-//           <p className="text-gray-600 max-w-2xl mx-auto text-lg">
-//             We proudly serve the world's most respected automotive and manufacturing companies
-//           </p>
-//         </div>
-
-//         {/* Mobile View - Single Row Slower Scroll */}
-//         <div className="md:hidden relative">
-//           <div 
-//             className="overflow-hidden"
-//             onMouseEnter={() => setIsPaused(true)}
-//             onMouseLeave={() => setIsPaused(false)}
-//           >
-//             <motion.div
-//               className="flex items-center gap-10 whitespace-nowrap"
-//               animate={{ x: ["0%", "-100%"] }}
-//               transition={{
-//                 repeat: Infinity,
-//                 duration: 80,
-//                 ease: "linear",
-//                 repeatType: "loop",
-//               }}
-//               style={{ 
-//                 animationPlayState: isPaused ? "paused" : "running",
-//                 willChange: "transform"
-//               }}
-//             >
-//               {duplicatedClients.map((client, index) => (
-//                 <div
-//                   key={`mobile-${client.name}-${index}`}
-//                   className="flex-shrink-0 p-3 bg-white rounded-lg border border-gray-100 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1"
-//                 >
-//                   <div className="relative w-28 h-16">
-//                     {!loadedImages[client.name] && (
-//                       <div className="absolute inset-0 bg-gray-100 animate-pulse rounded-md" />
-//                     )}
-//                     <img
-//                       src={client.logo}
-//                       alt={client.name}
-//                       className={`w-full h-full object-contain transition-all duration-300 ${
-//                         loadedImages[client.name] ? 'opacity-100' : 'opacity-0'
-//                       }`}
-//                       onLoad={() => handleImageLoad(client.name)}
-//                       loading="lazy"
-//                     />
-//                   </div>
-//                 </div>
-//               ))}
-//             </motion.div>
-//           </div>
-//           <div className="absolute left-0 top-0 w-12 h-full bg-gradient-to-r from-white to-transparent pointer-events-none z-10" />
-//           <div className="absolute right-0 top-0 w-12 h-full bg-gradient-to-l from-white to-transparent pointer-events-none z-10" />
-//         </div>
-
-//         {/* Desktop View - Two Rows, Opposite Directions */}
-//         <div className="hidden md:block space-y-8">
-//           {/* Top Row - Left to Right */}
-//           <div className="relative">
-//             <div 
-//               className="overflow-hidden"
-//               onMouseEnter={() => setIsPaused(true)}
-//               onMouseLeave={() => setIsPaused(false)}
-//             >
-//               <motion.div
-//                 className="flex items-center gap-12 whitespace-nowrap"
-//                 animate={{ x: ["0%", "-50%"] }}
-//                 transition={{
-//                   repeat: Infinity,
-//                   duration: 50,
-//                   ease: "linear",
-//                   repeatType: "loop",
-//                 }}
-//                 style={{ 
-//                   animationPlayState: isPaused ? "paused" : "running",
-//                   willChange: "transform"
-//                 }}
-//               >
-//                 {duplicatedClients.map((client, index) => (
-//                   <div
-//                     key={`top-${client.name}-${index}`}
-//                     className="flex-shrink-0 group"
-//                   >
-//                     <div className="p-4 bg-white rounded-xl border border-gray-200 shadow-xs hover:shadow-lg transition-all duration-300 group-hover:-translate-y-1">
-//                       <div className="relative w-40 h-20">
-//                         {!loadedImages[`top-${client.name}`] && (
-//                           <div className="absolute inset-0 bg-gray-100 animate-pulse rounded-lg" />
-//                         )}
-//                         <img
-//                           src={client.logo}
-//                           alt={client.name}
-//                           className={`w-full h-full object-contain transition-all duration-500 group-hover:scale-105 ${
-//                             loadedImages[`top-${client.name}`] ? 'opacity-100' : 'opacity-0'
-//                           }`}
-//                           onLoad={() => handleImageLoad(`top-${client.name}`)}
-//                           loading="lazy"
-//                         />
-//                       </div>
-//                       <p className="mt-3 text-sm font-medium text-gray-600 group-hover:text-gray-900 transition-colors duration-300">
-//                         {client.name}
-//                       </p>
-//                     </div>
-//                   </div>
-//                 ))}
-//               </motion.div>
-//             </div>
-//           </div>
-
-//           {/* Bottom Row - Right to Left */}
-//           <div className="relative">
-//             <div 
-//               className="overflow-hidden"
-//               onMouseEnter={() => setIsPaused(true)}
-//               onMouseLeave={() => setIsPaused(false)}
-//             >
-//               <motion.div
-//                 className="flex items-center gap-12 whitespace-nowrap"
-//                 animate={{ x: ["-50%", "0%"] }}
-//                 transition={{
-//                   repeat: Infinity,
-//                   duration: 60,
-//                   ease: "linear",
-//                   repeatType: "loop",
-//                 }}
-//                 style={{ 
-//                   animationPlayState: isPaused ? "paused" : "running",
-//                   willChange: "transform"
-//                 }}
-//               >
-//                 {[...clients].reverse().map((client, index) => (
-//                   <div
-//                     key={`bottom-${client.name}-${index}`}
-//                     className="flex-shrink-0 group"
-//                   >
-//                     <div className="p-4 bg-white rounded-xl border border-gray-200 shadow-xs hover:shadow-lg transition-all duration-300 group-hover:-translate-y-1">
-//                       <div className="relative w-40 h-20">
-//                         {!loadedImages[`bottom-${client.name}`] && (
-//                           <div className="absolute inset-0 bg-gray-100 animate-pulse rounded-lg" />
-//                         )}
-//                         <img
-//                           src={client.logo}
-//                           alt={client.name}
-//                           className={`w-full h-full object-contain transition-all duration-500 group-hover:scale-105 ${
-//                             loadedImages[`bottom-${client.name}`] ? 'opacity-100' : 'opacity-0'
-//                           }`}
-//                           onLoad={() => handleImageLoad(`bottom-${client.name}`)}
-//                           loading="lazy"
-//                         />
-//                       </div>
-//                       <p className="mt-3 text-sm font-medium text-gray-600 group-hover:text-gray-900 transition-colors duration-300">
-//                         {client.name}
-//                       </p>
-//                     </div>
-//                   </div>
-//                 ))}
-//               </motion.div>
-//             </div>
-//           </div>
-//         </div>
-
-//         {/* Enhanced Gradients for Desktop */}
-//         <div className="hidden md:block absolute left-0 top-1/2 -translate-y-1/2 w-32 h-full bg-gradient-to-r from-white via-white to-transparent pointer-events-none z-10" />
-//         <div className="hidden md:block absolute right-0 top-1/2 -translate-y-1/2 w-32 h-full bg-gradient-to-l from-white via-white to-transparent pointer-events-none z-10" />
-//       </div>
-//     </section>
-//   );
-// }
-
-
-
-
-
 
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 
-/* Clients Data */
-const clients = [
-  { name: "Tata Motors", logo: "/Logos/TVS-Motor-Company.png" },
-  { name: "Bosch", logo: "/Logos/Ola-Cabs-Logo.png" },
-  { name: "Bajaj", logo: "/Logos/Wave_mec.png" },
-  { name: "Maruti Suzuki", logo: "/Logos/Taal.png" },
-  { name: "Mahindra", logo: "/Logos/Boeing.png" },
-  { name: "Hyundai", logo: "/Logos/BEML.png" },
-  { name: "Hero MotoCorp", logo: "/Logos/DRDO.png" },
-  { name: "TVS", logo: "/Logos/mg.png" },
-  { name: "Ashok Leyland", logo: "/Logos/indian_railways.png" },
-  { name: "Volvo Eicher", logo: "/Logos/General_Electric.png" },
-  { name: "Siemens", logo: "/Logos/Siemens.png" },
-  { name: "Hitachi", logo: "/Logos/Hitachi.png" },
-  { name: "AEQUS", logo: "/Logos/AEQUS.png" },
-  { name: "Garuda", logo: "/Logos/garuda.png" },
+/* 1. Raw Filenames */
+const logoFiles = [
+  "Anjanadri Weld and Fabrications.png",
+  "Anupam Aroma Stainless kitchenware.png",
+  "BCH Enclosures – Industrial grade stainless enclosures.png",
+  "BMM Ispat Ltd.png",
+  "Bosch Chassis Systems India.png",
+  "Bosch Rexroth company.png",
+  "Creators Fab and Interiors – Stainless fabrication.png",
+  "EC Box India – Electrical & instrument coating boxes (metal fabrication).png",
+  "Electronic & Industrial Equipment Manufacturer.png",
+  "Fine Punch Fab Pvt Ltd Precision sheet.png",
+  "Hampson Industries Pvt Ltd – engineered goods manufacturing.png",
+  "Hi Coat Wires – Stainless product manufacturing.png",
+  "Hi-Tec Fabs – Stainless steel fabrication.png",
+  "Hitech Laser – laser-cut stainless components.png",
+  "Horizon Stainless Steel premium utensil range.png",
+  "KIOCL Ltd headquartered mineral.png",
+  "Legrand India Pvt Ltd.png",
+  "Load Controls India Pvt Ltd.png",
+  "Mahesh Distributors (SS products).png",
+  "Meddent (stainless surgical products supplier).png",
+  "Metline Industries – stainless sheets supplier & processing.png",
+  "Ns Automats – precision components.png",
+  "Om Sakthi Industries – industrial component parts.png",
+  "Pal Engineering Co. – fabricators using SS.png",
+  "Pentair  Modutec Ready Panels Pvt Ltd.png",
+  "Pentair Technical Products India Pvt Ltd.png",
+  "PRK Fabricators Pvt Ltd – Sheet metal & stainless products.png",
+  "Rittal India Pvt Ltd.png",
+  "RJ Engineering Enterprises – Fabrication & finishing.png",
+  "S B Fab Tech – sheet metal & enclosures.png",
+  "S. L. V. Engineering – Fabrication & SS product maker.png",
+  "Siva Rollers – Stainless steel industrial roller manufacturer.png",
+  "SLN Fabricators – Stainless steel tank & CNC precision components.png",
+  "Sunvik Steels Pvt Ltd.png",
+  "Unilink Enterprises – Stainless fabrication services.png",
+  "Veltech Equipments – Industrial metal products.png",
+  "Yaskawa India Pvt Ltd.png",
+  "Siemens.png",
+  "Hitachi.png"
 ];
+
+/* 2. Process Data: Shorten names and format paths */
+const clients = logoFiles.map((fileName) => {
+  // Clean the name: Remove .png, then take only the part before "–", "-", or "("
+  const cleanName = fileName
+    .replace(/\.[^/.]+$/, "") 
+    .split(/[–\-/(]/)[0] 
+    .trim();
+
+  return {
+    name: cleanName,
+    // Use the literal filename for the path (Vite/React public folder handles this best)
+    logo: `/Logos/${fileName}`,
+  };
+});
 
 /* Duplicate for infinite loop */
 const loopData = [...clients, ...clients];
@@ -237,77 +68,32 @@ export default function ClientsSlider() {
 
   return (
     <section className="py-12 sm:py-16 lg:py-20 bg-white relative overflow-hidden">
-
       <div className="max-w-7xl mx-auto px-4">
-
+        
         {/* Heading */}
         <div className="text-center mb-10">
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-3">
             Trusted by Industry Leaders
           </h2>
-
           <p className="text-gray-600 text-sm sm:text-base max-w-2xl mx-auto">
             We proudly serve world-class automotive & manufacturing companies
           </p>
         </div>
 
-        {/* ================= MOBILE & TABLET ================= */}
-        <div className="block md:hidden">
-
-          <div
-            className="overflow-hidden"
-            onTouchStart={() => setPaused(true)}
-            onTouchEnd={() => setPaused(false)}
-          >
+        {/* ================= SLIDER CONTAINER ================= */}
+        <div 
+          className="space-y-10"
+          onMouseEnter={() => setPaused(true)}
+          onMouseLeave={() => setPaused(false)}
+        >
+          {/* Top Row (Left to Right) */}
+          <div className="overflow-hidden">
             <motion.div
-              className="flex items-center gap-6 sm:gap-10"
-              animate={{
-                x: paused ? "0%" : ["0%", "-100%"],
-              }}
+              className="flex items-center gap-6"
+              animate={{ x: paused ? "0%" : ["0%", "-50%"] }}
               transition={{
                 repeat: Infinity,
-                duration: 45,
-                ease: "linear",
-              }}
-            >
-              {loopData.map((item, i) => (
-                <div
-                  key={i}
-                  className="flex-shrink-0 bg-white border rounded-lg shadow-sm p-3"
-                >
-                  <div className="w-24 h-14 sm:w-32 sm:h-18 flex items-center justify-center">
-
-                    <img
-                      src={item.logo}
-                      alt={item.name}
-                      className="w-full h-full object-contain"
-                      loading="lazy"
-                    />
-                  </div>
-                </div>
-              ))}
-            </motion.div>
-          </div>
-        </div>
-
-
-        {/* ================= DESKTOP ================= */}
-        <div className="hidden md:block space-y-10">
-
-          {/* Top Row */}
-          <div
-            className="overflow-hidden"
-            onMouseEnter={() => setPaused(true)}
-            onMouseLeave={() => setPaused(false)}
-          >
-            <motion.div
-              className="flex items-center gap-10 lg:gap-14"
-              animate={{
-                x: paused ? "0%" : ["0%", "-50%"],
-              }}
-              transition={{
-                repeat: Infinity,
-                duration: 35,
+                duration: 50,
                 ease: "linear",
               }}
             >
@@ -317,21 +103,14 @@ export default function ClientsSlider() {
             </motion.div>
           </div>
 
-
-          {/* Bottom Row */}
-          <div
-            className="overflow-hidden"
-            onMouseEnter={() => setPaused(true)}
-            onMouseLeave={() => setPaused(false)}
-          >
+          {/* Bottom Row (Right to Left) - Visible on Desktop only if preferred */}
+          <div className="hidden md:block overflow-hidden">
             <motion.div
-              className="flex items-center gap-10 lg:gap-14"
-              animate={{
-                x: paused ? "0%" : ["-50%", "0%"],
-              }}
+              className="flex items-center gap-6"
+              animate={{ x: paused ? "0%" : ["-50%", "0%"] }}
               transition={{
                 repeat: Infinity,
-                duration: 40,
+                duration: 60,
                 ease: "linear",
               }}
             >
@@ -340,41 +119,41 @@ export default function ClientsSlider() {
               ))}
             </motion.div>
           </div>
-
         </div>
 
-
-        {/* Gradients */}
-        <div className="absolute left-0 top-0 h-full w-20 bg-gradient-to-r from-white to-transparent pointer-events-none" />
-        <div className="absolute right-0 top-0 h-full w-20 bg-gradient-to-l from-white to-transparent pointer-events-none" />
+        {/* Edge Gradients for smooth fade */}
+        <div className="absolute left-0 top-0 h-full w-24 bg-gradient-to-r from-white to-transparent pointer-events-none z-10" />
+        <div className="absolute right-0 top-0 h-full w-24 bg-gradient-to-l from-white to-transparent pointer-events-none z-10" />
 
       </div>
     </section>
   );
 }
 
-
-/* Card Component */
+/* 3. Refined Card Component */
 function ClientCard({ item }) {
   return (
     <div className="flex-shrink-0 group">
-
-      <div className="bg-white border rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 p-4">
-
-        <div className="w-36 h-20 lg:w-44 lg:h-24 flex items-center justify-center">
-
+      <div className="bg-white border border-gray-100 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 p-4 w-40 h-32 lg:w-48 lg:h-40 flex flex-col items-center justify-center">
+        
+        <div className="w-full h-2/3 flex items-center justify-center overflow-hidden">
           <img
             src={item.logo}
             alt={item.name}
-            className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
+            className="max-w-full max-h-full object-contain group-hover:scale-110 transition-transform duration-300"
             loading="lazy"
+            // Fallback for broken images to keep layout consistent
+            onError={(e) => {
+              e.target.style.display = 'none';
+              e.target.nextSibling.style.display = 'block';
+            }}
           />
+          <div className="hidden text-gray-400 text-xs italic">Logo missing</div>
         </div>
 
-        <p className="text-center mt-2 text-sm text-gray-600 group-hover:text-gray-900">
+        <p className="text-center mt-3 text-xs font-semibold text-gray-500 group-hover:text-blue-600 transition-colors truncate w-full px-2">
           {item.name}
         </p>
-
       </div>
     </div>
   );

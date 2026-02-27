@@ -1,202 +1,233 @@
+
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Infinity,
   Activity,
-  Zap,
   Wind,
   Shuffle,
+  Zap,
   BatteryCharging,
-  Eye,
-  RotateCw,
-  PlusSquare,
-  BarChart,
-  ArrowRight,
-  X
+  Gauge,
+  RotateCcw,
+  Layers,
+  ShieldCheck,
+  X,
+  Plus,
+  MoveRight
 } from "lucide-react";
 
 export default function EurocoilC2C1650() {
-  const [modalOpen, setModalOpen] = useState(false);
+  const [selectedFeature, setSelectedFeature] = useState(null);
 
-  const processSteps = [
+  const features = [
     {
-      id: "01",
+      id: 1,
       title: "Continuous Architecture",
-      icon: <Infinity className="w-6 h-6" />,
-      desc: "Enables uninterrupted processing for high-throughput operations. Continuous strip flow eliminates start-stop stress cycles.",
-      position: "left"
+      icon: <Infinity />,
+      desc: "Enables uninterrupted processing for high-throughput operations. Continuous strip flow eliminates start-stop stress cycles, maximizing output and structural alignment.",
+      tag: "FLOW"
     },
     {
-      id: "02",
+      id: 2,
       title: "Precision Tension Control",
-      icon: <Activity className="w-6 h-6" />,
-      desc: "Bridle rolls maintain consistent strip tension via closed-loop control, preventing elongation and ensuring uniform stress distribution.",
-      position: "right"
+      icon: <Activity />,
+      desc: "Bridle rolls maintain consistent strip tension via closed-loop control. This prevents elongation and ensures uniform stress distribution to preserve strip geometry.",
+      tag: "TENSION"
     },
     {
-      id: "03",
+      id: 3,
       title: "Surface Preservation",
-      icon: <Wind className="w-6 h-6" />,
-      desc: "Non-contact guidance systems and low-friction rollers protect coated finishes, eliminating surface defects.",
-      position: "left"
+      icon: <Wind />,
+      desc: "Non-contact guidance systems and low-friction rollers protect coated finishes. Eliminates surface abrasion and maintains absolute strip cleanliness for premium quality.",
+      tag: "SURFACE"
     },
     {
-      id: "04",
+      id: 4,
       title: "Stress Neutralisation",
-      icon: <Shuffle className="w-6 h-6" />,
-      desc: "Inline straighteners eliminate coil memory and neutralise residual stresses, stabilizing material behavior.",
-      position: "right"
+      icon: <Shuffle />,
+      desc: "Inline straighteners eliminate coil memory and neutralise residual stresses. Stabilises material behavior and improves flatness for downstream processing.",
+      tag: "STRESS"
     },
     {
-      id: "05",
+      id: 5,
       title: "Speed Synchronisation",
-      icon: <Zap className="w-6 h-6" />,
-      desc: "Servo drives harmonise line speed for stable material flow. Smooth acceleration eliminates mechanical shock.",
-      position: "left"
+      icon: <Zap />,
+      desc: "Servo drives harmonise line speed for stable material flow. Smooth acceleration curves eliminate mechanical shock and improve operational precision.",
+      tag: "SYNC"
     },
     {
-      id: "06",
+      id: 6,
       title: "Energy Recovery",
-      icon: <BatteryCharging className="w-6 h-6" />,
-      desc: "Regenerative drives and high-efficiency motors reduce power consumption and support sustainability goals.",
-      position: "right"
+      icon: <BatteryCharging />,
+      desc: "High-efficiency motors and regenerative drives reduce power consumption. Supports sustainability goals while significantly lowering operational costs.",
+      tag: "ECO"
+    },
+    {
+      id: 7,
+      title: "Intelligent Monitoring",
+      icon: <Gauge />,
+      desc: "Integrated sensors monitor tension, speed, and alignment in real-time. Predictive diagnostics prevent downtime and keep process parameters optimized.",
+      tag: "DATA"
+    },
+    {
+      id: 8,
+      title: "Automated Recoiling",
+      icon: <RotateCcw />,
+      desc: "Advanced recoiling systems ensure tight, stable coil winding with perfect edge alignment, preserving coil geometry for subsequent handling.",
+      tag: "RECOIL"
+    },
+    {
+      id: 9,
+      title: "Modular Integration",
+      icon: <Layers />,
+      desc: "Designed to support coating, polishing, and laminating modules. The adaptable architecture allows for easy line expansion and future technology upgrades.",
+      tag: "MODULE"
+    },
+    {
+      id: 10,
+      title: "Industrial Reliability",
+      icon: <ShieldCheck />,
+      desc: "Built for continuous industrial duty with durable components. Maintenance-friendly access points maximize uptime and ensure long-term operational stability.",
+      tag: "HEAVY"
     }
   ];
 
   return (
-    <div className="bg-[#0f0a1a] text-blue-50 font-sans selection:bg-blue-500/40 pb-20 overflow-x-hidden">
+    <div className="bg-[#0a0a0a] text-stone-100 min-h-screen font-sans overflow-x-hidden">
       
       {/* HERO SECTION */}
-      <section className="relative min-h-[90vh] md:min-h-screen flex items-center justify-center px-4 md:px-6 overflow-hidden">
-        {/* Animated Background Pulse */}
-        <div className="absolute inset-0 z-0">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] md:w-[800px] h-[300px] md:h-[800px] bg-blue-600/20 rounded-full blur-[80px] md:blur-[120px]" />
-          <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10 md:opacity-20" />
+      <section className="relative min-h-[85vh] flex flex-col justify-center px-6 md:px-20 border-b border-stone-800/50">
+        {/* Technical Grid Overlay */}
+        <div className="absolute right-0 top-0 w-full h-full opacity-5 pointer-events-none">
+          <div className="grid grid-cols-12 h-full">
+            {[...Array(60)].map((_, i) => (
+              <div key={i} className="border-r border-b border-blue-500" />
+            ))}
+          </div>
         </div>
 
-        <div className="relative z-10 text-center max-w-5xl">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="inline-block px-4 py-1.5 rounded-full border border-blue-500/30 bg-blue-500/10 text-blue-300 text-[10px] md:text-xs font-bold tracking-[0.2em] md:tracking-[0.3em] uppercase mb-6 md:mb-8"
-          >
-            Continuous Processing Excellence
-          </motion.div>
-          
-          <h1 className="text-5xl sm:text-7xl md:text-9xl font-black tracking-tighter italic mb-4 leading-none">
-            EUROCOIL<span className="text-blue-500">™</span>
+        <motion.div 
+          initial={{ opacity: 0, x: -30 }}
+          animate={{ opacity: 1, x: 0 }}
+          className="relative z-10"
+        >
+          <div className="flex items-center gap-4 mb-6">
+            <span className="h-[2px] w-12 bg-blue-500" />
+            <span className="text-blue-500 font-mono tracking-[0.4em] text-sm uppercase font-bold">Continuous Flow Series</span>
+          </div>
+          <h1 className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-black tracking-tighter mb-4 leading-none">
+            EUROCOIL<span className="text-blue-500 font-light italic text-4xl sm:text-7xl md:text-8xl lg:text-9xl">C2C</span>
           </h1>
-          <h2 className="text-xl md:text-4xl lg:text-5xl font-light text-blue-200/60 tracking-[0.15em] md:tracking-[0.2em] mb-10 md:mb-12">
-            C2C 1650 SERIES
-          </h2>
+          <p className="text-stone-400 text-xl md:text-2xl max-w-2xl font-light leading-relaxed mb-12">
+            Engineered for high-throughput processing. Uninterrupted material flow for coils up to 1650mm width and 3.0mm gauge.
+          </p>
 
-          <div className="flex flex-row items-center justify-center gap-4 md:gap-8 mb-12 md:mb-16">
-            <div className="flex flex-col items-center">
-              <span className="text-3xl md:text-5xl font-bold">1650</span>
-              <span className="text-[10px] uppercase tracking-widest text-blue-400">Width (mm)</span>
+          <div className="flex flex-wrap gap-12">
+            <div>
+              <p className="text-stone-500 text-xs uppercase tracking-widest mb-2 font-bold">Width Capacity</p>
+              <p className="text-4xl font-mono text-white tracking-tighter">1650<span className="text-blue-500 text-xl ml-1">MM</span></p>
             </div>
-            <div className="h-px w-6 md:w-12 bg-blue-800" />
-            <div className="flex flex-col items-center">
-              <span className="text-3xl md:text-5xl font-bold">3.0</span>
-              <span className="text-[10px] uppercase tracking-widest text-blue-400">Max Gauge (mm)</span>
+            <div className="w-px h-14 bg-stone-800 hidden md:block" />
+            <div>
+              <p className="text-stone-500 text-xs uppercase tracking-widest mb-2 font-bold">Gauge Range</p>
+              <p className="text-4xl font-mono text-white tracking-tighter">0.25—3.0<span className="text-blue-500 text-xl ml-1">MM</span></p>
             </div>
           </div>
-
-          {/* <button 
-            onClick={() => setModalOpen(true)}
-            className="w-full sm:w-auto bg-blue-600 hover:bg-blue-500 text-white px-8 md:px-12 py-4 md:py-5 rounded-xl md:rounded-2xl font-bold text-base md:text-lg shadow-[0_0_40px_rgba(37,99,235,0.3)] transition-all flex items-center justify-center gap-3 mx-auto"
-          >
-            Configure Your Line <ArrowRight className="w-5 h-5" />
-          </button> */}
-        </div>
+        </motion.div>
       </section>
 
-      {/* PROCESS TIMELINE SECTION */}
-      <section className="relative max-w-6xl mx-auto px-4 md:px-6 py-10 md:py-20">
-        {/* Vertical Center Line (Desktop Only) */}
-        <div className="absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-blue-500/50 to-transparent hidden md:block" />
-
-        <div className="space-y-12 md:space-y-24">
-          {processSteps.map((step) => (
+      {/* FEATURE GRID */}
+      <section className="p-6 md:p-20 bg-[#0c0c0c]">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
+          {features.map((feature, idx) => (
             <motion.div
-              key={step.id}
-              initial={{ opacity: 0, x: 0, y: 30 }}
-              whileInView={{ opacity: 1, x: 0, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              className={`flex flex-col md:flex-row ${step.position === "left" ? "" : "md:flex-row-reverse"} items-center gap-6 md:gap-0`}
+              key={feature.id}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: idx * 0.05 }}
+              viewport={{ once: true }}
+              onClick={() => setSelectedFeature(feature)}
+              className="group relative bg-[#141414] border border-stone-800 p-8 cursor-pointer hover:bg-blue-950/10 hover:border-blue-500/50 transition-all aspect-square flex flex-col justify-between overflow-hidden"
             >
-              {/* Content Card */}
-              <div className="w-full md:w-5/12">
-                <div className="p-6 md:p-8 rounded-2xl md:rounded-[2.5rem] bg-gradient-to-br from-blue-900/30 to-slate-900/50 border border-blue-500/10 backdrop-blur-sm hover:border-blue-500/40 transition-all group">
-                  <div className="flex items-center gap-4 mb-4">
-                    <div className="p-2.5 md:p-3 bg-blue-600 rounded-lg md:rounded-xl text-white">
-                      {step.icon}
-                    </div>
-                    <span className="text-3xl md:text-4xl font-black text-blue-900/30 group-hover:text-blue-500/20 transition-colors uppercase italic">{step.id}</span>
-                  </div>
-                  <h3 className="text-xl md:text-2xl font-bold mb-3">{step.title}</h3>
-                  <p className="text-blue-200/50 leading-relaxed text-sm md:text-base">
-                    {step.desc}
-                  </p>
-                </div>
+              <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-100 group-hover:text-blue-400 transition-all">
+                <Plus size={20} />
+              </div>
+              
+              <div className="text-blue-500 mb-4 transition-transform group-hover:scale-110">
+                {React.cloneElement(feature.icon, { size: 40, strokeWidth: 1.5 })}
               </div>
 
-              {/* Center Dot (Desktop Only) */}
-              <div className="relative w-full md:w-2/12 hidden md:flex justify-center">
-                <div className="w-4 h-4 rounded-full bg-blue-500 shadow-[0_0_15px_rgba(59,130,246,0.8)] z-10" />
+              <div>
+                <span className="text-[10px] font-mono text-stone-500 block mb-2 tracking-tighter uppercase font-bold">C2C_SYS_1650_{feature.tag}</span>
+                <h3 className="text-lg font-bold uppercase tracking-tight leading-tight group-hover:text-blue-400 transition-colors">
+                  {feature.title}
+                </h3>
               </div>
 
-              {/* Empty Space for alignment (Desktop Only) */}
-              <div className="hidden md:block md:w-5/12" />
+              {/* Signature Sheet Line Animation */}
+              <div className="absolute bottom-0 left-0 w-full h-1 bg-blue-500 translate-y-1 group-hover:translate-y-0 transition-transform shadow-[0_-5px_15px_rgba(59,130,246,0.3)]" />
             </motion.div>
           ))}
         </div>
       </section>
 
-      {/* MODAL */}
+      {/* SPECIFICATION DRAWER */}
       <AnimatePresence>
-        {modalOpen && (
+        {selectedFeature && (
           <motion.div 
-            className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-slate-950/90 backdrop-blur-lg"
+            className="fixed inset-0 z-50 flex items-center justify-end p-0 md:p-6"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
           >
+            <div className="absolute inset-0 bg-black/90 backdrop-blur-md" onClick={() => setSelectedFeature(null)} />
             <motion.div 
-              className="bg-[#1a1525] border border-blue-500/30 w-full max-w-2xl p-6 md:p-12 rounded-3xl md:rounded-[3rem] relative max-h-[90vh] overflow-y-auto shadow-2xl"
-              initial={{ scale: 0.9, y: 20 }}
-              animate={{ scale: 1, y: 0 }}
+              className="relative w-full max-w-2xl h-full bg-[#0d0d0d] border-l border-blue-500/30 p-12 flex flex-col justify-center shadow-2xl"
+              initial={{ x: "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "100%" }}
+              transition={{ type: "spring", damping: 30, stiffness: 200 }}
             >
-              <button onClick={() => setModalOpen(false)} className="absolute top-4 right-4 md:top-8 md:right-8 text-blue-400 hover:text-white transition-colors">
-                <X size={24} className="md:w-8 md:h-8" />
+              <button 
+                onClick={() => setSelectedFeature(null)}
+                className="absolute top-12 right-12 text-stone-500 hover:text-white transition-colors"
+              >
+                <X size={36} />
               </button>
               
-              <h2 className="text-2xl md:text-4xl font-black mb-1 italic">EUROCOIL<span className="text-blue-500">™</span></h2>
-              <p className="text-blue-300 mb-6 md:mb-8 uppercase tracking-widest text-[10px] font-bold">Request Line Configuration</p>
-              
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mb-6">
-                <div className="space-y-2">
-                  <label className="text-[10px] uppercase font-bold text-blue-500 ml-2">Input Width (mm)</label>
-                  <input type="number" placeholder="1650" className="w-full bg-blue-950/50 border border-blue-500/20 rounded-xl md:rounded-2xl px-5 py-3 md:py-4 outline-none focus:border-blue-500 text-white text-sm" />
-                </div>
-                <div className="space-y-2">
-                  <label className="text-[10px] uppercase font-bold text-blue-500 ml-2">Line Speed (m/min)</label>
-                  <input type="number" placeholder="100" className="w-full bg-blue-950/50 border border-blue-500/20 rounded-xl md:rounded-2xl px-5 py-3 md:py-4 outline-none focus:border-blue-500 text-white text-sm" />
-                </div>
+              <div className="text-blue-500 mb-8">
+                {React.cloneElement(selectedFeature.icon, { size: 80, strokeWidth: 1 })}
               </div>
+              <p className="text-blue-500 font-mono text-sm mb-4 tracking-[0.3em] uppercase font-bold">Process Detail // Module 0{selectedFeature.id}</p>
+              <h2 className="text-5xl font-black mb-8 uppercase tracking-tighter leading-none">{selectedFeature.title}</h2>
+              <div className="w-24 h-1 bg-blue-500 mb-10" />
               
-              <div className="space-y-2 mb-8">
-                <label className="text-[10px] uppercase font-bold text-blue-500 ml-2">Professional Email</label>
-                <input type="email" placeholder="email@company.com" className="w-full bg-blue-950/50 border border-blue-500/20 rounded-xl md:rounded-2xl px-5 py-3 md:py-4 outline-none focus:border-blue-500 text-white text-sm" />
-              </div>
               
-              <button className="w-full bg-blue-600 text-white font-black py-4 md:py-5 rounded-xl md:rounded-2xl text-lg md:text-xl hover:bg-blue-500 transition-all shadow-xl active:scale-95">
-                SEND SPECIFICATIONS
-              </button>
+              
+              <p className="text-stone-400 text-2xl font-light leading-relaxed mb-12 border-l-2 border-stone-800 pl-8">
+                {selectedFeature.desc}
+              </p>
+              
+             
             </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
+
+      {/* FOOTER */}
+      <section className="bg-[#050505] py-32 px-6 border-t border-stone-800 text-center">
+        <h3 className="text-4xl md:text-5xl font-black mb-8 tracking-tighter uppercase">Infinite Processing.</h3>
+        <p className="text-stone-500 mb-12 max-w-3xl mx-auto uppercase text-xs tracking-[0.4em] leading-loose font-bold italic">
+          Closed-loop tension • Regenerative Drives • Modular Capability
+        </p>
+        <div className="flex justify-center items-center gap-6 opacity-30">
+           <div className="h-[1px] w-32 bg-blue-500" />
+           <span className="font-mono text-xs tracking-widest">EUROCOIL C2C 1650</span>
+           <div className="h-[1px] w-32 bg-blue-500" />
+        </div>
+      </section>
+
     </div>
   );
 }
