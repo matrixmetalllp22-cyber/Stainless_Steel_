@@ -631,7 +631,7 @@ const Footer = () => {
               </div>
               <div>
                 <h2 className="text-2xl font-black tracking-tight text-white leading-none">MATRIX</h2>
-                <p className="text-[10px] uppercase tracking-[0.3em] text-orange-500 font-bold mt-1">Metal Private Limited</p>
+                <p className="text-[10px] uppercase tracking-[0.3em] text-orange-500 font-bold mt-1">Metal LLP</p>
               </div>
             </div>
             <p className="text-slate-400 text-sm leading-relaxed max-w-sm">
@@ -658,7 +658,7 @@ const Footer = () => {
           {/* 2. Quick Navigation Section */}
           <motion.div variants={itemVariants} className="lg:pl-10">
             <h3 className="text-white font-bold mb-8 text-lg flex items-center">
-              <span className="w-8 h-[1px] bg-orange-500 mr-3"></span>
+              <span className="w-8 h-px bg-orange-500 mr-3"></span>
               Explore
             </h3>
             <ul className="grid grid-cols-1 gap-4">
@@ -668,7 +668,7 @@ const Footer = () => {
                     to={`/${item.toLowerCase().replace(/\s+/g, '-')}`}
                     className="text-slate-400 hover:text-white transition-all duration-300 flex items-center group text-sm"
                   >
-                    <span className="h-[1px] w-0 bg-orange-500 mr-0 group-hover:w-4 group-hover:mr-3 transition-all duration-300"></span>
+                    <span className="h-px w-0 bg-orange-500 mr-0 group-hover:w-4 group-hover:mr-3 transition-all duration-300"></span>
                     {item}
                   </Link>
                 </li>
@@ -679,12 +679,12 @@ const Footer = () => {
           {/* 3. Global Headquarters Section */}
           <motion.div variants={itemVariants}>
             <h3 className="text-white font-bold mb-8 text-lg flex items-center">
-              <span className="w-8 h-[1px] bg-orange-500 mr-3"></span>
+              <span className="w-8 h-px bg-orange-500 mr-3"></span>
               Contact Info
             </h3>
             <div className="space-y-6 text-sm text-slate-400">
               <div className="flex items-start space-x-4">
-                <div className="w-8 h-8 rounded-full bg-slate-800/50 flex items-center justify-center flex-shrink-0 text-orange-500">
+                <div className="w-8 h-8 rounded-full bg-slate-800/50 flex items-center justify-center shrink-0 text-orange-500">
                   <FaMapMarkerAlt size={14} />
                 </div>
                 <p className="leading-relaxed italic">
@@ -693,13 +693,13 @@ const Footer = () => {
                 </p>
               </div>
               <div className="flex items-center space-x-4">
-                <div className="w-8 h-8 rounded-full bg-slate-800/50 flex items-center justify-center flex-shrink-0 text-orange-500">
+                <div className="w-8 h-8 rounded-full bg-slate-800/50 flex items-center justify-center shrink-0 text-orange-500">
                   <FaPhoneAlt size={14} />
                 </div>
                 <p className="font-medium">+91 90368 64329</p>
               </div>
               <div className="flex items-center space-x-4 group">
-                <div className="w-8 h-8 rounded-full bg-slate-800/50 flex items-center justify-center flex-shrink-0 text-orange-500 group-hover:bg-orange-500 group-hover:text-white transition-all">
+                <div className="w-8 h-8 rounded-full bg-slate-800/50 flex items-center justify-center shrink-0 text-orange-500 group-hover:bg-orange-500 group-hover:text-white transition-all">
                   <FaEnvelope size={14} />
                 </div>
                 <a href="mailto:matrixmetalllp@gmail.com" className="group-hover:text-white transition-colors">
@@ -714,7 +714,7 @@ const Footer = () => {
         <div className="pt-10 border-t border-slate-800/60 flex flex-col md:flex-row justify-between items-center gap-8 text-center md:text-left">
           <div className="space-y-2">
             <p className="text-sm text-slate-500">
-              © {currentYear} <span className="text-slate-200 font-semibold">Matrix Metal Pvt Ltd</span>. All rights reserved.
+              © {currentYear} <span className="text-slate-200 font-semibold">Matrix Metal LLP</span>. All rights reserved.
             </p>
             <div className="flex justify-center md:justify-start gap-6 text-[12px] text-slate-500">
               <a href="#" className="hover:text-orange-500 transition-colors">Privacy Policy</a>
