@@ -418,7 +418,7 @@ const team = [
     expertise: ["Supply Chain Management", "Logistics", "Coordination"]
   },
   { 
-    name: "Balakumar", 
+    name: "Vignesh Balakumar", 
     role: "Project Development Head", 
     image: "/Images/person4.jpg",
     bio: "Transforms technical requirements into high-performance project frameworks. A key architect of operational success.",

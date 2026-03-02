@@ -639,7 +639,7 @@ const Footer = () => {
             </p>
             <div className="flex space-x-4 pt-2">
               {[
-                { icon: FaLinkedinIn, link: "#" },
+                { icon: FaLinkedinIn, link: "https://www.linkedin.com/company/matrix-metals-llp/" },
                 { icon: FaFacebookF, link: "#" },
                 { icon: FaInstagram, link: "https://www.instagram.com/matrixmetalllp/" },
                 { icon: FaYoutube, link: "#" }
