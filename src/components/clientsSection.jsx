@@ -41,8 +41,8 @@ const logoFiles = [
   "Unilink Enterprises – Stainless fabrication services.png",
   "Veltech Equipments – Industrial metal products.png",
   "Yaskawa India Pvt Ltd.png",
-  "Siemens.png",
-  "Hitachi.png"
+  "semens.png",
+  "Hitachi.webp"
 ];
 
 /* 2. Process Data: Shorten names and format paths */
