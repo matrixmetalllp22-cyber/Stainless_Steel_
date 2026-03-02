@@ -640,9 +640,9 @@ const Footer = () => {
             <div className="flex space-x-4 pt-2">
               {[
                 { icon: FaLinkedinIn, link: "https://www.linkedin.com/company/matrix-metals-llp/" },
-                { icon: FaFacebookF, link: "#" },
+                // { icon: FaFacebookF, link: "#" },
                 { icon: FaInstagram, link: "https://www.instagram.com/matrixmetalllp/" },
-                { icon: FaYoutube, link: "#" }
+                // { icon: FaYoutube, link: "#" }
               ].map((social, i) => (
                 <a 
                   key={i} 
